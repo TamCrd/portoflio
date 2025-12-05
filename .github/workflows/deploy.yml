@@ -1,0 +1,24 @@
+name: Déploiement Portfolio (Pull)
+
+on:
+  push:
+    # Déclenche le workflow à chaque 'git push' sur la branche 'main'
+    branches: [main] 
+
+jobs:
+  deploy:
+    # Indique que ce job doit être exécuté par votre runner sur la VM
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Pull et Mise à jour du portfolio
+      run: |
+        # 1. Navigue vers le dossier où vous avez cloné le portfolio sur la VM
+        cd /var/www/portfolio
+        # 2. Récupère et fusionne les dernières modifications depuis GitHub
+        git pull origin main
+
+        # Facultatif mais recommandé: relancer NGINX en cas de changements majeurs
+        sudo systemctl restart nginx
