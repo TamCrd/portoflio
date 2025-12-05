@@ -21,4 +21,4 @@ jobs:
         git pull origin main
 
         # Facultatif mais recommandé: relancer NGINX en cas de changements majeurs
-        sudo systemctl restart nginx
+        # sudo systemctl restart nginx
