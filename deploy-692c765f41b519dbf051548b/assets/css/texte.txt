@@ -1,0 +1,51 @@
+cest toujours pas ca, je pense quil faut que la hauteur et la largeur prennent toute la place dans lespace a droite. avec cette version cest un peu mieux mais en hauteur limage est encore tronquée: /* ===== SOLUTION FLEXIBLE POUR CERTIFICATIONS ===== */
+
+.cert-preview {
+    flex: 0 0 45%;
+    border-left: 1px solid #e2e8f0;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5em;
+    height: auto; /* Hauteur automatique */
+}
+
+.preview-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 180px;
+    max-height: 280px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white; /* Fond blanc pour les images transparentes */
+}
+
+.preview-image img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+}
+
+/* Ajustement du wrapper principal */
+.cert-content-wrapper {
+    display: flex;
+    min-height: 280px;
+    align-items: stretch; /* Étire les éléments enfants */
+}
+
+.cert-info {
+    flex: 1;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 55%;
+}

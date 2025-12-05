@@ -1,0 +1,127 @@
+/* ===== TIMELINE AVEC FILTRES ===== */
+.formation-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-bottom: 3em;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.8em 1.5em;
+    background: #f8fafc;
+    color: #64748b;
+    border: 2px solid #e2e8f0;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+/* Timeline avec filtres */
+.timeline-filterable {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-filterable:before {
+    content: '';
+    position: absolute;
+    left: 50px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3em;
+    padding-left: 100px;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-date {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+    padding: 0.8em 1.2em;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9em;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    width: 80px;
+    text-align: center;
+}
+
+.timeline-content {
+    background: white;
+    padding: 2em;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Couleurs différentes pour chaque type */
+.timeline-item.principal .timeline-content {
+    border-left: 4px solid #3b82f6;
+}
+
+.timeline-item.linguistique .timeline-content {
+    border-left: 4px solid #8b5cf6;
+}
+
+.timeline-item.principal .timeline-date {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.timeline-item.linguistique .timeline-date {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+/* Responsive */
+@media screen and (max-width: 736px) {
+    .timeline-filterable:before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        padding-left: 60px;
+    }
+    
+    .timeline-date {
+        width: 60px;
+        padding: 0.6em 0.8em;
+        font-size: 0.8em;
+    }
+    
+    .formation-filters {
+        gap: 0.5em;
+    }
+    
+    .filter-btn {
+        padding: 0.6em 1.2em;
+        font-size: 0.9em;
+    }
+} 
