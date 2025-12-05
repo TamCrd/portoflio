@@ -1,24 +1,33 @@
-name: Déploiement Portfolio (Pull)
+name: Déploiement Portfolio (Copie Robuste)
 
 on:
   push:
-    # Déclenche le workflow à chaque 'git push' sur la branche 'main'
     branches: [main] 
 
 jobs:
   deploy:
-    # Indique que ce job doit être exécuté par votre runner sur la VM
     runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v4
+    # Étape 1 : Le Runner télécharge le code le plus récent et propre.
+    - name: 1. Checkout et Téléchargement du Code
+      uses: actions/checkout@v4
 
-    - name: Pull et Mise à jour du portfolio
+    # Étape 2 : Copie le code dans le dossier public d'NGINX.
+    - name: 2. Copier les fichiers vers le dossier NGINX
       run: |
-        # 1. Navigue vers le dossier où vous avez cloné le portfolio sur la VM
-        cd /var/www/portfolio
-        # 2. Récupère et fusionne les dernières modifications depuis GitHub
-        git pull origin main
+        # Attention : utilisez le chemin exact de votre portfolio sur la VM !
+        NGINX_ROOT=/var/www/portfolio/deploy-692c765f41b519dbf051548b
 
-        # Facultatif mais recommandé: relancer NGINX en cas de changements majeurs
+        # Vider le dossier de destination (sans supprimer le dossier parent .git s'il existe)
+        sudo rm -rf $NGINX_ROOT/*
+
+        # Copie le nouveau code (qui vient d'être téléchargé par checkout@v4) vers le dossier NGINX
+        # Le './*' représente le code téléchargé par l'action précédente.
+        sudo cp -r ./* $NGINX_ROOT/
+
+        # Réattribution des droits (Sécurité : NGINX doit pouvoir lire les fichiers)
+        sudo chown -R www-data:www-data $NGINX_ROOT
+
+        # Tentative de redémarrage NGINX (C'est la ligne qui pourrait encore échouer sans sudoers)
         sudo systemctl restart nginx
