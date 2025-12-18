@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+    <title>Portfolio | Tamara Crétard</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; color: #f9fafb; overflow-x: hidden; scroll-behavior: smooth; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Animation de fond : Aurora */
+        .aurora {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at 50% -20%, #1e3a8a 0%, transparent 50%),
+                        radial-gradient(circle at 0% 100%, #1e1b4b 0%, transparent 50%);
+            opacity: 0.5;
+        }
+
+        /* Effet de scanline rétro-futuriste */
+        body::before {
+            content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            z-index: 100; background-size: 100% 4px, 3px 100%; pointer-events: none;
+        }
+
+        .nav-blur { background: rgba(3, 7, 18, 0.6); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        
+        .btn-cyber {
+            position: relative; overflow: hidden;
+            transition: all 0.4s; border: 1px solid rgba(59, 130, 246, 0.5);
+        }
+        .btn-cyber:hover {
+            background: #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+            transform: scale(1.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover { border-color: #3b82f6; }
+    </style>
+</head>
+<body>
+
+    <div class="aurora"></div>
+
+    <nav class="fixed w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+            <div class="text-xl font-bold tracking-widest text-blue-500 uppercase">PORTFOLIO<span class="text-white">.</span></div>
+            
+            <div class="hidden lg:flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                <a href="#accueil" class="hover:text-white transition">Bio</a>
+                <a href="#competences" class="hover:text-white transition">Skills</a>
+                <a href="#parcours" class="hover:text-white transition">Parcours</a>
+                <a href="#projets" class="hover:text-white transition">Labo</a>
+                <a href="#veille" class="hover:text-white transition">Veille</a>
+                <a href="#contact" class="hover:text-white transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="accueil" class="relative min-h-screen flex items-center justify-center pt-20">
+        <div class="absolute left-10 top-1/2 -translate-y-1/2 hidden xl:block opacity-20 mono text-[10px] space-y-4">
+            <p>IP_ADDRESS: 192.168.1.1</p>
+            <p>STATUS: SYSTEM_READY</p>
+            <p>LOCATION: ANNECY_FR</p>
+            <div class="h-32 w-[1px] bg-white mx-auto"></div>
+        </div>
+
+        <div class="text-center z-10">
+            <span class="mono text-blue-400 text-sm tracking-[0.5em] mb-4 block" data-aos="fade-down">INFRASTRUCTURE & CYBERSECURITY</span>
+            
+            <h1 class="text-7xl md:text-9xl font-extrabold tracking-tighter mb-16 leading-none" data-aos="zoom-in">
+                Tamara <br class="md:hidden"> Crétard
+            </h1>
+
+            <div class="max-w-xl mx-auto px-6 mb-16" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-lg md:text-xl text-gray-400 font-light leading-relaxed">
+                    Experte en devenir des systèmes et réseaux. <br> 
+                    Je construis des infrastructures <span class="text-white font-semibold">robustes</span> et je sécurise les flux de <span class="text-white font-semibold">demain</span>.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-8" data-aos="fade-up" data-aos-delay="400">
+                <a href="#projets" class="btn-cyber px-12 py-4 rounded-full font-bold uppercase text-xs tracking-widest">
+                    Accéder au Labo
+                </a>
+                <a href="assets/cv/CV_tamara_CRETARD.pdf" class="px-12 py-4 rounded-full border border-white/10 hover:bg-white/5 font-bold uppercase text-xs tracking-widest transition">
+                    Curriculum Vitae
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 animate-bounce opacity-30 text-2xl">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section id="competences" class="py-32 px-8 max-w-7xl mx-auto">
+        <h2 class="text-sm mono text-blue-500 mb-16 tracking-widest uppercase">// Expertises_Techniques</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card p-10 rounded-3xl" data-aos="fade-up">
+                <i class="fa-solid fa-server text-blue-500 text-3xl mb-6"></i>
+                <h3 class="text-xl font-bold mb-4">Systèmes</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Administration Windows Server, Active Directory, GPO, et environnements Linux (Debian, Ubuntu).</p>
+            </div>
+            <div class="glass-card p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                <i class="fa-solid fa-network-wired text-blue-500 text-3xl mb-6"></i>
+                <h3 class="text-xl font-bold mb-4">Réseaux</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Configuration Switch/Router (Cisco), VLANs, VPN, et adressage IP complexe.</p>
+            </div>
+            <div class="glass-card p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                <i class="fa-solid fa-shield-halved text-blue-500 text-3xl mb-6"></i>
+                <h3 class="text-xl font-bold mb-4">Sécurité</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Firewalling (Stormshield/PFSense), surveillance Zabbix et protocoles de sécurisation flux.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="parcours" class="py-32 px-8 bg-black/20">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-24">
+            
+            <div data-aos="fade-right">
+                <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase">// 01. Éducation</h2>
+                <div class="space-y-12">
+                    <div class="border-l border-blue-500/30 pl-8 relative">
+                        <div class="absolute -left-1 top-0 h-2 w-2 bg-blue-500 rounded-full"></div>
+                        <span class="mono text-xs text-blue-400">2025 - Présent</span>
+                        <h3 class="text-xl font-bold mt-2">BTS SIO SISR</h3>
+                        <p class="text-gray-400 text-sm mt-2">Lycée Gabriel Fauré, Annecy.</p>
+                    </div>
+                    <div class="border-l border-white/10 pl-8 relative">
+                        <span class="mono text-xs text-gray-500">2021 - 2024</span>
+                        <h3 class="text-xl font-bold mt-2">MSc Learning Technologies</h3>
+                        <p class="text-gray-400 text-sm mt-2">Université de Genève.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-left">
+                <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase">// 02. Expérience</h2>
+                <div class="space-y-12">
+                    <div class="border-l border-blue-500/30 pl-8 relative">
+                        <div class="absolute -left-1 top-0 h-2 w-2 bg-blue-500 rounded-full"></div>
+                        <span class="mono text-xs text-blue-400">Juin 2025</span>
+                        <h3 class="text-xl font-bold mt-2">Stage Systèmes & Réseaux</h3>
+                        <p class="text-gray-400 text-sm mt-2 font-bold italic">Agentil (Genève)</p>
+                        <p class="text-gray-500 text-xs mt-2">Monitoring Zabbix, WSUS, Troubleshooting.</p>
+                    </div>
+                    <div class="border-l border-white/10 pl-8 relative">
+                        <span class="mono text-xs text-gray-500">2024 - Présent</span>
+                        <h3 class="text-xl font-bold mt-2">Préparateur de commandes</h3>
+                        <p class="text-gray-400 text-sm mt-2 italic text-xs">Auchan Retail.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projets" class="py-32 px-8 max-w-7xl mx-auto">
+        <h2 class="text-sm mono text-blue-500 mb-16 tracking-widest uppercase text-center">// Laboratoire_Technique</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="glass-card rounded-3xl overflow-hidden group" data-aos="fade-up">
+                <div class="h-48 bg-slate-800">
+                    <img src="assets/images/projets/nas.jpg" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500">
+                </div>
+                <div class="p-8">
+                    <h4 class="text-lg font-bold mb-4">NAS XPenology</h4>
+                    <a href="assets/docs/NAS-et-autres-solutions-de-stockage-Cretard-Tamara-Version1.pdf" class="text-blue-400 text-xs font-bold uppercase tracking-widest">Dossier →</a>
+                </div>
+            </div>
+            <div class="glass-card rounded-3xl overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
+                <div class="h-48 bg-slate-800">
+                    <img src="assets/images/projets/fog.jpg" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500">
+                </div>
+                <div class="p-8">
+                    <h4 class="text-lg font-bold mb-4">Serveur FOG</h4>
+                    <a href="assets/docs/FOG-Cretard-Tamara-Version1.pdf" class="text-blue-400 text-xs font-bold uppercase tracking-widest">Dossier →</a>
+                </div>
+            </div>
+            <div class="glass-card rounded-3xl overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
+                <div class="h-48 bg-slate-800">
+                    <img src="assets/images/projets/pacemaker.png" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500">
+                </div>
+                <div class="p-8">
+                    <h4 class="text-lg font-bold mb-4">Cluster HA</h4>
+                    <a href="assets/docs/Corosync-Pacemaker-Cretard-Tamara-Version1.pdf" class="text-blue-400 text-xs font-bold uppercase tracking-widest">Dossier →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="veille" class="py-32 px-8 max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16">
+            <div>
+                <h3 class="text-xl font-bold mb-8 italic">Certifications</h3>
+                <ul class="space-y-4 text-sm text-gray-400">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-certificate text-blue-500"></i> Mooc SecNumacadémie (ANSSI)</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-certificate text-blue-500"></i> Cisco Intro to Cybersecurity</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-8 italic">Veille Technologique</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    Suivi quotidien de l'actualité via le <strong>CERT-FR</strong>, <strong>The Hacker News</strong> et <strong>Forensic Focus</strong> pour anticiper les menaces 0-day.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-24 text-center border-t border-white/5">
+        <div class="flex justify-center gap-10 mb-12">
+            <a href="mailto:tamara.cretard@gmail.com" class="text-2xl hover:text-blue-500 transition"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/tamara-cretard" class="text-2xl hover:text-blue-500 transition"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <p class="mono text-[10px] text-gray-600 tracking-[0.3em]">© 2025 TAMARA CRETARD // SISR PORTFOLIO</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>
