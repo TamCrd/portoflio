@@ -1,0 +1,985 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+    <title>Tamara Crétard | SISR Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #030712; 
+            color: #f9fafb; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Animation de fond : Aurora */
+        .aurora {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at 50% -20%, #1e3a8a 0%, transparent 50%),
+                        radial-gradient(circle at 0% 100%, #1e1b4b 0%, transparent 50%);
+            opacity: 0.5;
+        }
+
+        /* Effet de scanline rétro-futuriste */
+        body::before {
+            content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            z-index: 100; background-size: 100% 4px, 3px 100%; pointer-events: none;
+        }
+
+        .nav-blur { 
+            background: rgba(3, 7, 18, 0.8); 
+            backdrop-filter: blur(20px); 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+        }
+        
+        .btn-cyber {
+            position: relative; overflow: hidden;
+            transition: all 0.4s; border: 1px solid rgba(59, 130, 246, 0.5);
+        }
+        .btn-cyber:hover {
+            background: #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+            transform: scale(1.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+        }
+        .glass-card:hover { 
+            border-color: #3b82f6;
+            transform: translateY(-5px);
+        }
+
+        .section-dark { background: rgba(0, 0, 0, 0.2); }
+        
+        .timeline-item {
+            border-left: 2px solid rgba(59, 130, 246, 0.3);
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-10px);
+        }
+        .project-image {
+            height: 200px;
+            background: #1e293b;
+            overflow: hidden;
+            position: relative;
+        }
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            transition: all 0.5s ease;
+        }
+        .project-card:hover .project-image img {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        .project-link {
+            color: white;
+            padding: 0.75rem 1.5rem;
+            background: #3b82f6;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cert-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .cert-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-5px);
+        }
+
+        .filter-btn, .projet-filter-btn {
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2rem;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover, .projet-filter-btn:hover,
+        .filter-btn.active, .projet-filter-btn.active {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            color: white;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            margin: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="aurora"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter">PORTFOLIO<span class="text-blue-500">.</span></div>
+            
+            <div class="hidden lg:flex gap-6 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                <a href="#accueil" class="hover:text-white transition" data-translate="navAccueil">Accueil</a>
+                <a href="#apropos" class="hover:text-white transition" data-translate="navApropos">À propos</a>
+                <a href="#competences" class="hover:text-white transition" data-translate="navCompetences">Compétences</a>
+                <a href="#formation" class="hover:text-white transition" data-translate="navFormation">Formation</a>
+                <a href="#experience" class="hover:text-white transition" data-translate="navExperience">Expérience</a>
+                <a href="#projets" class="hover:text-white transition" data-translate="navProjets">Projets</a>
+                <a href="#certifications" class="hover:text-white transition" data-translate="navCertifications">Certifications</a>
+                <a href="#veille" class="hover:text-white transition" data-translate="navVeille">Veille</a>
+                <a href="#contact" class="hover:text-white transition" data-translate="navContact">Contact</a>
+            </div>
+
+            <button id="languageToggle" class="lang-btn">
+                <span class="lang-flag">🇫🇷</span>
+                <span class="lang-text">FR</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="relative min-h-screen flex items-center justify-center pt-20">
+        <div class="absolute left-10 top-1/2 -translate-y-1/2 hidden xl:block opacity-20 mono text-[10px] space-y-4">
+            <p>IP_ADDRESS: 192.168.1.1</p>
+            <p>STATUS: SYSTEM_READY</p>
+            <p>LOCATION: ANNECY_FR</p>
+            <div class="h-32 w-[1px] bg-white mx-auto"></div>
+        </div>
+
+        <div class="text-center z-10 px-6">
+            <span class="mono text-blue-400 text-sm tracking-[0.5em] mb-4 block" data-aos="fade-down" data-translate="heroSubtitle">INFRASTRUCTURE & CYBERSECURITY</span>
+            
+            <h1 class="text-7xl md:text-9xl font-extrabold tracking-tighter mb-16" data-aos="zoom-in">
+                Tamara <br class="md:hidden"> Crétard
+            </h1>
+
+            <div class="max-w-xl mx-auto px-6 mb-16" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-lg md:text-xl text-gray-400 font-light leading-relaxed" data-translate="heroDescription">
+                    Étudiante en BTS SIO SISR, avec un intérêt marqué pour les systèmes, les réseaux et la cybersécurité. J'ai une forte attirance pour l'administration informatique et la criminalistique numérique.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-8" data-aos="fade-up" data-aos-delay="400">
+                <a href="#projets" class="btn-cyber px-12 py-4 rounded-full font-bold uppercase text-xs tracking-widest" data-translate="btnProjets">
+                    Accéder au Labo
+                </a>
+                <a href="assets/cv/CV_tamara_CRETARD.pdf" class="px-12 py-4 rounded-full border border-white/10 hover:bg-white/5 font-bold uppercase text-xs tracking-widest transition" data-translate="btnCV">
+                    Curriculum Vitae
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 animate-bounce opacity-30 text-2xl">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="apropos" class="section-dark py-32 px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase" data-translate="aproposTitre">// À propos</h2>
+            <p class="text-xl text-gray-300 leading-relaxed mb-8" data-translate="aproposTexte">
+                Passionnée par les infrastructures IT et la sécurité des systèmes d'information, je suis actuellement en BTS SIO option SISR au Lycée Gabriel Fauré à Annecy. Mon parcours atypique, alliant sciences de l'éducation et technologies numériques, me confère une approche unique de l'administration système et de la formation aux bonnes pratiques de cybersécurité.
+            </p>
+            <p class="text-lg text-gray-400 leading-relaxed" data-translate="aproposTexte2">
+                Mon objectif est de contribuer à la sécurisation des infrastructures critiques et d'explorer les domaines de la criminalistique numérique et du SOC (Security Operations Center).
+            </p>
+        </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="competences" class="py-32 px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-sm mono text-blue-500 mb-16 tracking-widest uppercase text-center" data-translate="competencesTitre">// Expertises Techniques</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card" data-aos="fade-up">
+                    <i class="fa-solid fa-shield-alt text-blue-500 text-4xl mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4" data-translate="compCyber">Cybersécurité</h3>
+                    <ul class="text-gray-400 space-y-2 text-sm">
+                        <li data-translate="compCyber1">• Sécurité des réseaux</li>
+                        <li data-translate="compCyber2">• Analyse de vulnérabilités</li>
+                        <li data-translate="compCyber3">• Pare-feu, VPN & DMZ</li>
+                        <li data-translate="compCyber4">• Criminalistique numérique</li>
+                        <li data-translate="compCyber5">• Hacking éthique</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-server text-blue-500 text-4xl mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4" data-translate="compSystemes">Systèmes</h3>
+                    <ul class="text-gray-400 space-y-2 text-sm">
+                        <li data-translate="compSys1">• Administration Windows/Linux</li>
+                        <li data-translate="compSys2">• Active Directory & GPO</li>
+                        <li data-translate="compSys3">• Virtualisation</li>
+                        <li data-translate="compSys4">• Scripting (Bash, PowerShell)</li>
+                        <li data-translate="compSys5">• Déploiement & sauvegarde</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-network-wired text-blue-500 text-4xl mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4" data-translate="compReseaux">Réseaux</h3>
+                    <ul class="text-gray-400 space-y-2 text-sm">
+                        <li data-translate="compRes1">• Gestion de parc informatique</li>
+                        <li data-translate="compRes2">• VLAN, routage, switching</li>
+                        <li data-translate="compRes3">• Services (DNS, DHCP)</li>
+                        <li data-translate="compRes4">• Haute disponibilité</li>
+                        <li data-translate="compRes5">• Supervision (Nagios/Zabbix)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation -->
+    <section id="formation" class="section-dark py-32 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="formationTitre">// Formation</h2>
+            <p class="text-center text-gray-400 mb-16" data-translate="formationSousTitre">Mon parcours académique et linguistique</p>
+
+            <!-- Filtres -->
+            <div class="flex justify-center gap-4 mb-16 flex-wrap">
+                <button class="filter-btn active" data-filter="all" data-translate="filterAll">Toutes</button>
+                <button class="filter-btn" data-filter="principal" data-translate="filterPrincipal">Parcours Principal</button>
+                <button class="filter-btn" data-filter="linguistique" data-translate="filterLinguistique">Parcours Linguistique</button>
+            </div>
+
+            <div class="space-y-8" id="formationContainer">
+                <!-- BTS -->
+                <div class="timeline-item principal" data-aos="fade-right">
+                    <span class="mono text-xs text-blue-400" data-translate="formBTS1">2025 – En cours</span>
+                    <h3 class="text-2xl font-bold mt-2" data-translate="formBTS2">BTS SIO Option SISR</h3>
+                    <p class="text-gray-400 text-sm mt-2" data-translate="formBTS3">Lycée Gabriel Fauré - Annecy</p>
+                    <p class="text-gray-300 mt-2" data-translate="formBTS4">Brevet de Technicien Supérieur - Services Informatiques aux Organisations</p>
+                </div>
+
+                <!-- Master -->
+                <div class="timeline-item principal" data-aos="fade-right">
+                    <span class="mono text-xs text-gray-500" data-translate="formMaster1">2021 – 2024</span>
+                    <h3 class="text-2xl font-bold mt-2" data-translate="formMaster2">Master of Science in Learning and Teaching Technologies</h3>
+                    <p class="text-gray-400 text-sm mt-2" data-translate="formMaster3">Université de Genève</p>
+                    <p class="text-gray-300 mt-2 italic" data-translate="formMaster4">Non complété</p>
+                </div>
+
+                <!-- Bachelor -->
+                <div class="timeline-item principal" data-aos="fade-right">
+                    <span class="mono text-xs text-gray-500" data-translate="formBachelor1">2017 – 2021</span>
+                    <h3 class="text-2xl font-bold mt-2" data-translate="formBachelor2">Bachelor en Sciences de l'Éducation</h3>
+                    <p class="text-gray-400 text-sm mt-2" data-translate="formBachelor3">Université de Genève</p>
+                </div>
+
+                <!-- Bac -->
+                <div class="timeline-item principal" data-aos="fade-right">
+                    <span class="mono text-xs text-gray-500">2017</span>
+                    <h3 class="text-2xl font-bold mt-2" data-translate="formBac1">Baccalauréat Littéraire avec mention</h3>
+                    <p class="text-gray-400 text-sm mt-2" data-translate="formBac2">Lycée Madame de Staël - Saint-Julien-en-Genevois</p>
+                </div>
+
+                <!-- École Russe 1 -->
+                <div class="timeline-item linguistique" data-aos="fade-right" style="display: none;">
+                    <span class="mono text-xs text-gray-500" data-translate="formRusse1_1">2011 – 2016</span>
+                    <h3 class="text-2xl font-bold mt-2" data-translate="formRusse1_2">Cours de langue et littérature russe</h3>
+                    <p class="text-gray-400 text-sm mt-2" data-translate="formRusse1_3">École L'Oiseau Bleu - Genève</p>
+                </div>
+
+                <!-- École Russe 2 -->
+                <div class="timeline-item linguistique" data-aos="fade-right" style="display: none;">
+                    <span class="mono text-xs text-gray-500" data-translate="formRusse2_1">2006 – 2010</span>
+                    <h3 class="text-2xl font-bold mt-2" data-translate="formRusse2_2">Formation pluridisciplinaire en langue russe</h3>
+                    <p class="text-gray-400 text-sm mt-2" data-translate="formRusse2_3">Mission Permanente de la Fédération de Russie - Genève</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expérience -->
+    <section id="experience" class="py-32 px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="experienceTitre">// Expérience Professionnelle</h2>
+            <p class="text-center text-gray-400 mb-16" data-translate="experienceSousTitre">Mes emplois, stages et engagements</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Préparateur -->
+                <div class="glass-card" data-aos="fade-up">
+                    <i class="fa-solid fa-boxes text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2" data-translate="expPrep1">Préparateur de commandes</h3>
+                    <p class="text-blue-400 text-sm mb-2" data-translate="expPrep2">Auchan Retail - Epagny</p>
+                    <span class="mono text-xs text-gray-500" data-translate="expPrep3">Mai 2024 - Présent</span>
+                </div>
+
+                <!-- Entraîneuse -->
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-futbol text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2" data-translate="expEntrain1">Entraîneuse de gardiennes</h3>
+                    <p class="text-blue-400 text-sm mb-2" data-translate="expEntrain2">FC Epagny-Metz-Tessy</p>
+                    <span class="mono text-xs text-gray-500" data-translate="expEntrain3">Septembre 2025 - Présent</span>
+                </div>
+
+                <!-- Stage Agentil -->
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-network-wired text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2" data-translate="expStage1">Stage - Systèmes et Réseaux</h3>
+                    <p class="text-blue-400 text-sm mb-2">Agentil</p>
+                    <span class="mono text-xs text-gray-500" data-translate="expStage2">Juin 2025</span>
+                </div>
+
+                <!-- Stage eLearning -->
+                <div class="glass-card" data-aos="fade-up">
+                    <i class="fa-solid fa-laptop-code text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2" data-translate="expElearning1">Stage - Concepteur eLearning</h3>
+                    <p class="text-blue-400 text-sm mb-2" data-translate="expElearning2">Creativ Minds - Nyon</p>
+                    <span class="mono text-xs text-gray-500" data-translate="expElearning3">Mai 2023 - Juin 2023</span>
+                </div>
+
+                <!-- Stage Observation -->
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-graduation-cap text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2" data-translate="expObs1">Stage d'Observation</h3>
+                    <p class="text-blue-400 text-sm mb-2" data-translate="expObs2">École Primaire - Perly</p>
+                    <span class="mono text-xs text-gray-500">2018 - 2019</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projets" class="section-dark py-32 px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="projetsTitre">// Mes Projets</h2>
+            <p class="text-center text-gray-400 mb-16" data-translate="projetsSousTitre">Réalisations techniques et études de cas</p>
+
+            <!-- Filtres -->
+            <div class="flex justify-center gap-4 mb-16 flex-wrap">
+                <button class="projet-filter-btn active" data-filter="all" data-translate="projFilterAll">Tous</button>
+                <button class="projet-filter-btn" data-filter="infrastructure" data-translate="projFilterInfra">Infrastructure</button>
+                <button class="projet-filter-btn" data-filter="securite" data-translate="projFilterSec">Sécurité</button>
+                <button class="projet-filter-btn" data-filter="deploiement" data-translate="projFilterDeploy">Déploiement</button>
+                <button class="projet-filter-btn" data-filter="gestion" data-translate="projFilterGestion">Gestion</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsContainer">
+                <!-- Projet NAS -->
+                <div class="project-card infrastructure" data-aos="fade-up">
+                    <div class="project-image">
+                        <img src="images/projets/nas.jpg" alt="NAS XPenology">
+                        <div class="project-overlay">
+                            <a href="assets/docs/NAS-et-autres-solutions-de-stockage-Cretard-Tamara-Version1.pdf" class="project-link" download>
+                                <i class="fa-solid fa-download"></i> <span data-translate="projVoir">Voir</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3" data-translate="projNAS">Solutions NAS avec XPenology</h3>
+                        <p class="text-gray-400 text-sm mb-4" data-translate="projNASDesc">Installation et configuration de solutions NAS avec XPenology pour créer un serveur de stockage en réseau.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">NAS</span>
+                            <span class="skill-tag">XPenology</span>
+                            <span class="skill-tag">RAID</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet FOG -->
+                <div class="project-card deploiement" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <img src="images/projets/fog.jpg" alt="Serveur FOG">
+                        <div class="project-overlay">
+                            <a href="assets/docs/FOG-Cretard-Tamara-Version1.pdf" class="project-link" download>
+                                <i class="fa-solid fa-download"></i> <span data-translate="projVoir">Voir</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3" data-translate="projFOG">Déploiement Automatisé FOG</h3>
+                        <p class="text-gray-400 text-sm mb-4" data-translate="projFOGDesc">Déploiement automatisé de systèmes et logiciels via un serveur FOG sur un réseau local.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">FOG</span>
+                            <span class="skill-tag">Déploiement</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet Cluster HA -->
+                <div class="project-card infrastructure" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="images/projets/pacemaker.png" alt="Cluster HA">
+                        <div class="project-overlay">
+                            <a href="assets/docs/Corosync-Pacemaker-Cretard-Tamara-Version1.pdf" class="project-link" download>
+                                <i class="fa-solid fa-download"></i> <span data-translate="projVoir">Voir</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3" data-translate="projCluster">Cluster Haute Disponibilité</h3>
+                        <p class="text-gray-400 text-sm mb-4" data-translate="projClusterDesc">Mise en place d'un cluster haute disponibilité avec Corosync/Pacemaker.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">HA</span>
+                            <span class="skill-tag">Cluster</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet SSH -->
+                <div class="project-card securite" data-aos="fade-up">
+                    <div class="project-image">
+                        <img src="images/projets/ssh.jpg" alt="SSH">
+                        <div class="project-overlay">
+                            <a href="assets/docs/SSH-echange-cles-Cretard-Tamara-Version1.pdf" class="project-link" download>
+                                <i class="fa-solid fa-download"></i> <span data-translate="projVoir">Voir</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3" data-translate="projSSH">SSH avec Échange de Clés</h3>
+                        <p class="text-gray-400 text-sm mb-4" data-translate="projSSHDesc">Configuration de connexions SSH sécurisées sans mot de passe.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">SSH</span>
+                            <span class="skill-tag">Cryptographie</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet GLPI -->
+                <div class="project-card gestion" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <img src="images/projets/glpi.png" alt="GLPI">
+                        <div class="project-overlay">
+                            <a href="assets/docs/GLPI-Cretard-Tamara-Version1.pdf" class="project-link" download>
+                                <i class="fa-solid fa-download"></i> <span data-translate="projVoir">Voir</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3" data-translate="projGLPI">Installation GLPI</h3>
+                        <p class="text-gray-400 text-sm mb-4" data-translate="projGLPIDesc">Guide complet d'installation de GLPI pour la gestion de parc informatique.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">GLPI</span>
+                            <span class="skill-tag">Helpdesk</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet Sauvegarde -->
+                <div class="project-card deploiement" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="images/projets/cobian.jpg" alt="Sauvegarde">
+                        <div class="project-overlay">
+                            <a href="assets/docs/Sauvegarde-Cretard-Tamara-Version1.pdf" class="project-link" download>
+                                <i class="fa-solid fa-download"></i> <span data-translate="projVoir">Voir</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Sauvegarde Cobian Reflector</h3>
+                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Expérimentation des différents types de sauvegarde avec Cobian Reflector.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Sauvegarde</span>
+                            <span class="skill-tag">Cloud</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="py-32 px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="certificationsTitre">// Certifications</h2>
+            <p class="text-center text-gray-400 mb-16" data-translate="certificationsSousTitre">Mes diplômes et certifications techniques</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cert 1 -->
+                <div class="cert-card" data-aos="fade-up">
+                    <i class="fa-solid fa-network-wired text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2" data-translate="cert1">Introduction à la Cybersécurité</h3>
+                    <p class="text-blue-400 text-sm mb-2">Cisco Networking Academy</p>
+                    <span class="mono text-xs text-gray-500">2025</span>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-shield-alt text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2" data-translate="cert2">Gestion des cybermenaces</h3>
+                    <p class="text-blue-400 text-sm mb-2">Cisco Networking Academy</p>
+                    <span class="mono text-xs text-gray-500">2025</span>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-server text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">SecNumacadémie</h3>
+                    <p class="text-blue-400 text-sm mb-2">ANSSI</p>
+                    <span class="mono text-xs text-gray-500">2025</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Veille -->
+    <section id="veille" class="section-dark py-32 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="veilleTitre">// Veille Technologique</h2>
+            <p class="text-center text-gray-400 mb-16" data-translate="veilleSousTitre">Suivi continu des évolutions dans mes domaines de spécialisation</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card" data-aos="fade-up">
+                    <i class="fa-solid fa-shield-alt text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-4" data-translate="veilleCyber">Cybersécurité</h3>
+                    <p class="text-gray-400 text-sm mb-4" data-translate="veilleCyberDesc">Vulnérabilités, SOC, conformité</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">ANSSI</span>
+                        <span class="skill-tag">CERT-FR</span>
+                        <span class="skill-tag">The Hacker News</span>
+                    </div>
+                </div>
+
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-server text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-4" data-translate="veilleSys">Administration Systèmes</h3>
+                    <p class="text-gray-400 text-sm mb-4" data-translate="veilleSysDesc">Windows/Linux, cloud, automatisation</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">Microsoft TechNet</span>
+                        <span class="skill-tag">Red Hat Blog</span>
+                    </div>
+                </div>
+
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-search text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-4" data-translate="veilleCrimino">Criminalistique Numérique</h3>
+                    <p class="text-gray-400 text-sm mb-4" data-translate="veilleCriminoDesc">Forensic, investigation, legal</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">SANS Digital Forensics</span>
+                        <span class="skill-tag">DFIR News</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <footer id="contact" class="py-24 px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase" data-translate="contactTitre">// Contact</h2>
+            <p class="text-gray-400 mb-12" data-translate="contactSousTitre">Disponible pour des opportunités en administration système, réseaux ou cybersécurité</p>
+            
+            <div class="flex justify-center gap-8 mb-12">
+                <a href="mailto:tamara.cretard@gmail.com" class="text-3xl hover:text-blue-500 transition">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/tamara-cretard" target="_blank" class="text-3xl hover:text-blue-500 transition">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+            </div>
+
+            <p class="mono text-[10px] text-gray-600 tracking-[0.3em]">© 2025 TAMARA CRÉTARD // SISR PORTFOLIO</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Système de traduction
+        const translations = {
+            fr: {
+                navAccueil: "Accueil",
+                navApropos: "À propos",
+                navCompetences: "Compétences",
+                navFormation: "Formation",
+                navExperience: "Expérience",
+                navProjets: "Projets",
+                navCertifications: "Certifications",
+                navVeille: "Veille",
+                navContact: "Contact",
+                heroSubtitle: "INFRASTRUCTURE & CYBERSECURITY",
+                heroDescription: "Étudiante en BTS SIO SISR, avec un intérêt marqué pour les systèmes, les réseaux et la cybersécurité. J'ai une forte attirance pour l'administration informatique et la criminalistique numérique.",
+                btnProjets: "Accéder au Labo",
+                btnCV: "Curriculum Vitae",
+                aproposTitre: "// À propos",
+                aproposTexte: "Passionnée par les infrastructures IT et la sécurité des systèmes d'information, je suis actuellement en BTS SIO option SISR au Lycée Gabriel Fauré à Annecy. Mon parcours atypique, alliant sciences de l'éducation et technologies numériques, me confère une approche unique de l'administration système et de la formation aux bonnes pratiques de cybersécurité.",
+                aproposTexte2: "Mon objectif est de contribuer à la sécurisation des infrastructures critiques et d'explorer les domaines de la criminalistique numérique et du SOC (Security Operations Center).",
+                competencesTitre: "// Expertises Techniques",
+                compCyber: "Cybersécurité",
+                compCyber1: "• Sécurité des réseaux",
+                compCyber2: "• Analyse de vulnérabilités",
+                compCyber3: "• Pare-feu, VPN & DMZ",
+                compCyber4: "• Criminalistique numérique",
+                compCyber5: "• Hacking éthique",
+                compSystemes: "Systèmes",
+                compSys1: "• Administration Windows/Linux",
+                compSys2: "• Active Directory & GPO",
+                compSys3: "• Virtualisation",
+                compSys4: "• Scripting (Bash, PowerShell)",
+                compSys5: "• Déploiement & sauvegarde",
+                compReseaux: "Réseaux",
+                compRes1: "• Gestion de parc informatique",
+                compRes2: "• VLAN, routage, switching",
+                compRes3: "• Services (DNS, DHCP)",
+                compRes4: "• Haute disponibilité",
+                compRes5: "• Supervision (Nagios/Zabbix)",
+                formationTitre: "// Formation",
+                formationSousTitre: "Mon parcours académique et linguistique",
+                filterAll: "Toutes",
+                filterPrincipal: "Parcours Principal",
+                filterLinguistique: "Parcours Linguistique",
+                formBTS1: "2025 – En cours",
+                formBTS2: "BTS SIO Option SISR",
+                formBTS3: "Lycée Gabriel Fauré - Annecy",
+                formBTS4: "Brevet de Technicien Supérieur - Services Informatiques aux Organisations",
+                formMaster1: "2021 – 2024",
+                formMaster2: "Master of Science in Learning and Teaching Technologies",
+                formMaster3: "Université de Genève",
+                formMaster4: "Non complété",
+                formBachelor1: "2017 – 2021",
+                formBachelor2: "Bachelor en Sciences de l'Éducation",
+                formBachelor3: "Université de Genève",
+                formBac1: "Baccalauréat Littéraire avec mention",
+                formBac2: "Lycée Madame de Staël - Saint-Julien-en-Genevois",
+                formRusse1_1: "2011 – 2016",
+                formRusse1_2: "Cours de langue et littérature russe",
+                formRusse1_3: "École L'Oiseau Bleu - Genève",
+                formRusse2_1: "2006 – 2010",
+                formRusse2_2: "Formation pluridisciplinaire en langue russe",
+                formRusse2_3: "Mission Permanente de la Fédération de Russie - Genève",
+                experienceTitre: "// Expérience Professionnelle",
+                experienceSousTitre: "Mes emplois, stages et engagements",
+                expPrep1: "Préparateur de commandes",
+                expPrep2: "Auchan Retail - Epagny",
+                expPrep3: "Mai 2024 - Présent",
+                expEntrain1: "Entraîneuse de gardiennes",
+                expEntrain2: "FC Epagny-Metz-Tessy",
+                expEntrain3: "Septembre 2025 - Présent",
+                expStage1: "Stage - Systèmes et Réseaux",
+                expStage2: "Juin 2025",
+                expElearning1: "Stage - Concepteur eLearning",
+                expElearning2: "Creativ Minds - Nyon",
+                expElearning3: "Mai 2023 - Juin 2023",
+                expObs1: "Stage d'Observation",
+                expObs2: "École Primaire - Perly",
+                projetsTitre: "// Mes Projets",
+                projetsSousTitre: "Réalisations techniques et études de cas",
+                projFilterAll: "Tous",
+                projFilterInfra: "Infrastructure",
+                projFilterSec: "Sécurité",
+                projFilterDeploy: "Déploiement",
+                projFilterGestion: "Gestion",
+                projVoir: "Voir",
+                projNAS: "Solutions NAS avec XPenology",
+                projNASDesc: "Installation et configuration de solutions NAS avec XPenology pour créer un serveur de stockage en réseau.",
+                projFOG: "Déploiement Automatisé FOG",
+                projFOGDesc: "Déploiement automatisé de systèmes et logiciels via un serveur FOG sur un réseau local.",
+                projCluster: "Cluster Haute Disponibilité",
+                projClusterDesc: "Mise en place d'un cluster haute disponibilité avec Corosync/Pacemaker.",
+                projSSH: "SSH avec Échange de Clés",
+                projSSHDesc: "Configuration de connexions SSH sécurisées sans mot de passe.",
+                projGLPI: "Installation GLPI",
+                projGLPIDesc: "Guide complet d'installation de GLPI pour la gestion de parc informatique.",
+                projSauvegarde: "Sauvegarde Cobian Reflector",
+                projSauvegardeDesc: "Expérimentation des différents types de sauvegarde avec Cobian Reflector.",
+                certificationsTitre: "// Certifications",
+                certificationsSousTitre: "Mes diplômes et certifications techniques",
+                cert1: "Introduction à la Cybersécurité",
+                cert2: "Gestion des cybermenaces",
+                veilleTitre: "// Veille Technologique",
+                veilleSousTitre: "Suivi continu des évolutions dans mes domaines de spécialisation",
+                veilleCyber: "Cybersécurité",
+                veilleCyberDesc: "Vulnérabilités, SOC, conformité",
+                veilleSys: "Administration Systèmes",
+                veilleSysDesc: "Windows/Linux, cloud, automatisation",
+                veilleCrimino: "Criminalistique Numérique",
+                veilleCriminoDesc: "Forensic, investigation, legal",
+                contactTitre: "// Contact",
+                contactSousTitre: "Disponible pour des opportunités en administration système, réseaux ou cybersécurité"
+            },
+            en: {
+                navAccueil: "Home",
+                navApropos: "About",
+                navCompetences: "Skills",
+                navFormation: "Education",
+                navExperience: "Experience",
+                navProjets: "Projects",
+                navCertifications: "Certifications",
+                navVeille: "Tech Watch",
+                navContact: "Contact",
+                heroSubtitle: "INFRASTRUCTURE & CYBERSECURITY",
+                heroDescription: "BTS SIO SISR student, with a strong interest in systems, networks, and cybersecurity. I have a strong attraction to IT administration and digital forensics.",
+                btnProjets: "Access the Lab",
+                btnCV: "Curriculum Vitae",
+                aproposTitre: "// About",
+                aproposTexte: "Passionate about IT infrastructure and information systems security, I am currently studying BTS SIO SISR option at Lycée Gabriel Fauré in Annecy. My atypical background, combining educational sciences and digital technologies, gives me a unique approach to system administration and training in cybersecurity best practices.",
+                aproposTexte2: "My goal is to contribute to securing critical infrastructures and exploring the fields of digital forensics and SOC (Security Operations Center).",
+                competencesTitre: "// Technical Expertise",
+                compCyber: "Cybersecurity",
+                compCyber1: "• Network security",
+                compCyber2: "• Vulnerability analysis",
+                compCyber3: "• Firewall, VPN & DMZ",
+                compCyber4: "• Digital forensics",
+                compCyber5: "• Ethical hacking",
+                compSystemes: "Systems",
+                compSys1: "• Windows/Linux administration",
+                compSys2: "• Active Directory & GPO",
+                compSys3: "• Virtualization",
+                compSys4: "• Scripting (Bash, PowerShell)",
+                compSys5: "• Deployment & backup",
+                compReseaux: "Networks",
+                compRes1: "• IT infrastructure management",
+                compRes2: "• VLAN, routing, switching",
+                compRes3: "• Services (DNS, DHCP)",
+                compRes4: "• High availability",
+                compRes5: "• Monitoring (Nagios/Zabbix)",
+                formationTitre: "// Education",
+                formationSousTitre: "My academic and linguistic background",
+                filterAll: "All",
+                filterPrincipal: "Main Path",
+                filterLinguistique: "Linguistic Path",
+                formBTS1: "2025 – Present",
+                formBTS2: "BTS SIO SISR Option",
+                formBTS3: "Lycée Gabriel Fauré - Annecy",
+                formBTS4: "Higher Technician Certificate - IT Services for Organizations",
+                formMaster1: "2021 – 2024",
+                formMaster2: "Master of Science in Learning and Teaching Technologies",
+                formMaster3: "University of Geneva",
+                formMaster4: "Not completed",
+                formBachelor1: "2017 – 2021",
+                formBachelor2: "Bachelor in Educational Sciences",
+                formBachelor3: "University of Geneva",
+                formBac1: "Literary Baccalaureate with honors",
+                formBac2: "Lycée Madame de Staël - Saint-Julien-en-Genevois",
+                formRusse1_1: "2011 – 2016",
+                formRusse1_2: "Russian language and literature courses",
+                formRusse1_3: "L'Oiseau Bleu School - Geneva",
+                formRusse2_1: "2006 – 2010",
+                formRusse2_2: "Multidisciplinary training in Russian language",
+                formRusse2_3: "Permanent Mission of the Russian Federation - Geneva",
+                experienceTitre: "// Professional Experience",
+                experienceSousTitre: "My jobs, internships and commitments",
+                expPrep1: "Order picker",
+                expPrep2: "Auchan Retail - Epagny",
+                expPrep3: "May 2024 - Present",
+                expEntrain1: "Goalkeeper coach",
+                expEntrain2: "FC Epagny-Metz-Tessy",
+                expEntrain3: "September 2025 - Present",
+                expStage1: "Internship - Systems and Networks",
+                expStage2: "June 2025",
+                expElearning1: "Internship - eLearning Designer",
+                expElearning2: "Creativ Minds - Nyon",
+                expElearning3: "May 2023 - June 2023",
+                expObs1: "Observation Internship",
+                expObs2: "Primary School - Perly",
+                projetsTitre: "// My Projects",
+                projetsSousTitre: "Technical achievements and case studies",
+                projFilterAll: "All",
+                projFilterInfra: "Infrastructure",
+                projFilterSec: "Security",
+                projFilterDeploy: "Deployment",
+                projFilterGestion: "Management",
+                projVoir: "View",
+                projNAS: "NAS Solutions with XPenology",
+                projNASDesc: "Installation and configuration of NAS solutions with XPenology to create a network storage server.",
+                projFOG: "Automated FOG Deployment",
+                projFOGDesc: "Automated deployment of systems and software via a FOG server on a local network.",
+                projCluster: "High Availability Cluster",
+                projClusterDesc: "Setting up a high availability cluster with Corosync/Pacemaker.",
+                projSSH: "SSH with Key Exchange",
+                projSSHDesc: "Configuration of secure SSH connections without password.",
+                projGLPI: "GLPI Installation",
+                projGLPIDesc: "Complete guide to installing GLPI for IT infrastructure management.",
+                projSauvegarde: "Cobian Reflector Backup",
+                projSauvegardeDesc: "Experimentation with different types of backup using Cobian Reflector.",
+                certificationsTitre: "// Certifications",
+                certificationsSousTitre: "My diplomas and technical certifications",
+                cert1: "Introduction to Cybersecurity",
+                cert2: "Cyber Threat Management",
+                veilleTitre: "// Technology Watch",
+                veilleSousTitre: "Continuous monitoring of developments in my specialization areas",
+                veilleCyber: "Cybersecurity",
+                veilleCyberDesc: "Vulnerabilities, SOC, compliance",
+                veilleSys: "Systems Administration",
+                veilleSysDesc: "Windows/Linux, cloud, automation",
+                veilleCrimino: "Digital Forensics",
+                veilleCriminoDesc: "Forensic, investigation, legal",
+                contactTitre: "// Contact",
+                contactSousTitre: "Available for opportunities in system administration, networks or cybersecurity"
+            }
+        };
+
+        let currentLang = 'fr';
+        const langBtn = document.getElementById('languageToggle');
+        const langFlag = langBtn.querySelector('.lang-flag');
+        const langText = langBtn.querySelector('.lang-text');
+
+        function translate(lang) {
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            translate(currentLang);
+            
+            if (currentLang === 'en') {
+                langFlag.textContent = '🇬🇧';
+                langText.textContent = 'EN';
+                document.documentElement.lang = 'en';
+            } else {
+                langFlag.textContent = '🇫🇷';
+                langText.textContent = 'FR';
+                document.documentElement.lang = 'fr';
+            }
+        });
+
+        // Filtres Formation
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const formationItems = document.querySelectorAll('.timeline-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                formationItems.forEach(item => {
+                    if (filter === 'all') {
+                        item.style.display = 'block';
+                    } else {
+                        if (item.classList.contains(filter)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Filtres Projets
+        const projetFilterBtns = document.querySelectorAll('.projet-filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        projetFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                projetFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        if (card.classList.contains(filter)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
