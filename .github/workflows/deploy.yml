@@ -1,17 +1,37 @@
-- name: Deploy to Azure VM
+name: Deploy Portfolio
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Azure VM
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
-          source: "./*"
+          # Le "!" exclut les dossiers test, .git et .github du transfert
+          source: "./*,!test,!*.git,!*.github"
           target: "/var/www/html"
-          rm: true 
-          # On utilise 'overwrite: true' et on filtre les dossiers
-          overwrite: true
-          # Voici comment on exclut proprement avec cette action :
-          tar_exec: false
-          # On liste ce qu'on veut ignorer (pas d'espaces après les virgules)
-          exclude: ".git,.github,test" 
+          rm: true
           strip_components: 0
+
+      - name: Fix Permissions
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            sudo chown -R www-data:www-data /var/www/html
+            sudo chmod -R 755 /var/www/html
