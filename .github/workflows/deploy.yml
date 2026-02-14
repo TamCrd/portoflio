@@ -1,4 +1,4 @@
-name: Déploiement Portfolio (Copie Robuste)
+name: Deploy Nouveau Site
 
 on:
   push:
@@ -6,28 +6,28 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
-
+    runs-on: ubuntu-latest
     steps:
-    # Étape 1 : Le Runner télécharge le code le plus récent et propre.
-    - name: 1. Checkout et Téléchargement du Code
-      uses: actions/checkout@v4
+      - name: 1. Recuperer le code du nouveau repo
+        uses: actions/checkout@v4
 
-    # Étape 2 : Copie le code dans le dossier public d'NGINX.
-    - name: 2. Copier les fichiers vers le dossier NGINX
-      run: |
-        # Attention : utilisez le chemin exact de votre portfolio sur la VM !
-        NGINX_ROOT=/var/www/portfolio/deploy-692c765f41b519dbf051548b
+      - name: 2. Envoyer les nouveaux fichiers vers Azure
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.VM_IP }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "./*, !test" # Le "!" dit à GitHub : "N'envoie PAS le dossier test"
+          target: "/var/www/html"
 
-        # Vider le dossier de destination (sans supprimer le dossier parent .git s'il existe)
-        sudo rm -rf $NGINX_ROOT/*
-
-        # Copie le nouveau code (qui vient d'être téléchargé par checkout@v4) vers le dossier NGINX
-        # Le './*' représente le code téléchargé par l'action précédente.
-        sudo cp -r ./* $NGINX_ROOT/
-
-        # Réattribution des droits (Sécurité : NGINX doit pouvoir lire les fichiers)
-        sudo chown -R www-data:www-data $NGINX_ROOT
-
-        # Tentative de redémarrage NGINX (C'est la ligne qui pourrait encore échouer sans sudoers)
-        sudo systemctl restart nginx
+      - name: 3. Nettoyage et Redemarrage Nginx
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VM_IP }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # On s'assure que les droits sont bons pour le serveur web
+            sudo chown -R www-data:www-data /var/www/html
+            # On redémarre Nginx pour être sûr qu'il actualise tout
+            sudo systemctl restart nginx
