@@ -1,33 +1,39 @@
-name: Deploy Nouveau Site
+name: Deploy Portfolio
 
 on:
   push:
-    branches: [main] 
+    branches:
+      - main  # Vérifie bien que ta branche s'appelle main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: 1. Recuperer le code du nouveau repo
-        uses: actions/checkout@v4
 
-      - name: 2. Envoyer les nouveaux fichiers vers Azure
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Azure VM
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.VM_IP }}
-          username: ${{ secrets.VM_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "./*, !test" # Le "!" dit à GitHub : "N'envoie PAS le dossier test"
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          source: "./*"
           target: "/var/www/html"
+          # Nettoie le dossier cible avant de copier pour repartir sur du propre
+          rm: true 
+          # EXCLUSIONS : On retire .git, les workflows GitHub et ton dossier test
+          exclude: ".git,.github,test/" 
+          strip_components: 0
 
-      - name: 3. Nettoyage et Redemarrage Nginx
+      - name: Fix Permissions
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.VM_IP }}
-          username: ${{ secrets.VM_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
           script: |
-            # On s'assure que les droits sont bons pour le serveur web
             sudo chown -R www-data:www-data /var/www/html
-            # On redémarre Nginx pour être sûr qu'il actualise tout
-            sudo systemctl restart nginx
+            sudo chmod -R 755 /var/www/html
