@@ -8,13 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: scp sync
-        uses: appleboy/scp-action@master
+      - name: Sync Files
+        uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
+          host: ${{ secrets.VM_IP }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
+          # On exclut bien le dossier test comme tu l'as demandé
           source: "./*,!test,!*.git"
           target: "/var/www/html"
           rm: true
