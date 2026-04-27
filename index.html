@@ -1622,26 +1622,26 @@
 
         // --- LOGIQUE CARROUSEL CNIL ---
         let currentSlide = 1;
-        const totalSlides = 5;
+    const totalSlides = 5;
 
-        function changeSlide(direction) {
-            const currentImg = document.getElementById(`slider-img-${currentSlide}`);
-            if (currentImg) currentImg.classList.add('hidden');
-            
-            currentSlide += direction;
-            if (currentSlide > totalSlides) currentSlide = 1;
-            if (currentSlide < 1) currentSlide = totalSlides;
-            
-            const newImg = document.getElementById(`slider-img-${currentSlide}`);
-            if (newImg) {
-                newImg.classList.remove('hidden');
-                const viewLargeLink = document.getElementById('view-large-link');
-                if (viewLargeLink) viewLargeLink.href = newImg.src;
-            }
-            
-            const slideNumberTxt = document.getElementById('slide-number');
-            if (slideNumberTxt) slideNumberTxt.innerText = currentSlide;
+    function changeSlide(direction) {
+        const currentImg = document.getElementById(`slider-img-${currentSlide}`);
+        if (currentImg) currentImg.classList.add('hidden');
+        
+        currentSlide += direction;
+        if (currentSlide > totalSlides) currentSlide = 1;
+        if (currentSlide < 1) currentSlide = totalSlides;
+        
+        const newImg = document.getElementById(`slider-img-${currentSlide}`);
+        if (newImg) {
+            newImg.classList.remove('hidden');
+            const viewLargeLink = document.getElementById('view-large-link');
+            if (viewLargeLink) viewLargeLink.href = newImg.src;
         }
+        
+        const slideNumberTxt = document.getElementById('slide-number');
+        if (slideNumberTxt) slideNumberTxt.innerText = currentSlide;
+    }
 
     </script>
 </body>
