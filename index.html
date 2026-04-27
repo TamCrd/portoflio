@@ -1632,7 +1632,7 @@
         let currentSlide = 1;
         const totalSlides = 5;
 
-        function changeSlide(direction) {
+        window.changeSlide = function(direction) {
             // 1. Cacher l'image actuelle
             const currentImg = document.getElementById(`slider-img-${currentSlide}`);
             if (currentImg) {
@@ -1652,7 +1652,7 @@
                 // Mettre à jour le lien "Voir en grand"
                 const viewLargeLink = document.getElementById('view-large-link');
                 if (viewLargeLink) {
-                    viewLargeLink.href = newImg.src;
+                    viewLargeLink.href = newImg.getAttribute('src');
                 }
             }
             
