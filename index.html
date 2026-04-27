@@ -190,6 +190,14 @@
             font-size: 0.75rem;
             margin: 0.25rem;
         }
+
+        .slider-image {
+            display: block; /* Par défaut elles occupent l'espace */
+        }
+
+        .slider-image.hidden {
+            display: none !important; /* Force la disparition quand la classe hidden est là */
+        }
     </style>
 </head>
 <body>
@@ -1622,27 +1630,38 @@
 
         // --- LOGIQUE CARROUSEL CNIL ---
         let currentSlide = 1;
-    const totalSlides = 5;
+        const totalSlides = 5;
 
-    function changeSlide(direction) {
-        const currentImg = document.getElementById(`slider-img-${currentSlide}`);
-        if (currentImg) currentImg.classList.add('hidden');
-        
-        currentSlide += direction;
-        if (currentSlide > totalSlides) currentSlide = 1;
-        if (currentSlide < 1) currentSlide = totalSlides;
-        
-        const newImg = document.getElementById(`slider-img-${currentSlide}`);
-        if (newImg) {
-            newImg.classList.remove('hidden');
-            const viewLargeLink = document.getElementById('view-large-link');
-            if (viewLargeLink) viewLargeLink.href = newImg.src;
+        function changeSlide(direction) {
+            // 1. Cacher l'image actuelle
+            const currentImg = document.getElementById(`slider-img-${currentSlide}`);
+            if (currentImg) {
+                currentImg.classList.add('hidden');
+            }
+            
+            // 2. Calculer le nouvel index
+            currentSlide += direction;
+            if (currentSlide > totalSlides) currentSlide = 1;
+            if (currentSlide < 1) currentSlide = totalSlides;
+            
+            // 3. Afficher la nouvelle image
+            const newImg = document.getElementById(`slider-img-${currentSlide}`);
+            if (newImg) {
+                newImg.classList.remove('hidden');
+                
+                // Mettre à jour le lien "Voir en grand"
+                const viewLargeLink = document.getElementById('view-large-link');
+                if (viewLargeLink) {
+                    viewLargeLink.href = newImg.src;
+                }
+            }
+            
+            // 4. Mettre à jour le texte du compteur (1/5)
+            const slideNumberTxt = document.getElementById('slide-number');
+            if (slideNumberTxt) {
+                slideNumberTxt.innerText = currentSlide;
+            }
         }
-        
-        const slideNumberTxt = document.getElementById('slide-number');
-        if (slideNumberTxt) slideNumberTxt.innerText = currentSlide;
-    }
-
     </script>
 </body>
 </html>
