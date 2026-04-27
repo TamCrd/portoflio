@@ -212,11 +212,12 @@
                 <a href="#veille" class="hover:text-white transition" data-translate="navVeille">Veille</a>
                 <a href="#contact" class="hover:text-white transition" data-translate="navContact">Contact</a>
             </div>
-
+            <!-- 
             <button id="languageToggle" class="lang-btn">
                 <span class="lang-flag">🇫🇷</span>
                 <span class="lang-text">FR</span>
             </button>
+            -->
         </div>
     </nav>
 
@@ -1010,6 +1011,68 @@
                     <div class="p-8 w-full text-left">
                         <div class="flex items-center gap-3 mb-4">
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2024</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Atelier RGPD</h3>
+                        <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">CNIL (5 Modules)</p>
+                        <p class="text-gray-400 text-base leading-relaxed">Certification complète couvrant les principes de protection des données, les responsabilités et les outils de conformité.</p>
+                    </div>
+
+                    <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4 bg-black/20">
+                        <button onclick="changeSlide(-1)" class="absolute left-2 z-10 p-2 text-white/50 hover:text-blue-400 transition-colors">
+                            <i class="fas fa-chevron-left fa-lg"></i>
+                        </button>
+
+                        <div class="relative w-full h-full flex items-center justify-center">
+                            <img id="slider-img-1" src="assets/certifications/rgpd1.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 1">
+                            <img id="slider-img-2" src="assets/certifications/rgpd2.png" class="slider-image hidden max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 2">
+                            <img id="slider-img-3" src="assets/certifications/rgpd3.png" class="slider-image hidden max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 3">
+                            <img id="slider-img-4" src="assets/certifications/rgpd4.png" class="slider-image hidden max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 4">
+                            <img id="slider-img-5" src="assets/certifications/rgpd5.png" class="slider-image hidden max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 5">
+                            
+                            <div class="absolute inset-0 bg-gray-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none group-hover:pointer-events-auto">
+                                <a id="view-large-link" href="assets/certifications/rgpd1.png" target="_blank" class="p-4 bg-blue-600 rounded-full text-white shadow-2xl hover:bg-blue-500 transition-all scale-75 group-hover:scale-100">
+                                    <i class="fas fa-eye fa-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <button onclick="changeSlide(1)" class="absolute right-2 z-10 p-2 text-white/50 hover:text-blue-400 transition-colors">
+                            <i class="fas fa-chevron-right fa-lg"></i>
+                        </button>
+                        
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 px-3 py-1 rounded-full text-[10px] mono text-blue-400">
+                            <span id="slide-number">1</span>/5
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cert-card bg-gray-800/40 border border-gray-700/50 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 group flex flex-col" data-aos="fade-up">
+                    <div class="p-8 w-full text-left">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2024</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">L'Univers de la Cybersécurité</h3>
+                        <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">OpenClassrooms</p>
+                        <p class="text-gray-400 text-base leading-relaxed">Introduction globale aux enjeux et aux différents métiers de la sécurité numérique.</p>
+                    </div>
+                    <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4">
+                        <img src="assets/certifications/univers_cours_fini.png" class="max-w-full max-h-full object-contain transform group-hover:scale-105 transition-transform duration-700" alt="Certificat">
+                        <div class="absolute inset-0 bg-gray-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <a href="assets/certifications/univers_cours_fini.png" target="_blank" class="p-4 bg-blue-600 rounded-full text-white shadow-2xl hover:bg-blue-500 transition-all scale-75 group-hover:scale-100"><i class="fas fa-eye fa-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cert-card bg-gray-800/40 border border-gray-700/50 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 group flex flex-col" data-aos="fade-up">
+                    <div class="p-8 w-full text-left">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                                 <i class="fas fa-network-wired"></i>
                             </div>
                             <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
@@ -1082,26 +1145,6 @@
                         <img src="assets/certifications/secnumacademie_tamara_cretard_page-0001.jpg" class="max-w-full max-h-full object-contain transform group-hover:scale-105 transition-transform duration-700" alt="Certificat">
                         <div class="absolute inset-0 bg-gray-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                             <a href="assets/certifications/secnumacademie_tamara_cretard.pdf" target="_blank" class="p-4 bg-blue-600 rounded-full text-white shadow-2xl hover:bg-blue-500 transition-all scale-75 group-hover:scale-100"><i class="fas fa-eye fa-lg"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cert-card bg-gray-800/40 border border-gray-700/50 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 group flex flex-col" data-aos="fade-up">
-                    <div class="p-8 w-full text-left">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
-                                <i class="fas fa-user-secret"></i>
-                            </div>
-                            <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2024</span>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2">L'Univers de la Cybersécurité</h3>
-                        <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">OpenClassrooms</p>
-                        <p class="text-gray-400 text-base leading-relaxed">Introduction globale aux enjeux et aux différents métiers de la sécurité numérique.</p>
-                    </div>
-                    <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4">
-                        <img src="assets/certifications/univers_cours_fini.png" class="max-w-full max-h-full object-contain transform group-hover:scale-105 transition-transform duration-700" alt="Certificat">
-                        <div class="absolute inset-0 bg-gray-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <a href="assets/certifications/univers_cours_fini.png" target="_blank" class="p-4 bg-blue-600 rounded-full text-white shadow-2xl hover:bg-blue-500 transition-all scale-75 group-hover:scale-100"><i class="fas fa-eye fa-lg"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1510,7 +1553,8 @@
                 langText.textContent = 'FR';
                 document.documentElement.lang = 'fr';
             }
-        });
+        }); 
+        
 
         // Filtres Formation
         const filterBtns = document.querySelectorAll('.filter-btn');
@@ -1575,6 +1619,30 @@
                 }
             });
         });
+
+        // --- LOGIQUE CARROUSEL CNIL ---
+        let currentSlide = 1;
+        const totalSlides = 5;
+
+        function changeSlide(direction) {
+            const currentImg = document.getElementById(`slider-img-${currentSlide}`);
+            if (currentImg) currentImg.classList.add('hidden');
+            
+            currentSlide += direction;
+            if (currentSlide > totalSlides) currentSlide = 1;
+            if (currentSlide < 1) currentSlide = totalSlides;
+            
+            const newImg = document.getElementById(`slider-img-${currentSlide}`);
+            if (newImg) {
+                newImg.classList.remove('hidden');
+                const viewLargeLink = document.getElementById('view-large-link');
+                if (viewLargeLink) viewLargeLink.href = newImg.src;
+            }
+            
+            const slideNumberTxt = document.getElementById('slide-number');
+            if (slideNumberTxt) slideNumberTxt.innerText = currentSlide;
+        }
+
     </script>
 </body>
 </html>
