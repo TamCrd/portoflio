@@ -214,20 +214,21 @@
             display: none !important;
         }
 
-        /* Délimitation des sections plus élégante */
+        /* Délimitation des sections : Plus de pointillés, mais un dégradé de couleur fluide */
         html.light-mode section {
             background: transparent !important;
-            border-bottom: 1px dashed rgba(148, 163, 184, 0.4) !important;
+            border-bottom: none !important;
         }
         html.light-mode section:nth-child(even) {
-            background: rgba(255, 255, 255, 0.3) !important;
+            /* Crée une transition de couleur douce et pro entre les sections */
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(241, 245, 249, 0.7) 50%, rgba(255, 255, 255, 0) 100%) !important;
         }
 
         /* Les Cartes de base en mode clair */
         html.light-mode .project-card, 
         html.light-mode .cert-card, 
         html.light-mode .glass-card,
-        html.light-mode div[class*="bg-gray-800"] {
+        html.light-mode div[class*=\"bg-gray-800\"] {
             background: rgba(255, 255, 255, 0.6) !important;
             backdrop-filter: blur(12px) !important;
             border: 1px solid rgba(255, 255, 255, 0.9) !important;
@@ -236,11 +237,11 @@
             transition: all 0.3s ease-in-out !important;
         }
 
-        /* 🌟 EFFET HOVER STYLE MODE SOMBRE SUR LES CERTIFICATIONS 🌟 */
+        /* 🌟 EFFET HOVER GRIS FONCÉ SUR LES CERTIFICATIONS 🌟 */
         html.light-mode .cert-card:hover {
-            background: #030712 !important; /* Devient noir comme en mode sombre */
+            background: #1e293b !important; /* Gris foncé ardoise très esthétique */
             border-color: #3b82f6 !important; /* Bordure néon bleue */
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.5) !important; /* Lueur néon */
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25) !important; /* Lueur bleue tamisée */
             transform: translateY(-5px) !important;
         }
         /* Force tout le texte interne à s'allumer en blanc au survol */
@@ -270,7 +271,7 @@
         html.light-mode h3, 
         html.light-mode h4,
         html.light-mode li,
-        html.light-mode span:not([class*="bg-blue-500"]) {
+        html.light-mode span:not([class*=\"bg-blue-500\"]) {
             color: #1e293b !important;
             transition: color 0.3s ease;
         }
@@ -690,13 +691,14 @@
             <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="projetsTitre">// Mes Projets</h2>
             <p class="text-center text-gray-400 mb-16" data-translate="projetsSousTitre">Réalisations techniques et études de cas</p>
 
-            <div class="flex justify-center gap-4 mb-16 flex-wrap">
-                <button class="projet-filter-btn active" data-filter="all" data-translate="projFilterAll">Tous</button>
-                <button class="projet-filter-btn" data-filter="infrastructure" data-translate="projFilterInfra">Infrastructure & Réseaux</button>
-                <button class="projet-filter-btn" data-filter="securite" data-translate="projFilterSec">Sécurité & Cybersécurité</button>
-                <button class="projet-filter-btn" data-filter="deploiement" data-translate="projFilterDeploy">Déploiement & Sauvegarde</button>
-                <button class="projet-filter-btn" data-filter="gestion" data-translate="projFilterGestion">Gestion & Supervision</button>
-                <button class="projet-filter-btn" data-filter="web" data-translate="projFilterWeb">Solutions Web</button>
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="projet-filter-btn active" onclick="filterProjets('all')">Tous les projets</button>
+                <button class="projet-filter-btn" onclick="filterProjets('c1')">Gérer le patrimoine informatique</button>
+                <button class="projet-filter-btn" onclick="filterProjets('c2')">Répondre aux incidents</button>
+                <button class="projet-filter-btn" onclick="filterProjets('c3')">Présence en ligne</button>
+                <button class="projet-filter-btn" onclick="filterProjets('c4')">Mode projet</button>
+                <button class="projet-filter-btn" onclick="filterProjets('c5')">Mettre à disposition un service</button>
+                <button class="projet-filter-btn" onclick="filterProjets('c6')">Développement professionnel</button>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsContainer">
@@ -1485,41 +1487,34 @@
             });
         });
 
-        // --- LOGIQUE FILTRAGE PAR COMPÉTENCES DES PROJETS (CORRIGÉE ET UNIFIÉE) ---
-        const projetFilterBtns = document.querySelectorAll('.projet-filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        projetFilterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                projetFilterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                // On vérifie d'abord data-filter ou la classe passée par filterProjets
-                const filter = btn.getAttribute('data-filter') || btn.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
-
-                projectCards.forEach(card => {
-                    if (!filter || filter === 'all') {
-                        card.style.display = 'block';
-                    } else {
-                        if (card.classList.contains(filter)) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    }
-                });
-            });
-        });
-
-        // Fonction globale de secours si tu appelles directement filterProjets('c1') via un attribut onclick
+        // --- LOGIQUE FILTRAGE PAR COMPÉTENCES DES PROJETS (C1 - C6) ---
         window.filterProjets = function(competence) {
-            projectCards.forEach(card => {
-                if (competence === 'all' || card.classList.contains(competence)) {
-                    card.style.display = 'block';
+            // 1. Gérer l'état visuel des boutons (allumer le bouton cliqué)
+            const projetFilterBtns = document.querySelectorAll('.projet-filter-btn');
+            projetFilterBtns.forEach(btn => {
+                // On extrait la catégorie du onclick (ex: 'c1' ou 'all')
+                const btnClickAttr = btn.getAttribute('onclick');
+                if (btnClickAttr && btnClickAttr.includes(`'${competence}'`)) {
+                    btn.classList.add('active');
                 } else {
-                    card.style.display = 'none';
+                    btn.classList.remove('active');
                 }
             });
+
+            // 2. Filtrer l'affichage des cartes de projets
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                if (competence === 'all' || card.classList.contains(competence)) {
+                    card.style.display = 'block';  // Afficher le projet
+                } else {
+                    card.style.display = 'none';   // Masquer le projet
+                }
+            });
+            
+            // 3. Rafraîchir les animations AOS pour éviter les décalages de mise en page
+            if (typeof AOS !== 'undefined') {
+                AOS.refresh();
+            }
         }
 
         // --- SMOOTH SCROLL (TON CODE D'ORIGINE) ---
@@ -1544,11 +1539,11 @@
                 const isLight = document.documentElement.classList.toggle('light-mode');
                 
                 if (isLight) {
-                    themeToggleBtn.innerHTML = '<i class="fas fa-moon mr-2"></i> Mode Sombre';
+                    themeToggleBtn.innerHTML = '<i class="fas fa-moon mr-2"></i>';
                     themeToggleBtn.style.backgroundColor = '#1f2937';
                     themeToggleBtn.style.color = '#ffffff';
                 } else {
-                    themeToggleBtn.innerHTML = '<i class="fas fa-sun mr-2"></i> Mode Clair';
+                    themeToggleBtn.innerHTML = '<i class="fas fa-sun mr-2"></i>';
                     themeToggleBtn.style.backgroundColor = '#2563eb';
                     themeToggleBtn.style.color = '#ffffff';
                 }
