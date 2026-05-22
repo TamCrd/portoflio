@@ -252,8 +252,8 @@
         body.light-mode .text-white {
             color: #0f172a !important;
         }
-        .employer-name { color: #93c5fd; }
-        .cert-org { color: #93c5fd; }
+        .employer-name { color: #60a5fa; }
+        .cert-org { color: #60a5fa; }
         body.light-mode .employer-name, body.light-mode .cert-org { color: #1d4ed8 !important; }
         body.light-mode .timeline-item {
             border-left-color: rgba(59,130,246,0.5) !important;
@@ -294,7 +294,7 @@
             display: none !important;
         }
         body.light-mode section#certifications {
-            background: #dbeafe !important;
+            background: #f3f4f6 !important;
         }
         body.light-mode h1, body.light-mode h2, body.light-mode h3 {
             color: #0f172a !important;
@@ -1139,31 +1139,24 @@
                         <p class="text-gray-400 text-lg leading-relaxed">Certification complète couvrant les principes de protection des données, les responsabilités et les outils de conformité.</p>
                     </div>
 
-                    <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4 bg-black/20">
-                        <button onclick="changeSlide(-1)" class="absolute left-2 p-2 text-white/50 hover:text-blue-400 transition-colors" style="z-index:30;cursor:pointer;">
-                            <i class="fas fa-chevron-left fa-lg"></i>
-                        </button>
-
-                        <div class="relative w-full h-full flex items-center justify-center">
-                            <img id="slider-img-1" src="assets/certifications/rgpd1.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 1">
-                            <img id="slider-img-2" src="assets/certifications/rgpd2.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" style="display:none;" alt="Module 2">
-                            <img id="slider-img-3" src="assets/certifications/rgpd3.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" style="display:none;" alt="Module 3">
-                            <img id="slider-img-4" src="assets/certifications/rgpd4.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" style="display:none;" alt="Module 4">
-                            <img id="slider-img-5" src="assets/certifications/rgpd5.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" style="display:none;" alt="Module 5">
-                            
-                            <div class="absolute inset-0 bg-gray-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                                <a id="view-large-link" href="assets/certifications/rgpd1.png" target="_blank" class="p-4 bg-blue-600 rounded-full text-white shadow-2xl hover:bg-blue-500 transition-all scale-75 group-hover:scale-100 pointer-events-auto">
-                                    <i class="fas fa-eye fa-lg"></i>
-                                </a>
-                            </div>
+                    <!-- Carrousel RGPD restructuré -->
+                    <div class="w-full bg-black/20 p-4" style="position:relative;">
+                        <!-- Boutons HORS du overflow-hidden -->
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                            <button onclick="changeSlide(-1)" style="background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);border-radius:50%;width:36px;height:36px;cursor:pointer;color:white;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#8249;</button>
+                            <span style="font-family:monospace;font-size:12px;color:#60a5fa;"><span id="slide-number">1</span>/5</span>
+                            <button onclick="changeSlide(1)" style="background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);border-radius:50%;width:36px;height:36px;cursor:pointer;color:white;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#8250;</button>
                         </div>
-
-                        <button onclick="changeSlide(1)" class="absolute right-2 p-2 text-white/50 hover:text-blue-400 transition-colors" style="z-index:30;cursor:pointer;">
-                            <i class="fas fa-chevron-right fa-lg"></i>
-                        </button>
-                        
-                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 px-3 py-1 rounded-full text-[10px] mono text-blue-400">
-                            <span id="slide-number">1</span>/5
+                        <!-- Zone image sans overflow-hidden -->
+                        <div style="height:280px;display:flex;align-items:center;justify-content:center;position:relative;">
+                            <img id="slider-img-1" src="assets/certifications/rgpd1.png" style="max-width:100%;max-height:280px;object-fit:contain;display:block;" alt="Module 1">
+                            <img id="slider-img-2" src="assets/certifications/rgpd2.png" style="max-width:100%;max-height:280px;object-fit:contain;display:none;" alt="Module 2">
+                            <img id="slider-img-3" src="assets/certifications/rgpd3.png" style="max-width:100%;max-height:280px;object-fit:contain;display:none;" alt="Module 3">
+                            <img id="slider-img-4" src="assets/certifications/rgpd4.png" style="max-width:100%;max-height:280px;object-fit:contain;display:none;" alt="Module 4">
+                            <img id="slider-img-5" src="assets/certifications/rgpd5.png" style="max-width:100%;max-height:280px;object-fit:contain;display:none;" alt="Module 5">
+                            <a id="view-large-link" href="assets/certifications/rgpd1.png" target="_blank" style="position:absolute;bottom:8px;right:8px;background:rgba(37,99,235,0.8);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;">
+                                <i class="fas fa-eye" style="font-size:14px;"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1793,56 +1786,57 @@
         
 
         // Filtres Formation
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const formationItems = document.querySelectorAll('.timeline-item');
+        
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
+        // Filtres Projets - event delegation sur le container
+        (function() {
+            const container = document.getElementById('filter-competence');
+            if (!container) return;
+
+            container.addEventListener('click', function(e) {
+                const btn = e.target.closest('.projet-filter-btn');
+                if (!btn) return;
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Mettre à jour l'état actif
+                container.querySelectorAll('.projet-filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
                 const filter = btn.getAttribute('data-filter');
+                const cards = document.querySelectorAll('.project-card');
 
-                formationItems.forEach(item => {
-                    if (filter === 'all') {
-                        item.style.display = 'block';
-                    } else {
-                        if (item.classList.contains(filter)) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    }
-                });
-            });
-        });
-
-        // Filtres Projets
-        const projetFilterBtns = document.querySelectorAll('.projet-filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        projetFilterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filterset = btn.getAttribute('data-filterset') || 'theme';
-                // Désactiver uniquement les boutons du même groupe de filtres
-                document.querySelectorAll(`.projet-filter-btn[data-filterset="${filterset}"]`).forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filter = btn.getAttribute('data-filter');
-
-                projectCards.forEach(card => {
-                    if (filter === 'all') {
+                cards.forEach(card => {
+                    if (filter === 'all' || card.classList.contains(filter)) {
+                        card.style.cssText = card.style.cssText.replace(/display:[^;]+;?/g, '');
                         card.style.display = 'block';
                     } else {
-                        if (card.classList.contains(filter)) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
+                        card.style.display = 'none';
                     }
                 });
             });
-        });
+        })();
+
+        // Filtres Formation (identique, event delegation)
+        (function() {
+            const container = document.querySelector('#formation .flex.justify-center');
+            if (!container) return;
+            container.addEventListener('click', function(e) {
+                const btn = e.target.closest('.filter-btn');
+                if (!btn) return;
+                e.preventDefault();
+                container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+                document.querySelectorAll('#formationContainer .timeline-item').forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        })();
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
