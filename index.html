@@ -276,6 +276,9 @@
         body.light-mode .project-image img {
             opacity: 0.85 !important;
         }
+        body.light-mode::before {
+            display: none !important;
+        }
         body.light-mode h1, body.light-mode h2, body.light-mode h3 {
             color: #0f172a !important;
         }
@@ -293,7 +296,7 @@
             
             <div class="hidden lg:flex gap-6 text-sm font-bold uppercase tracking-[0.15em] text-gray-400">
                 <a href="#accueil" class="hover:text-white transition" data-translate="navAccueil">Accueil</a>
-                <a href="#apropos" class="hover:text-white transition" data-translate="navApropos">À propos</a>
+                <a href="#apropos" class="hover:text-white transition" data-translate="navApropos">Profil</a>
                 <a href="#competences" class="hover:text-white transition" data-translate="navCompetences">Compétences</a>
                 <a href="#formation" class="hover:text-white transition" data-translate="navFormation">Formation</a>
                 <a href="#experience" class="hover:text-white transition" data-translate="navExperience">Expérience</a>
@@ -302,8 +305,21 @@
                 <a href="#veille" class="hover:text-white transition" data-translate="navVeille">Veille</a>
                 <a href="#contact" class="hover:text-white transition" data-translate="navContact">Contact</a>
             </div>
-            <button id="themeToggle" onclick="toggleTheme()" title="Mode jour / nuit" style="padding:0.5rem 0.7rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:0.5rem;color:white;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;font-size:1.3rem;line-height:1;">
-                <span id="themeIcon">☀️</span>
+            <button id="themeToggle" onclick="toggleTheme()" title="Mode jour / nuit" style="padding:0.5rem 0.7rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:0.5rem;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;width:2.4rem;height:2.4rem;">
+                <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
             </button>
         </div>
     </nav>
@@ -318,7 +334,7 @@
         </div>
 
         <div class="text-center z-10 px-6">
-            <span class="mono text-blue-400 text-sm tracking-[0.5em] mb-4 block" data-aos="fade-down" data-translate="heroSubtitle">INFRASTRUCTURE & CYBERSECURITY</span>
+            <span class="mono text-blue-400 text-xl md:text-2xl tracking-[0.4em] mb-6 block" data-aos="fade-down" data-translate="heroSubtitle">INFRASTRUCTURE & CYBERSECURITY</span>
             
             <h1 class="text-7xl md:text-9xl font-extrabold tracking-tighter mb-16" data-aos="zoom-in">
                 Tamara <br class="md:hidden"> Crétard
@@ -331,10 +347,10 @@
             </div>
 
             <div class="flex flex-wrap justify-center gap-8" data-aos="fade-up" data-aos-delay="400">
-                <a href="#projets" class="btn-cyber px-12 py-4 rounded-full font-bold uppercase text-xs tracking-widest" data-translate="btnProjets">
+                <a href="#projets" class="btn-cyber px-12 py-5 rounded-full font-bold uppercase text-base tracking-wider" data-translate="btnProjets">
                     Accéder aux Projets
                 </a>
-                <a href="assets/cv/CV_tamara_CRETARD.pdf" class="px-12 py-4 rounded-full border border-white/10 hover:bg-white/5 font-bold uppercase text-xs tracking-widest transition" data-translate="btnCV">
+                <a href="assets/cv/CV_tamara_CRETARD.pdf" class="px-12 py-5 rounded-full border border-blue-500/50 hover:bg-blue-500/10 font-bold uppercase text-base tracking-wider transition" data-translate="btnCV">
                     Curriculum Vitae
                 </a>
             </div>
@@ -348,7 +364,7 @@
     <!-- À propos -->
     <section id="apropos" class="section-dark py-32 px-8">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase" data-translate="aproposTitre">// À propos</h2>
+            <h2 class="text-xl mono text-blue-500 mb-10 tracking-widest uppercase" data-translate="aproposTitre">// À propos</h2>
             <p class="text-xl text-gray-300 leading-relaxed mb-8" data-translate="aproposTexte">
                 Actuellement en transition vers un cycle d'ingénieur en Cybersécurité <!--(INSA / Polytech)-->, je développe une expertise transverse mêlant administration système avancée et gouvernance cyber.
                 Mon parcours atypique, alliant sciences de l'éducation et technologies numériques, est un levier majeur pour la sensibilisation aux risques et la documentation des processus de sécurité. Je maîtrise la mise en œuvre de solutions de haute disponibilité et le déploiement d'architectures réseaux segmentées.
@@ -362,13 +378,13 @@
     <!-- Compétences -->
     <section id="competences" class="py-32 px-8">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-sm mono text-blue-500 mb-16 tracking-widest uppercase text-center" data-translate="competencesTitre">// Expertises Techniques</h2>
+            <h2 class="text-xl mono text-blue-500 mb-16 tracking-widest uppercase text-center" data-translate="competencesTitre">// Expertises Techniques</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 <div class="glass-card" data-aos="fade-up">
                     <i class="fa-solid fa-shield-alt text-blue-500 text-4xl mb-6"></i>
                     <h3 class="text-2xl font-bold mb-4" data-translate="compCyber">Cybersécurité</h3>
-                    <ul class="text-gray-400 space-y-2 text-sm">
+                    <ul class="text-gray-400 space-y-3 text-lg">
                         <li data-translate="compCyber1">• Sécurité des réseaux</li>
                         <li data-translate="compCyber2">• Analyse de vulnérabilités</li>
                         <li data-translate="compCyber3">• Pare-feu, VPN & DMZ</li>
@@ -380,7 +396,7 @@
                 <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
                     <i class="fa-solid fa-server text-blue-500 text-4xl mb-6"></i>
                     <h3 class="text-2xl font-bold mb-4" data-translate="compSystemes">Systèmes</h3>
-                    <ul class="text-gray-400 space-y-2 text-sm">
+                    <ul class="text-gray-400 space-y-3 text-lg">
                         <li data-translate="compSys1">• Administration Windows/Linux</li>
                         <li data-translate="compSys2">• Active Directory & GPO</li>
                         <li data-translate="compSys3">• Virtualisation</li>
@@ -392,7 +408,7 @@
                 <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
                     <i class="fa-solid fa-network-wired text-blue-500 text-4xl mb-6"></i>
                     <h3 class="text-2xl font-bold mb-4" data-translate="compReseaux">Réseaux</h3>
-                    <ul class="text-gray-400 space-y-2 text-sm">
+                    <ul class="text-gray-400 space-y-3 text-lg">
                         <li data-translate="compRes1">• Gestion de parc informatique</li>
                         <li data-translate="compRes2">• VLAN, routage, switching</li>
                         <li data-translate="compRes3">• Services (DNS, DHCP)</li>
@@ -403,7 +419,7 @@
             </div>
 
             <div class="flex flex-wrap justify-center gap-8" data-aos="fade-up" data-aos-delay="400">
-                <a href="assets/docs/tableau-competences.pdf" class="btn-cyber px-12 py-4 rounded-full font-bold uppercase text-xs tracking-widest" data-translate="btnProjets">
+                <a href="assets/docs/tableau-competences.pdf" class="btn-cyber px-12 py-5 rounded-full font-bold uppercase text-base tracking-wider" data-translate="btnProjets">
                     Tableau de compétences
                 </a>
             </div>
@@ -413,7 +429,7 @@
     <!-- Formation -->
     <section id="formation" class="section-dark py-32 px-8">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="formationTitre">// Formation</h2>
+            <h2 class="text-xl mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="formationTitre">// Formation</h2>
             <p class="text-center text-gray-400 mb-16" data-translate="formationSousTitre">Mon parcours académique et linguistique</p>
 
             <!-- Filtres -->
@@ -426,11 +442,11 @@
             <div class="space-y-8" id="formationContainer">
                 <!-- BTS -->
                 <div class="timeline-item principal" data-aos="fade-right">
-                    <span class="mono text-xs text-blue-400" data-translate="formBTS1">2025 – En cours</span>
+                    <span class="mono text-base text-blue-400" data-translate="formBTS1">2025 – En cours</span>
                     <h3 class="text-2xl font-bold mt-2" data-translate="formBTS2">BTS SIO Option SISR</h3>
-                    <p class="text-gray-400 text-sm mt-2" data-translate="formBTS3">Lycée Gabriel Fauré - Annecy</p>
+                    <p class="text-gray-400 text-base mt-2" data-translate="formBTS3">Lycée Gabriel Fauré - Annecy</p>
                     <p class="text-gray-300 mt-2" data-translate="formBTS4">Brevet de Technicien Supérieur - Services Informatiques aux Organisations</p>
-                    <ul class="list-disc list-inside mt-2 text-gray-400 text-sm space-y-1">
+                    <ul class="list-disc list-inside mt-2 text-gray-400 text-base space-y-2">
                         <li data-translate="formBTSSkill1">Administration des systèmes et réseaux</li>
                         <li data-translate="formBTSSkill2">Cybersécurité des services informatiques</li>
                         <li data-translate="formBTSSkill3">Haute disponibilité et virtualisation</li>
@@ -441,11 +457,11 @@
 
                 <!-- Master -->
                 <div class="timeline-item principal" data-aos="fade-right">
-                    <span class="mono text-xs text-gray-500" data-translate="formMaster1">2021 – 2024</span>
+                    <span class="mono text-base text-gray-500" data-translate="formMaster1">2021 – 2024</span>
                     <h3 class="text-2xl font-bold mt-2" data-translate="formMaster2">Master of Science in Learning and Teaching Technologies</h3>
-                    <p class="text-gray-400 text-sm mt-2" data-translate="formMaster3">Université de Genève</p>
+                    <p class="text-gray-400 text-base mt-2" data-translate="formMaster3">Université de Genève</p>
                     <p class="text-gray-300 mt-2 italic" data-translate="formMaster4">Non complété</p>
-                    <ul class="list-disc list-inside mt-2 text-gray-400 text-sm space-y-1">
+                    <ul class="list-disc list-inside mt-2 text-gray-400 text-base space-y-2">
                         <li data-translate="formMasterSkill1">Intégration des technologies numériques dans l'enseignement</li>
                         <li data-translate="formMasterSkill2">Conception d'outils pédagogiques innovants</li>
                         <li data-translate="formMasterSkill3">Méthodologies d'apprentissage assisté par technologie</li>
@@ -455,10 +471,10 @@
 
                 <!-- Bachelor -->
                 <div class="timeline-item principal" data-aos="fade-right">
-                    <span class="mono text-xs text-gray-500" data-translate="formBachelor1">2017 – 2021</span>
+                    <span class="mono text-base text-gray-500" data-translate="formBachelor1">2017 – 2021</span>
                     <h3 class="text-2xl font-bold mt-2" data-translate="formBachelor2">Bachelor en Sciences de l'Éducation</h3>
-                    <p class="text-gray-400 text-sm mt-2" data-translate="formBachelor3">Université de Genève</p>
-                    <ul class="list-disc list-inside mt-2 text-gray-400 text-sm space-y-1">
+                    <p class="text-gray-400 text-base mt-2" data-translate="formBachelor3">Université de Genève</p>
+                    <ul class="list-disc list-inside mt-2 text-gray-400 text-base space-y-2">
                         <li data-translate="formBachelorSkill1">Théories pédagogiques et processus d'apprentissage</li>
                         <li data-translate="formBachelorSkill2">Sociologie des systèmes éducatifs</li>
                         <li data-translate="formBachelorSkill3">Psychologie du développement et de l'apprentissage</li>
@@ -468,10 +484,10 @@
 
                 <!-- Bac -->
                 <div class="timeline-item principal" data-aos="fade-right">
-                    <span class="mono text-xs text-gray-500">2017</span>
+                    <span class="mono text-base text-gray-500">2017</span>
                     <h3 class="text-2xl font-bold mt-2" data-translate="formBac1">Baccalauréat Littéraire avec mention</h3>
-                    <p class="text-gray-400 text-sm mt-2" data-translate="formBac2">Lycée Madame de Staël - Saint-Julien-en-Genevois</p>
-                    <ul class="list-disc list-inside mt-2 text-gray-400 text-sm space-y-1">
+                    <p class="text-gray-400 text-base mt-2" data-translate="formBac2">Lycée Madame de Staël - Saint-Julien-en-Genevois</p>
+                    <ul class="list-disc list-inside mt-2 text-gray-400 text-base space-y-2">
                         <li data-translate="formBacSkill1">Spécialité Littérature, Langues et Philosophie</li>
                         <li data-translate="formBacSkill2">Option Latin renforcé</li>
                         <li data-translate="formBacSkill3">Épreuve de Russe passée en candidat libre</li>
@@ -481,10 +497,10 @@
 
                 <!-- École Russe 1 -->
                 <div class="timeline-item linguistique" data-aos="fade-right" style="display: none;">
-                    <span class="mono text-xs text-gray-500" data-translate="formRusse1_1">2011 – 2016</span>
+                    <span class="mono text-base text-gray-500" data-translate="formRusse1_1">2011 – 2016</span>
                     <h3 class="text-2xl font-bold mt-2" data-translate="formRusse1_2">Cours de langue et littérature russe</h3>
-                    <p class="text-gray-400 text-sm mt-2" data-translate="formRusse1_3">École L'Oiseau Bleu - Genève</p>
-                    <ul class="list-disc list-inside mt-2 text-gray-400 text-sm space-y-1">
+                    <p class="text-gray-400 text-base mt-2" data-translate="formRusse1_3">École L'Oiseau Bleu - Genève</p>
+                    <ul class="list-disc list-inside mt-2 text-gray-400 text-base space-y-2">
                         <li data-translate="formBleuSkill1">Perfectionnement linguistique et littéraire russe</li>
                         <li data-translate="formBleuSkill2">Étude approfondie de la culture et patrimoine russophones</li>
                         <li data-translate="formBleuSkill3">Développement continu des compétences bilingues</li>
@@ -493,10 +509,10 @@
 
                 <!-- École Russe 2 -->
                 <div class="timeline-item linguistique" data-aos="fade-right" style="display: none;">
-                    <span class="mono text-xs text-gray-500" data-translate="formRusse2_1">2006 – 2010</span>
+                    <span class="mono text-base text-gray-500" data-translate="formRusse2_1">2006 – 2010</span>
                     <h3 class="text-2xl font-bold mt-2" data-translate="formRusse2_2">Formation pluridisciplinaire en langue russe</h3>
-                    <p class="text-gray-400 text-sm mt-2" data-translate="formRusse2_3">Mission Permanente de la Fédération de Russie - Genève</p>
-                    <ul class="list-disc list-inside mt-2 text-gray-400 text-sm space-y-1">
+                    <p class="text-gray-400 text-base mt-2" data-translate="formRusse2_3">Mission Permanente de la Fédération de Russie - Genève</p>
+                    <ul class="list-disc list-inside mt-2 text-gray-400 text-base space-y-2">
                         <li data-translate="formMissionSkill1">Enseignement complet en immersion russe</li>
                         <li data-translate="formMissionSkill2">Programme en langue russe : russe, littérature, mathématiques, histoire-géographie, SVT, français</li>
                         <li data-translate="formMissionSkill3">Maîtrise académique approfondie de la langue russe</li>
@@ -509,7 +525,7 @@
     <!-- Expérience -->
     <section id="experience" class="py-32 px-8">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="experienceTitre">// Expérience Professionnelle</h2>
+            <h2 class="text-xl mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="experienceTitre">// Expérience Professionnelle</h2>
             <p class="text-center text-gray-400 mb-16" data-translate="experienceSousTitre">Mes emplois, stages et engagements</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -627,28 +643,19 @@
     <!-- Projets -->
     <section id="projets" class="section-dark py-32 px-8">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="projetsTitre">// Mes Projets</h2>
+            <h2 class="text-xl mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="projetsTitre">// Mes Projets</h2>
             <p class="text-center text-gray-400 mb-16" data-translate="projetsSousTitre">Réalisations techniques et études de cas</p>
 
             <div class="flex justify-center gap-4 mb-16 flex-wrap">
-                <!-- Filtre par thème -->
-                <div class="flex flex-wrap gap-3 justify-center mb-4" id="filter-theme">
-                <button class="projet-filter-btn active" data-filter="all" data-filterset="theme" data-translate="projFilterAll">Tous</button>
-                <button class="projet-filter-btn" data-filter="infrastructure" data-filterset="theme" data-translate="projFilterInfra">Infrastructure &amp; Réseaux</button>
-                <button class="projet-filter-btn" data-filter="securite" data-filterset="theme" data-translate="projFilterSec">Sécurité &amp; Cybersécurité</button>
-                <button class="projet-filter-btn" data-filter="deploiement" data-filterset="theme" data-translate="projFilterDeploy">Déploiement &amp; Sauvegarde</button>
-                <button class="projet-filter-btn" data-filter="gestion" data-filterset="theme" data-translate="projFilterGestion">Gestion &amp; Supervision</button>
-                <button class="projet-filter-btn" data-filter="web" data-filterset="theme" data-translate="projFilterWeb">Solutions Web</button>
-                </div>
-                <!-- Filtre par compétence E5 -->
-                <div class="flex flex-wrap gap-3 justify-center mt-4" id="filter-competence">
-                <p class="w-full text-center text-xs mono text-blue-500 uppercase tracking-widest mb-2">// Par compétence E5</p>
-                <button class="projet-filter-btn comp-btn" data-filter="patrimoine" data-filterset="competence">🗄️ Gérer le patrimoine</button>
-                <button class="projet-filter-btn comp-btn" data-filter="incidents" data-filterset="competence">🛠️ Répondre aux incidents</button>
-                <button class="projet-filter-btn comp-btn" data-filter="presenceweb" data-filterset="competence">🌐 Présence en ligne</button>
-                <button class="projet-filter-btn comp-btn" data-filter="projet" data-filterset="competence">📋 Mode projet</button>
-                <button class="projet-filter-btn comp-btn" data-filter="services" data-filterset="competence">🚀 Mettre à disposition</button>
-                <button class="projet-filter-btn comp-btn" data-filter="devpro" data-filterset="competence">🎓 Développement professionnel</button>
+                <!-- Filtre par compétence E5 uniquement -->
+                <div class="flex flex-wrap gap-3 justify-center" id="filter-competence">
+                <button class="projet-filter-btn comp-btn active" data-filter="all" data-filterset="competence">Tous</button>
+                <button class="projet-filter-btn comp-btn" data-filter="patrimoine" data-filterset="competence">Gérer le patrimoine</button>
+                <button class="projet-filter-btn comp-btn" data-filter="incidents" data-filterset="competence">Répondre aux incidents</button>
+                <button class="projet-filter-btn comp-btn" data-filter="presenceweb" data-filterset="competence">Présence en ligne</button>
+                <button class="projet-filter-btn comp-btn" data-filter="projet" data-filterset="competence">Mode projet</button>
+                <button class="projet-filter-btn comp-btn" data-filter="services" data-filterset="competence">Mettre à disposition</button>
+                <button class="projet-filter-btn comp-btn" data-filter="devpro" data-filterset="competence">Développement professionnel</button>
                 </div>
             </div>
 
@@ -1336,11 +1343,11 @@
     <!-- Veille -->
     <section id="veille" class="section-dark py-32 px-8">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-sm mono text-blue-500 mb-6 tracking-widest uppercase text-center" data-translate="veilleTitre">// Veille Technologique</h2>
-            <p class="text-center text-gray-400 mb-4 max-w-2xl mx-auto leading-relaxed">
-                Je réalise ma veille principalement sur la <strong class="text-white">cybersécurité</strong> — vulnérabilités, incidents, bonnes pratiques — ainsi que sur les <strong class="text-white">nouvelles technologies</strong> en administration système et réseaux.
+            <h2 class="text-xl mono text-blue-500 mb-6 tracking-widest uppercase text-center" data-translate="veilleTitre">// Veille Technologique</h2>
+            <p class="text-center text-gray-300 text-xl mb-4 max-w-2xl mx-auto leading-relaxed">
+                Je réalise ma veille principalement sur la cybersécurité — vulnérabilités, incidents, bonnes pratiques — ainsi que sur les nouvelles technologies en administration système et réseaux.
             </p>
-            <p class="text-center text-gray-500 text-sm mb-16">Voici les canaux que j'utilise au quotidien pour rester informée.</p>
+            <p class="text-center text-gray-400 text-lg mb-16">Voici les canaux que j'utilise au quotidien pour rester informée.</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
@@ -1491,7 +1498,7 @@
             </div>
 
             <div class="flex flex-wrap justify-center mt-16" data-aos="fade-up">
-                <a href="assets/docs/veille-technologique.pdf" class="btn-cyber px-12 py-4 rounded-full font-bold uppercase text-xs tracking-widest" data-translate="btnVeilleFull">Présentation</a>
+                <a href="assets/docs/veille-technologique.pdf" class="btn-cyber px-12 py-5 rounded-full font-bold uppercase text-base tracking-wider" data-translate="btnVeilleFull">Présentation</a>
             </div>
         </div>
     </section>
@@ -1499,7 +1506,7 @@
     <!-- Contact -->
     <footer id="contact" class="py-24 px-8">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-sm mono text-blue-500 mb-10 tracking-widest uppercase" data-translate="contactTitre">// Contact</h2>
+            <h2 class="text-xl mono text-blue-500 mb-10 tracking-widest uppercase" data-translate="contactTitre">// Contact</h2>
             <p class="text-gray-400 mb-12" data-translate="contactSousTitre">Disponible pour des opportunités en administration système, réseaux ou cybersécurité</p>
             
             <div class="flex justify-center gap-8 mb-12">
@@ -1523,7 +1530,7 @@
         const translations = {
             fr: {
                 navAccueil: "Accueil",
-                navApropos: "À propos",
+                navApropos: "Profil",
                 navCompetences: "Compétences",
                 navFormation: "Formation",
                 navExperience: "Expérience",
@@ -1633,7 +1640,7 @@
             },
             en: {
                 navAccueil: "Home",
-                navApropos: "About",
+                navApropos: "Profile",
                 navCompetences: "Skills",
                 navFormation: "Education",
                 navExperience: "Experience",
@@ -1877,13 +1884,16 @@
         // ===== THEME JOUR/NUIT =====
         function toggleTheme() {
             const body = document.body;
-            const icon = document.getElementById('themeIcon');
+            const sun = document.getElementById('iconSun');
+            const moon = document.getElementById('iconMoon');
             if (body.classList.contains('light-mode')) {
                 body.classList.remove('light-mode');
-                icon.textContent = '☀️';
+                sun.style.display = '';
+                moon.style.display = 'none';
             } else {
                 body.classList.add('light-mode');
-                icon.textContent = '🌙';
+                sun.style.display = 'none';
+                moon.style.display = '';
             }
         }
     </script>
