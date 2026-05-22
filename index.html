@@ -12,9 +12,9 @@
 
     <style>
 
-      /* ========== STYLE PAR DÉFAUT (MODE SOMBRE - INTACT) ========== */
+      /* ========== STYLE PAR DÉFAUT (MODE SOMBRE - REDIMENSIONNÉ) ========== */
         html {
-            font-size: 120% !important; /* Augmentation globale pour le rétroprojecteur */
+            font-size: 125% !important; /* Augmentation globale de la base de calcul de taille */
         }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
@@ -39,28 +39,37 @@
             z-index: 100; background-size: 100% 4px, 3px 100%; pointer-events: none;
         }
 
+        /* Liens de la barre de navigation agrandis */
         .nav-blur { 
             background: rgba(3, 7, 18, 0.8); 
             backdrop-filter: blur(20px); 
             border-bottom: 1px solid rgba(255,255,255,0.05); 
         }
+        .nav-blur a {
+            font-size: 1.1rem !important;
+            font-weight: 600;
+        }
         
+        /* Gros Boutons d'action agrandis */
         .btn-cyber {
             position: relative; overflow: hidden;
             transition: all 0.4s; border: 1px solid rgba(59, 130, 246, 0.5);
+            padding: 1rem 2.2rem !important;
+            font-size: 1.05rem !important;
         }
         .btn-cyber:hover {
             background: #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
             transform: scale(1.05);
         }
 
+        /* Boutons de filtres agrandis */
         .filter-btn, .projet-filter-btn {
-            padding: 0.5rem 1.5rem;
+            padding: 0.7rem 1.8rem !important;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 2rem;
             color: #9ca3af;
-            font-size: 0.875rem;
+            font-size: 1.05rem !important;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -72,7 +81,7 @@
         }
 
         .lang-btn {
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem !important;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 0.5rem;
@@ -82,30 +91,58 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-size: 1.05rem !important;
         }
-        .lang-btn:hover { background: rgba(255, 255, 255, 0.1); }
 
+        /* BALISES / TAGS (Ex: Docker) : Nettement plus grands et espacés */
         .skill-tag {
             display: inline-block;
-            padding: 0.25rem 0.75rem;
+            padding: 0.4rem 1rem !important;
             background: rgba(59, 130, 246, 0.2);
             border: 1px solid rgba(59, 130, 246, 0.3);
             border-radius: 1rem;
-            font-size: 0.75rem;
-            margin: 0.25rem;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            margin: 0.35rem !important;
         }
 
+        /* Boîtes et Cartes élargies */
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             border-radius: 1.5rem;
-            padding: 2.5rem;
+            padding: 3rem 2.5rem !important;
         }
         .glass-card:hover { 
             border-color: #3b82f6;
             transform: translateY(-5px);
+        }
+
+        /* TEXTES INTERNES DES CASES (Descriptions, listes d'expérience, etc.) */
+        .glass-card p, .glass-card li,
+        .cert-card p, .cert-card li,
+        .project-card p, .project-card li,
+        #experience p, #experience li {
+            font-size: 1.15rem !important;
+            line-height: 1.7 !important;
+        }
+
+        /* TITRES DE SECTIONS ET PHRASES D'ACCOMPAGNEMENT */
+        h2 {
+            font-size: 3.2rem !important; /* Pour les titres comme // Mes Projets */
+            font-weight: 800 !important;
+        }
+        h3 {
+            font-size: 1.75rem !important; /* Titres des cartes internes */
+        }
+        /* Cible les sous-titres comme "Réalisations techniques et études de cas" */
+        section p[class*="text-gray-400"],
+        section .text-center > p,
+        h2 + p {
+            font-size: 1.3rem !important;
+            font-weight: 400 !important;
         }
 
         .section-dark { background: rgba(0, 0, 0, 0.2); }
@@ -114,13 +151,14 @@
             border-left: 2px solid rgba(59, 130, 246, 0.3);
             padding-left: 2rem;
             position: relative;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
         .timeline-item::before {
             content: ''; position: absolute; left: -5px; top: 0;
-            width: 8px; height: 8px; background: #3b82f6; border-radius: 50%;
+            width: 10px; height: 10px; background: #3b82f6; border-radius: 50%;
         }
 
+        /* Cartes projets */
         .project-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -133,7 +171,7 @@
             transform: translateY(-10px);
         }
         .project-image {
-            height: 200px; background: #1e293b; overflow: hidden; position: relative;
+            height: 220px; background: #1e293b; overflow: hidden; position: relative;
         }
         .project-image img {
             width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: all 0.5s ease;
@@ -149,15 +187,15 @@
         .project-card:hover .project-overlay { opacity: 1; }
         
         .project-link {
-            color: white; padding: 0.75rem 1.5rem; background: #3b82f6;
-            border-radius: 0.5rem; text-decoration: none; font-size: 0.875rem;
+            color: white; padding: 0.9rem 2rem !important; background: #3b82f6;
+            border-radius: 0.5rem; text-decoration: none; font-size: 1.05rem !important;
             font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em;
         }
 
         .cert-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 1.5rem; padding: 2rem; transition: all 0.3s ease;
+            border-radius: 1.5rem; padding: 2.5rem !important; transition: all 0.3s ease;
         }
         .cert-card:hover {
             border-color: #3b82f6; transform: translateY(-5px);
@@ -168,9 +206,9 @@
 
         #theme-toggle {
             position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
-            width: 3.2rem; height: 3.2rem; border-radius: 50%;
+            width: 3.5rem; height: 3.5rem; border-radius: 50%;
             border: 1px solid rgba(255,255,255,0.2); background: rgba(3, 7, 18, 0.85);
-            color: #f9fafb; font-size: 1.3rem; cursor: pointer;
+            color: #f9fafb; font-size: 1.4rem; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             backdrop-filter: blur(10px); transition: all 0.3s ease;
             box-shadow: 0 4px 20px rgba(0,0,0,0.4);
@@ -187,14 +225,28 @@
         html.light-mode #theme-toggle .fa-sun { display: none !important; }
         html.light-mode #theme-toggle .fa-moon { display: inline-block !important; }
 
+        /* DOUBLE PAGE COPYRIGHT CONFIGURATION (Nettement plus grand sur les deux modes) */
+        .copyright, 
+        footer p, 
+        footer p.text-xs {
+            font-size: 1.05rem !important; 
+            font-weight: 700 !important;
+            letter-spacing: 0.02em !important;
+        }
+
+        /* TAILLE DE L'ADRESSE IP SIDEBAR : Plus grand mais reste élégant ("Pas trop") */
+        #accueil .absolute.left-10.mono p {
+            font-size: 1.15rem !important;
+            letter-spacing: 0.05em !important;
+        }
+
 
         /* ==================================================================== */
-        /* ========== MODE CLAIR DESIGN CYBER-TECH (CORRIGÉ & SÉCURISÉ) ======= */
+        /* ========== MODE CLAIR DESIGN CYBER-TECH (AJUSTÉ) =================== */
         /* ==================================================================== */
 
-        /* 1. Fond alterné "Light Tech" */
         html.light-mode body {
-            background-color: #f8fafc !important; /* Blanc-bleuté industriel */
+            background-color: #f8fafc !important;
             color: #0f172a !important;
         }
         html.light-mode .aurora, 
@@ -202,7 +254,7 @@
             display: none !important;
         }
 
-        /* Délimitation franche pour le défilement */
+        /* Délimitation des sections */
         html.light-mode #accueil { background-color: #f8fafc !important; }
         html.light-mode #apropos { background-color: #f1f5f9 !important; display: block !important; } 
         html.light-mode #competences { background-color: #ffffff !important; }
@@ -214,89 +266,81 @@
         html.light-mode #contact { background-color: #ffffff !important; }
         html.light-mode footer { background-color: #cbd5e1 !important; }
 
-        /* 2. BARRE DE NAVIGATION EN GRIS ARDOISE (Contraste premium avec l'accueil) */
+        /* BARRE DE NAVIGATION MODE CLAIR (Gris acier givré haut de gamme) */
         html.light-mode .nav-blur {
-            background: rgba(30, 41, 59, 0.98) !important; /* Gris foncé Slate pour trancher directement */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            background: rgba(226, 232, 240, 0.92) !important; 
+            border-bottom: 1px solid rgba(148, 163, 184, 0.4) !important;
             backdrop-filter: blur(20px) !important;
         }
         html.light-mode .nav-blur a {
-            color: #f8fafc !important; /* Liens blancs pour ressortir sur la barre grise */
+            color: #1e293b !important; 
             font-weight: 700 !important;
+            font-size: 1.15rem !important;
         }
         html.light-mode .nav-blur a:hover {
             color: #3b82f6 !important;
         }
 
-        /* 3. Protection et Style Cyber des Cartes (Correction du bug de débordement) */
+        /* Cartes et boîtes sécurisées épaissies */
         html.light-mode .glass-card,
         html.light-mode .cert-card {
             background: #ffffff !important;
             border: 1px solid rgba(59, 130, 246, 0.2) !important;
-            border-top: 4px solid #3b82f6 !important; /* Ligne cyber supérieure */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+            border-top: 4px solid #3b82f6 !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
         }
 
-        /* Spécifique cartes de projet : forçage de la découpe d'image */
+        /* Sécurité anti-débordement d'image pour les projets */
         html.light-mode .project-card {
             background: #ffffff !important;
             border: 1px solid rgba(59, 130, 246, 0.2) !important;
             border-top: 4px solid #3b82f6 !important;
-            overflow: hidden !important; /* Empêche l'image de dépasser des arrondis */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+            overflow: hidden !important; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
         }
 
-        /* Effet de survol Cyber Lumineux */
+        /* Effets de lueur au survol */
         html.light-mode .project-card:hover,
         html.light-mode .glass-card:hover,
         html.light-mode .cert-card:hover {
-            border-color: #06b6d4 !important; /* Lueur Cyan au survol */
-            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15) !important;
+            border-color: #06b6d4 !important;
+            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.18) !important;
         }
 
-        /* 4. Fix de la Timeline (Ligne à gauche préservée comme demandé) */
+        /* Ligne de chronologie */
         html.light-mode .timeline-item {
             background: transparent !important;
             border: none !important;
             box-shadow: none !important;
-            border-left: 2px solid #3b82f6 !important; /* Trait bleu continu à gauche */
+            border-left: 2px solid #3b82f6 !important;
             border-radius: 0 !important;
             padding-left: 2rem !important;
-            margin-bottom: 3rem !important;
+            margin-bottom: 3.5rem !important;
         }
         html.light-mode .timeline-item::before {
             background: #06b6d4 !important;
             box-shadow: 0 0 8px #06b6d4 !important;
         }
 
-        /* 5. GESTION DES TEXTES & HIÉRARCHIE (Correction de la taille du sous-titre) */
+        /* Textes en Mode Clair */
         html.light-mode h1, html.light-mode h2, html.light-mode h3, html.light-mode h4 {
-            color: #0f172a !important; /* Titres bien noirs */
+            color: #0f172a !important;
         }
         html.light-mode p, html.light-mode li, html.light-mode span:not([class*="bg-blue-500"]) {
-            color: #334155 !important; /* Textes généraux très lisibles */
+            color: #334155 !important;
         }
 
-        /* Forçage de sécurité pour que ton texte d'opportunités reste grand et impactant */
-        html.light-mode #accueil p {
-            font-size: 1.15rem !important; 
-            font-weight: 500 !important;
-            color: #475569 !important;
+        /* Maintien couleur widget IP gauche */
+        html.light-mode #accueil .absolute.left-10.mono p {
+            color: #0f172a !important;
+            opacity: 0.7 !important;
+        }
+        html.light-mode .mono,
+        html.light-mode [class*="mono"] {
+            color: #0f172a !important;
         }
 
-        /* Le Copyright : STRICTEMENT lilliputien mais parfaitement lisible */
-        html.light-mode .copyright,
-        html.light-mode footer p.text-xs {
-            font-size: 0.75rem !important; /* Le plus petit élément du site */
-            color: #475569 !important;
-            font-weight: 700 !important;
-            letter-spacing: 0.05em !important;
-        }
-
-        /* Éléments de boutons et badges */
-        html.light-mode .project-image { background: #f1f5f9 !important; }
-        html.light-mode .project-image img { opacity: 1 !important; filter: none !important; }
-
+        /* Boutons de filtres Mode Clair */
         html.light-mode .filter-btn, html.light-mode .projet-filter-btn {
             background: #ffffff !important;
             border-color: #cbd5e1 !important;
@@ -309,6 +353,7 @@
             border-color: #3b82f6 !important;
         }
 
+        /* Badges de compétences (Docker, etc.) Mode Clair */
         html.light-mode .skill-tag {
             background: #eff6ff !important;
             border-color: #bfdbfe !important;
