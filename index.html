@@ -12,9 +12,9 @@
 
     <style>
 
-        /* ========== STYLE PAR DÉFAUT (MODE SOMBRE - INTACT) ========== */
+        /* ========== STYLE BASE & TYPOGRAPHIE (UNIFORME SOMBRE/CLAIR) ========== */
         html {
-            font-size: 120% !important; /* Augmentation globale pour le rétroprojecteur */
+            font-size: 120% !important; /* Taille de base boostée pour le rétroprojecteur du jury */
         }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
@@ -22,16 +22,21 @@
             color: #f9fafb; 
             overflow-x: hidden; 
             scroll-behavior: smooth;
+            line-height: 1.6;
         }
+        
+        /* Forçage d'une épaisseur et taille de police identiques pour les deux modes */
+        h1, h2, h3, h4 { font-weight: 800 !important; letter-spacing: -0.02em; }
+        p, li, span { font-weight: 500 !important; } 
         .mono { font-family: 'JetBrains Mono', monospace; }
 
+        /* Effets Cyber Mode Sombre */
         .aurora {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: radial-gradient(circle at 50% -20%, #1e3a8a 0%, transparent 50%),
                         radial-gradient(circle at 0% 100%, #1e1b4b 0%, transparent 50%);
             opacity: 0.5;
         }
-
         body::before {
             content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
@@ -39,12 +44,12 @@
             z-index: 100; background-size: 100% 4px, 3px 100%; pointer-events: none;
         }
 
+        /* Composants de navigation & Boutons */
         .nav-blur { 
             background: rgba(3, 7, 18, 0.8); 
             backdrop-filter: blur(20px); 
             border-bottom: 1px solid rgba(255,255,255,0.05); 
         }
-        
         .btn-cyber {
             position: relative; overflow: hidden;
             transition: all 0.4s; border: 1px solid rgba(59, 130, 246, 0.5);
@@ -66,52 +71,30 @@
         }
         .filter-btn:hover, .projet-filter-btn:hover,
         .filter-btn.active, .projet-filter-btn.active {
-            background: #3b82f6;
-            border-color: #3b82f6;
-            color: white;
+            background: #3b82f6; border-color: #3b82f6; color: white;
         }
-
-        .lang-btn {
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0.5rem;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .lang-btn:hover { background: rgba(255, 255, 255, 0.1); }
 
         .skill-tag {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background: rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 1rem;
-            font-size: 0.75rem;
-            margin: 0.25rem;
+            display: inline-block; padding: 0.25rem 0.75rem;
+            background: rgba(59, 130, 246, 0.2); border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 1rem; font-size: 0.75rem; margin: 0.25rem;
         }
 
-        .glass-card {
+        /* structure des cartes */
+        .glass-card, .project-card, .cert-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             border-radius: 1.5rem;
-            padding: 2.5rem;
         }
-        .glass-card:hover { 
-            border-color: #3b82f6;
-            transform: translateY(-5px);
+        .glass-card:hover, .project-card:hover, .cert-card:hover { 
+            border-color: #3b82f6; transform: translateY(-5px);
         }
 
-        .section-dark { background: rgba(0, 0, 0, 0.2); }
-        
+        /* TIMELINE (STRUCTURE UNIFORME AVEC LE TRAIT A GAUCHE) */
         .timeline-item {
-            border-left: 2px solid rgba(59, 130, 246, 0.3);
+            border-left: 2px solid rgba(59, 130, 246, 0.4);
             padding-left: 2rem;
             position: relative;
             margin-bottom: 3rem;
@@ -121,55 +104,24 @@
             width: 8px; height: 8px; background: #3b82f6; border-radius: 50%;
         }
 
-        .project-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 1.5rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .project-card:hover {
-            border-color: #3b82f6;
-            transform: translateY(-10px);
-        }
-        .project-image {
-            height: 200px; background: #1e293b; overflow: hidden; position: relative;
-        }
-        .project-image img {
-            width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: all 0.5s ease;
-        }
-        .project-card:hover .project-image img {
-            opacity: 1; transform: scale(1.1);
-        }
+        .project-image { height: 200px; background: #1e293b; overflow: hidden; position: relative; }
+        .project-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: all 0.5s ease; }
+        .project-card:hover .project-image img { opacity: 1; transform: scale(1.1); }
         .project-overlay {
             position: absolute; inset: 0; background: rgba(0, 0, 0, 0.7);
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s ease;
+            display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;
         }
         .project-card:hover .project-overlay { opacity: 1; }
-        
         .project-link {
             color: white; padding: 0.75rem 1.5rem; background: #3b82f6;
             border-radius: 0.5rem; text-decoration: none; font-size: 0.875rem;
             font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em;
         }
 
-        .cert-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 1.5rem; padding: 2rem; transition: all 0.3s ease;
-        }
-        .cert-card:hover {
-            border-color: #3b82f6; transform: translateY(-5px);
-        }
+        .slider-image.hidden { display: none !important; }
+        .slider-image:not(.hidden) { display: block !important; }
 
-        .slider-image.hidden {
-            display: none !important;
-        }
-        .slider-image:not(.hidden) {
-            display: block !important;
-        }
-
+        /* Bouton Theme Fixe */
         #theme-toggle {
             position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
             width: 3.2rem; height: 3.2rem; border-radius: 50%;
@@ -177,158 +129,130 @@
             color: #f9fafb; font-size: 1.3rem; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             backdrop-filter: blur(10px); transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
-        #theme-toggle:hover {
-            border-color: #3b82f6; box-shadow: 0 0 16px rgba(59,130,246,0.5);
-            transform: scale(1.1);
-        }
-
-        #theme-toggle i { transition: all 0.3s ease; }
         html:not(.light-mode) #theme-toggle .fa-moon { display: none !important; }
         html:not(.light-mode) #theme-toggle .fa-sun { display: inline-block !important; }
-        
         html.light-mode #theme-toggle .fa-sun { display: none !important; }
         html.light-mode #theme-toggle .fa-moon { display: inline-block !important; }
 
+        /* AJUSTEMENT COPYRIGHT DE BASE (SOMBRE) */
+        footer p, footer span, .copyright {
+            font-size: 0.75rem !important; /* Le plus petit texte du site */
+            letter-spacing: 0.05em;
+            opacity: 0.6;
+        }
+
 
         /* ==================================================================== */
-        /* ========== MODE CLAIR EXCLUSIF OPTIMISÉ POUR L'ORAL ========== */
+        /* ========== MODE CLAIR REVISITÉ : DESIGN LIGHT CYBER / TECH ========== */
         /* ==================================================================== */
 
-        /* 1. Global & Suppression des effets sombres parasites */
+        /* 1. Fond Global Alterné (Fini le tout blanc basique) */
         html.light-mode body {
-            background-color: #ffffff !important;
-            color: #0f172a !important;
+            background-color: #f4f7fa !important; /* Gris-bleu très clair, ambiance console tech */
+            color: #0f172a !important; /* Texte noir profond ultra lisible */
         }
-        html.light-mode .aurora, 
-        html.light-mode body::before {
-            display: none !important;
-        }
+        html.light-mode .aurora, html.light-mode body::before { display: none !important; }
 
-        /* 2. FIX DE SÉCURITÉ : Réactivation et délimitation franche des sections */
-        /* Chaque section a désormais une couleur bien distincte pour scroller proprement */
+        /* Délimitation nette des sections avec des teintes "Light Tech" */
         html.light-mode #accueil { background-color: #f8fafc !important; }
-        html.light-mode #apropos { background-color: #edf2f7 !important; display: block !important; } /* REVIENT ICI ! */
+        html.light-mode #apropos { background-color: #eef2f6 !important; display: block !important; } 
         html.light-mode #competences { background-color: #ffffff !important; }
-        html.light-mode #formation { background-color: #edf2f7 !important; display: block !important; }
+        html.light-mode #formation { background-color: #eef2f6 !important; display: block !important; }
         html.light-mode #experience { background-color: #ffffff !important; }
-        html.light-mode #projets { background-color: #edf2f7 !important; }
+        html.light-mode #projets { background-color: #eef2f6 !important; }
         html.light-mode #certifications { background-color: #ffffff !important; }
-        html.light-mode #veille { background-color: #edf2f7 !important; }
+        html.light-mode #veille { background-color: #eef2f6 !important; }
         html.light-mode #contact { background-color: #ffffff !important; }
-        html.light-mode footer { background-color: #f1f5f9 !important; }
+        html.light-mode footer { background-color: #e2e8f0 !important; }
 
-        /* 3. Les Cartes : Effet verre dépoli clair */
+        /* 2. Style des Cartes "Cyber Light" (Bordures technologiques nettes et lumineuses) */
         html.light-mode .project-card, 
         html.light-mode .cert-card, 
         html.light-mode .glass-card,
         html.light-mode div[class*="bg-gray-800"] {
-            background: rgba(255, 255, 255, 0.85) !important;
-            backdrop-filter: blur(12px) !important;
-            border: 1px solid #cbd5e1 !important;
-            border-radius: 1.5rem !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
-            transition: all 0.3s ease-in-out !important;
+            background: #ffffff !important;
+            border: 1px solid rgba(37, 99, 235, 0.2) !important; /* Bordure bleue précise */
+            border-top: 3px solid #2563eb !important; /* Ligne d'accentuation cyber sur le haut de la carte */
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.04) !important;
         }
-
-        /* 4. Effet de survol adouci (Gris foncé ardoise) pour les certifications */
-        html.light-mode .cert-card:hover {
-            background: #1e293b !important;
-            border-color: #3b82f6 !important;
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2) !important;
+        
+        /* Effet de survol Cyber Light réactif */
+        html.light-mode .project-card:hover, 
+        html.light-mode .cert-card:hover, 
+        html.light-mode .glass-card:hover {
+            border-color: #06b6d4 !important; /* Flash Cyan au survol */
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.15) !important;
             transform: translateY(-5px) !important;
         }
-        html.light-mode .cert-card:hover h3,
-        html.light-mode .cert-card:hover p,
-        html.light-mode .cert-card:hover span,
-        html.light-mode .cert-card:hover i {
-            color: #ffffff !important;
-        }
 
-        /* 5. Les Formations (Timeline) : Belles bulles de contenu très douces */
+        /* 3. FIX DE LA TIMELINE DE FORMATION (Le trait à gauche reste identique au mode sombre !) */
         html.light-mode .timeline-item {
-            background: #ffffff !important;
-            border: 1px solid #e2e8f0 !important;
-            border-radius: 1.5rem !important;
-            padding: 1.5rem 2rem !important;
-            margin-bottom: 2.5rem !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02) !important;
-            border-left: 6px solid #3b82f6 !important;
+            border-left: 2px solid #2563eb !important; /* Un vrai trait bleu continu à gauche */
+            background: transparent !important; /* Pas de boîte fermée parasite */
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            padding-left: 2rem !important;
+        }
+        html.light-mode .timeline-item::before {
+            background: #06b6d4 !important; /* Puce cyan brillante */
+            box-shadow: 0 0 8px #06b6d4 !important;
         }
 
-        /* 6. POLICE BOOSTÉE : Forçage de visibilité pour le rétroprojecteur */
-        html.light-mode p, 
-        html.light-mode h1, 
-        html.light-mode h2, 
-        html.light-mode h3, 
-        html.light-mode h4,
-        html.light-mode li,
-        html.light-mode span:not([class*="bg-blue-500"]) {
-            color: #0f172a !important; /* Noir profond */
-            font-weight: 500 !important; /* Un peu plus épais pour le projecteur */
+        /* 4. Cohérence Typographique Totale (Même graisse de texte, couleur noire d'encre pour l'oral) */
+        html.light-mode p, html.light-mode h1, html.light-mode h2, 
+        html.light-mode h3, html.light-mode h4, html.light-mode li {
+            color: #0f172a !important;
         }
 
-        /* 7. GROSSISSEMENT SÉCURITÉ DU COPYRIGHT ET BAS DE PAGE */
-        html.light-mode footer, 
+        /* 5. PROPORTION ET LISIBILITÉ DU COPYRIGHT (Strictement le plus petit, mais net) */
         html.light-mode footer p, 
         html.light-mode footer span, 
-        html.light-mode .copyright, 
-        html.light-mode .copyright * {
-            font-size: 0.95rem !important; /* Fini le minuscule, devient parfaitement lisible */
-            color: #334155 !important;
+        html.light-mode .copyright,
+        html.light-mode footer .text-xs {
+            font-size: 0.75rem !important; /* Reste le plus petit élément textuel de la page */
+            color: #475569 !important; /* Gris ardoise foncé pour être parfaitement lisible */
+            font-weight: 700 !important; /* Légèrement plus épais pour ressortir au tableau */
+            letter-spacing: 0.05em !important;
+            text-transform: uppercase;
+            opacity: 1 !important;
+        }
+
+        /* Badges de compétences "Cyber Light" */
+        html.light-mode .skill-tag {
+            background: #eff6ff !important;
+            border: 1px solid #bfdbfe !important;
+            color: #1e40af !important;
             font-weight: 600 !important;
         }
 
-        /* 8. Nettoyage complet des images de projets */
-        html.light-mode .project-image {
-            background: #f1f5f9 !important;
-        }
-        html.light-mode .project-image img {
-            opacity: 1 !important;
-            filter: none !important;
-        }
-
-        /* Navigation et Boutons de filtres */
+        /* Menu de navigation */
         html.light-mode .nav-blur {
-            background: rgba(255, 255, 255, 0.95) !important;
-            border-bottom: 1px solid #e2e8f0 !important;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02) !important;
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-bottom: 1px solid #cbd5e1 !important;
+            backdrop-filter: blur(20px) !important;
         }
         html.light-mode .nav-blur a { color: #0f172a !important; font-weight: 700 !important; }
-        
+
+        /* Filtres de projets */
         html.light-mode .filter-btn, html.light-mode .projet-filter-btn {
             background: #ffffff !important;
             border-color: #cbd5e1 !important;
-            color: #334155 !important;
-            border-radius: 2rem !important;
+            color: #475569 !important;
         }
         html.light-mode .filter-btn:hover, html.light-mode .projet-filter-btn:hover,
         html.light-mode .filter-btn.active, html.light-mode .projet-filter-btn.active {
-            background: #3b82f6 !important;
+            background: #2563eb !important;
             color: white !important;
-            border-color: #3b82f6 !important;
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2) !important;
-        }
-
-        html.light-mode .skill-tag {
-            background: #eff6ff !important;
-            border-color: #bfdbfe !important;
-            color: #1e40af !important;
-        }
-
-        html.light-mode #slider-container {
-            background-color: #ffffff !important;
-            border: 1px solid #cbd5e1 !important;
-            border-radius: 1.5rem !important;
-            padding: 0.5rem !important;
+            border-color: #2563eb !important;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2) !important;
         }
 
         html.light-mode #theme-toggle {
             background: #ffffff !important;
-            color: #3b82f6 !important;
+            color: #2563eb !important;
             border-color: #cbd5e1 !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
         }
     </style>
 </head>
