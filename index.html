@@ -36,7 +36,7 @@
             content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
                         linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
-            z-index: 100; background-size: 100% 4px, 3px 100%; pointer-events: none;
+            z-index: 0; background-size: 100% 4px, 3px 100%; pointer-events: none;
         }
 
         .nav-blur { 
@@ -160,12 +160,15 @@
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 10;
+            user-select: none;
         }
         .filter-btn:hover, .projet-filter-btn:hover,
         .filter-btn.active, .projet-filter-btn.active {
-            background: #3b82f6;
-            border-color: #3b82f6;
-            color: white;
+            background: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+            color: white !important;
         }
 
         .lang-btn {
@@ -232,10 +235,10 @@
             color: #0f172a !important;
         }
         body.light-mode .cert-card {
-            background: rgba(255,255,255,0.95) !important;
-            border-color: rgba(59,130,246,0.2) !important;
+            background: #ffffff !important;
+            border-color: rgba(59,130,246,0.25) !important;
             color: #0f172a !important;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08) !important;
         }
         body.light-mode .section-dark {
             background: rgba(226,232,240,0.5) !important;
@@ -249,6 +252,9 @@
         body.light-mode .text-white {
             color: #0f172a !important;
         }
+        .employer-name { color: #93c5fd; }
+        .cert-org { color: #93c5fd; }
+        body.light-mode .employer-name, body.light-mode .cert-org { color: #1d4ed8 !important; }
         body.light-mode .timeline-item {
             border-left-color: rgba(59,130,246,0.5) !important;
         }
@@ -256,9 +262,16 @@
             background: rgba(0,0,0,0.05) !important;
             border-color: rgba(0,0,0,0.15) !important;
             color: #334155 !important;
+            cursor: pointer !important;
+        }
+        body.light-mode .filter-btn:hover, body.light-mode .projet-filter-btn:hover {
+            background: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+            color: white !important;
         }
         body.light-mode .filter-btn.active, body.light-mode .projet-filter-btn.active {
             background: #3b82f6 !important;
+            border-color: #3b82f6 !important;
             color: white !important;
         }
         body.light-mode .skill-tag {
@@ -279,6 +292,9 @@
         }
         body.light-mode::before {
             display: none !important;
+        }
+        body.light-mode section#certifications {
+            background: #dbeafe !important;
         }
         body.light-mode h1, body.light-mode h2, body.light-mode h3 {
             color: #0f172a !important;
@@ -338,7 +354,7 @@
 
             <div class="max-w-3xl mx-auto px-6 mb-16" data-aos="fade-up" data-aos-delay="200">
                 <p class="text-xl md:text-2xl text-gray-400 font-light leading-relaxed" data-translate="heroDescription">
-                     Future élève-ingénieure en Informatique et Cybersécurité, je me spécialise dans la conception d'infrastructures d’hébergement sécurisées. Passionnée par la résilience système et le durcissement (hardening), j'évolue vers un profil d'experte en sécurisation des environnements critiques et hybrides.
+                     Future élève-ingénieure en Informatique et Cybersécurité, je me spécialise dans la conception d'infrastructures d’hébergement sécurisées.<br><br>Passionnée par la résilience système et le durcissement (hardening), j'évolue vers un profil d'experte en sécurisation des environnements critiques et hybrides.
                 </p>
             </div>
 
@@ -534,7 +550,7 @@
                         <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expPrep3">2024 - Présent</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expPrep1">Préparateur de commandes</h3>
-                    <p class="text-blue-300/60 text-base font-medium uppercase tracking-wider" data-translate="expPrep2">Auchan Retail - Epagny</p>
+                    <p class="text-blue-800 dark:text-blue-300 text-base font-medium uppercase tracking-wider" data-translate="expPrep2">Auchan Retail - Epagny</p>
                     
                     <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Préparation de commandes PGC, Produits Frais, Fruits et Légumes</li>
@@ -552,7 +568,7 @@
                         <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expEntrain3">2025 - Présent</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expEntrain1">Entraîneuse de gardiennes</h3>
-                    <p class="text-blue-300/60 text-base font-medium uppercase tracking-wider" data-translate="expEntrain2">FC Epagny-Metz-Tessy</p>
+                    <p class="text-blue-800 dark:text-blue-300 text-base font-medium uppercase tracking-wider" data-translate="expEntrain2">FC Epagny-Metz-Tessy</p>
                     
                     <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Encadrement technique et physique</li>
@@ -569,7 +585,7 @@
                         <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expStage2">Janvier - Mars 2026</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expStage1">Stage - Systèmes et Réseaux</h3>
-                    <p class="text-blue-300/60 text-base font-medium uppercase tracking-wider">Team IT - Carouge</p>
+                    <p class="employer-name text-base font-medium uppercase tracking-wider">Team IT - Carouge</p>
                     
                     <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Consultations et conseils clients</li>
@@ -587,7 +603,7 @@
                         <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expStage2">Juin 2025</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expStage1">Stage - Systèmes et Réseaux</h3>
-                    <p class="text-blue-300/60 text-base font-medium uppercase tracking-wider">Agentil - Satigny</p>
+                    <p class="employer-name text-base font-medium uppercase tracking-wider">Agentil - Satigny</p>
                     
                     <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">GPO, Firewall, WSUS et certificats SSL</li>
@@ -605,7 +621,7 @@
                         <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expElearning3">Mai - Juin 2023</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expElearning1">Stage - Concepteur eLearning</h3>
-                    <p class="text-blue-300/60 text-base font-medium uppercase tracking-wider" data-translate="expElearning2">Creativ Minds - Nyon</p>
+                    <p class="text-blue-800 dark:text-blue-300 text-base font-medium uppercase tracking-wider" data-translate="expElearning2">Creativ Minds - Nyon</p>
                     
                     <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Création de modules de formation</li>
@@ -624,7 +640,7 @@
                         <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2018 - 2019</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expObs1">Stage d'Observation</h3>
-                    <p class="text-blue-300/60 text-base font-medium uppercase tracking-wider" data-translate="expObs2">École Primaire - Perly</p>
+                    <p class="text-blue-800 dark:text-blue-300 text-base font-medium uppercase tracking-wider" data-translate="expObs2">École Primaire - Perly</p>
                     
                     <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Observation des terrains éducatifs</li>
@@ -1105,7 +1121,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <header class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-xl mono text-blue-500 mb-4 tracking-widest uppercase text-center" data-translate="certificationsTitre">// Certifications</h2>
-                <p class="text-gray-400 text-xl max-w-2xl mx-auto">Mes diplômes et certifications techniques obtenus au cours de mon cursus.</p>
+                <p class="text-gray-400 text-xl mx-auto whitespace-nowrap">Mes diplômes et certifications techniques obtenus au cours de mon cursus.</p>
             </header>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -1119,21 +1135,21 @@
                             <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2024</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Atelier RGPD</h3>
-                        <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">CNIL (5 Modules)</p>
+                        <p class="cert-org text-sm mb-4 font-medium uppercase tracking-wider">CNIL (5 Modules)</p>
                         <p class="text-gray-400 text-lg leading-relaxed">Certification complète couvrant les principes de protection des données, les responsabilités et les outils de conformité.</p>
                     </div>
 
                     <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4 bg-black/20">
-                        <button onclick="changeSlide(-1)" class="absolute left-2 z-10 p-2 text-white/50 hover:text-blue-400 transition-colors">
+                        <button onclick="changeSlide(-1)" class="absolute left-2 p-2 text-white/50 hover:text-blue-400 transition-colors" style="z-index:30;cursor:pointer;">
                             <i class="fas fa-chevron-left fa-lg"></i>
                         </button>
 
                         <div class="relative w-full h-full flex items-center justify-center">
                             <img id="slider-img-1" src="assets/certifications/rgpd1.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 1">
-                            <img id="slider-img-2" src="assets/certifications/rgpd2.png" class="slider-image" style="display:none;" max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 2">
-                            <img id="slider-img-3" src="assets/certifications/rgpd3.png" class="slider-image" style="display:none;" max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 3">
-                            <img id="slider-img-4" src="assets/certifications/rgpd4.png" class="slider-image" style="display:none;" max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 4">
-                            <img id="slider-img-5" src="assets/certifications/rgpd5.png" class="slider-image" style="display:none;" max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 5">
+                            <img id="slider-img-2" src="assets/certifications/rgpd2.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" style="display:none;" alt="Module 2">
+                            <img id="slider-img-3" src="assets/certifications/rgpd3.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" style="display:none;" alt="Module 3">
+                            <img id="slider-img-4" src="assets/certifications/rgpd4.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" style="display:none;" alt="Module 4">
+                            <img id="slider-img-5" src="assets/certifications/rgpd5.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" style="display:none;" alt="Module 5">
                             
                             <div class="absolute inset-0 bg-gray-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                                 <a id="view-large-link" href="assets/certifications/rgpd1.png" target="_blank" class="p-4 bg-blue-600 rounded-full text-white shadow-2xl hover:bg-blue-500 transition-all scale-75 group-hover:scale-100 pointer-events-auto">
@@ -1142,7 +1158,7 @@
                             </div>
                         </div>
 
-                        <button onclick="changeSlide(1)" class="absolute right-2 z-10 p-2 text-white/50 hover:text-blue-400 transition-colors">
+                        <button onclick="changeSlide(1)" class="absolute right-2 p-2 text-white/50 hover:text-blue-400 transition-colors" style="z-index:30;cursor:pointer;">
                             <i class="fas fa-chevron-right fa-lg"></i>
                         </button>
                         
@@ -1161,7 +1177,7 @@
                             <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2024</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">L'Univers de la Cybersécurité</h3>
-                        <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">OpenClassrooms</p>
+                        <p class="cert-org text-sm mb-4 font-medium uppercase tracking-wider">OpenClassrooms</p>
                         <p class="text-gray-400 text-lg leading-relaxed">Introduction globale aux enjeux et aux différents métiers de la sécurité numérique.</p>
                     </div>
                     <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4">
@@ -1181,7 +1197,7 @@
                             <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Introduction à la Cybersécurité</h3>
-                        <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">Cisco Networking Academy</p>
+                        <p class="cert-org text-sm mb-4 font-medium uppercase tracking-wider">Cisco Networking Academy</p>
                         <p class="text-gray-400 text-lg leading-relaxed">Cours d’initiation présentant les menaces, les attaques et les concepts fondamentaux de la protection.</p>
                     </div>
                     <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4">
@@ -1201,7 +1217,7 @@
                             <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Gestion des cybermenaces</h3>
-                        <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">Cisco Networking Academy</p>
+                        <p class="cert-org text-sm mb-4 font-medium uppercase tracking-wider">Cisco Networking Academy</p>
                         <p class="text-gray-400 text-lg leading-relaxed">Étude approfondie des vecteurs d'attaque et des stratégies de défense en entreprise.</p>
                     </div>
                     <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4">
@@ -1221,7 +1237,7 @@
                             <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Comptabilité GES</h3>
-                        <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">Cisco Networking Academy</p>
+                        <p class="cert-org text-sm mb-4 font-medium uppercase tracking-wider">Cisco Networking Academy</p>
                         <p class="text-gray-400 text-lg leading-relaxed">Mesure et réduction de l'empreinte carbone liée aux infrastructures informatiques.</p>
                     </div>
                     <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4">
@@ -1241,7 +1257,7 @@
                             <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">SecNumacadémie</h3>
-                        <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">ANSSI</p>
+                        <p class="cert-org text-sm mb-4 font-medium uppercase tracking-wider">ANSSI</p>
                         <p class="text-gray-400 text-lg leading-relaxed">Certification officielle de l'ANSSI sur la sécurité des systèmes d'information.</p>
                     </div>
                     <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4">
@@ -1261,7 +1277,7 @@
                             <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Bases de la Sécurité Numérique</h3>
-                        <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">OpenClassrooms</p>
+                        <p class="cert-org text-sm mb-4 font-medium uppercase tracking-wider">OpenClassrooms</p>
                         <p class="text-gray-400 text-lg leading-relaxed">Fondamentaux sur la protection des données personnelles et la sécurité des comptes.</p>
                     </div>
                     <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4">
@@ -1281,7 +1297,7 @@
                             <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Advent of Cyber 2025</h3>
-                        <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">TryHackMe</p>
+                        <p class="cert-org text-sm mb-4 font-medium uppercase tracking-wider">TryHackMe</p>
                         <p class="text-gray-400 text-lg leading-relaxed">Participation à un challenge de 24 exercices pratiques couvrant des scénarios variés en cybersécurité offensive et défensive.</p>
                     </div>
                     <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4">
@@ -1301,7 +1317,7 @@
                             <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Pre Security Learning Path</h3>
-                        <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">TryHackMe</p>
+                        <p class="cert-org text-sm mb-4 font-medium uppercase tracking-wider">TryHackMe</p>
                         <p class="text-gray-400 text-lg leading-relaxed">Formation aux fondamentaux de la cybersécurité couvrant réseaux, systèmes Linux/Windows, technologies web et introduction aux attaques et défenses réelles.</p>
                     </div>
                     <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4">
@@ -1321,7 +1337,7 @@
                             <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2026</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Pix</h3>
-                        <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">République Française</p>
+                        <p class="cert-org text-sm mb-4 font-medium uppercase tracking-wider">République Française</p>
                         <p class="text-gray-400 text-lg leading-relaxed">Utiliser le numérique de manière efficace, critique et sécurisée, en mobilisant des compétences allant de la recherche d’information à la protection des données, en passant par la communication et la création de contenus.</p>
                     </div>
                     <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4">
