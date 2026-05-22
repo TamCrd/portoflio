@@ -12,9 +12,9 @@
 
     <style>
 
-        /* ========== STYLE PAR DÉFAUT (MODE SOMBRE) ========== */
+        /* ========== STYLE PAR DÉFAUT (MODE SOMBRE - INTACT) ========== */
         html {
-            font-size: 120% !important; /* Augmenté à 120% pour le rétroprojecteur */
+            font-size: 120% !important;
         }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
@@ -25,7 +25,6 @@
         }
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* ========== ANIMATIONS ET EFFETS DE FOND ========== */
         .aurora {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: radial-gradient(circle at 50% -20%, #1e3a8a 0%, transparent 50%),
@@ -40,7 +39,6 @@
             z-index: 100; background-size: 100% 4px, 3px 100%; pointer-events: none;
         }
 
-        /* ========== NAVIGATION ET BOUTONS ========== */
         .nav-blur { 
             background: rgba(3, 7, 18, 0.8); 
             backdrop-filter: blur(20px); 
@@ -97,7 +95,6 @@
             margin: 0.25rem;
         }
 
-        /* ========== CARTES (PROJETS, FORMATIONS, CERTIFS) ========== */
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -166,7 +163,6 @@
             border-color: #3b82f6; transform: translateY(-5px);
         }
 
-        /* ========== CARROUSEL CNIL ========== */
         .slider-image.hidden {
             display: none !important;
         }
@@ -174,7 +170,6 @@
             display: block !important;
         }
 
-        /* ========== BOUTON THEME VOLANT ========== */
         #theme-toggle {
             position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
             width: 3.2rem; height: 3.2rem; border-radius: 50%;
@@ -189,105 +184,153 @@
             transform: scale(1.1);
         }
 
-        /* GESTION DYNAMIQUE DU BOUTON SOLEIL / LUNE */
-        /* Par défaut (sombre), on cache l'icône de lune s'il y en a deux, ou on gère via JS. */
-        html:not(.light-mode) #theme-toggle .fa-moon { display: none; }
-        html:not(.light-mode) #theme-toggle .fa-sun { display: block; }
-        html.light-mode #theme-toggle .fa-sun { display: none; }
-        html.light-mode #theme-toggle .fa-moon { display: block; }
+        /* ========== GESTION DYNAMIQUE DU BOUTON SOLEIL / LUNE ========== */
+        #theme-toggle i { transition: all 0.3s ease; }
+        html:not(.light-mode) #theme-toggle .fa-moon { display: none !important; }
+        html:not(.light-mode) #theme-toggle .fa-sun { display: inline-block !important; }
+        
+        html.light-mode #theme-toggle .fa-sun { display: none !important; }
+        html.light-mode #theme-toggle .fa-moon { display: inline-block !important; }
 
 
-        /* ========== MODE CLAIR EXCLUSIF (RÉTROPROJECTEUR) ========== */
-        /* Alternance de teintes (gris très clair / blanc) pour bien délimiter les sections */
-        .light-mode body {
-            background-color: #ffffff !important;
-            color: #111827 !important;
-        }
-        .light-mode section:nth-of-type(even) {
-            background-color: #f8fafc !important; /* Teinte grise numéro 1 */
-        }
-        .light-mode section:nth-of-type(odd) {
-            background-color: #ffffff !important; /* Teinte blanche numéro 2 */
-        }
-        .light-mode main, .light-mode footer {
-            background-color: #ffffff !important;
+        /* ==================================================================== */
+        /* ========== MODE CLAIR EXCLUSIF (NOUVEAU DESIGN FANTAISIE) ========== */
+        /* ==================================================================== */
+
+        /* Fond avec de la fantaisie : Un dégradé pastel doux style "Aurora de jour" */
+        html.light-mode body {
+            background-color: #f8fafc !important;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(219, 234, 254, 0.8) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(224, 231, 255, 0.8) 0px, transparent 50%) !important;
+            background-attachment: fixed !important;
+            color: #0f172a !important;
         }
 
-        /* Supprime les effets sombres parasites */
-        .light-mode .aurora, .light-mode body::before, .light-mode .section-dark {
+        /* Supprimer les effets sombres parasites */
+        html.light-mode .aurora, 
+        html.light-mode body::before, 
+        html.light-mode .section-dark {
             display: none !important;
         }
 
-        /* Cartes bien visibles sur les différents fonds */
-        .light-mode .project-card, 
-        .light-mode .cert-card, 
-        .light-mode .glass-card, 
-        .light-mode div[class*="bg-gray-800"] {
-            background-color: #f1f5f9 !important;
-            border-color: #cbd5e1 !important;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+        /* Délimitation des sections plus élégante */
+        html.light-mode section {
+            background: transparent !important;
+            border-bottom: 1px dashed rgba(148, 163, 184, 0.4) !important;
+        }
+        html.light-mode section:nth-child(even) {
+            background: rgba(255, 255, 255, 0.3) !important;
         }
 
-        /* Enlever complètement le voile noir/sombre sur les images de projets */
-        .light-mode .project-image {
-            background: #e2e8f0 !important;
+        /* Les Cartes de base en mode clair */
+        html.light-mode .project-card, 
+        html.light-mode .cert-card, 
+        html.light-mode .glass-card,
+        html.light-mode div[class*="bg-gray-800"] {
+            background: rgba(255, 255, 255, 0.6) !important;
+            backdrop-filter: blur(12px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.9) !important;
+            border-radius: 1.5rem !important;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 15px rgba(59, 130, 246, 0.05) !important;
+            transition: all 0.3s ease-in-out !important;
         }
-        .light-mode .project-image img {
-            opacity: 1 !important; /* Image éclatante et nette immédiatement ! */
+
+        /* 🌟 EFFET HOVER STYLE MODE SOMBRE SUR LES CERTIFICATIONS 🌟 */
+        html.light-mode .cert-card:hover {
+            background: #030712 !important; /* Devient noir comme en mode sombre */
+            border-color: #3b82f6 !important; /* Bordure néon bleue */
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.5) !important; /* Lueur néon */
+            transform: translateY(-5px) !important;
+        }
+        /* Force tout le texte interne à s'allumer en blanc au survol */
+        html.light-mode .cert-card:hover h3,
+        html.light-mode .cert-card:hover p,
+        html.light-mode .cert-card:hover span,
+        html.light-mode .cert-card:hover i {
+            color: #ffffff !important;
+        }
+
+        /* Correction des Formations : Belles bulles de contenu */
+        html.light-mode .timeline-item {
+            background: rgba(255, 255, 255, 0.7) !important;
+            backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(255, 255, 255, 1) !important;
+            border-radius: 1.5rem !important;
+            padding: 1.5rem 2rem !important;
+            margin-bottom: 2.5rem !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
+            border-left: 5px solid #3b82f6 !important;
+        }
+
+        /* Typographie et lisibilité par défaut en mode clair */
+        html.light-mode p, 
+        html.light-mode h1, 
+        html.light-mode h2, 
+        html.light-mode h3, 
+        html.light-mode h4,
+        html.light-mode li,
+        html.light-mode span:not([class*="bg-blue-500"]) {
+            color: #1e293b !important;
+            transition: color 0.3s ease;
+        }
+
+        /* Enlever le filtre sombre des images */
+        html.light-mode .project-image {
+            background: transparent !important;
+        }
+        html.light-mode .project-image img {
+            opacity: 1 !important;
             filter: none !important;
         }
 
-        /* Correction lisibilité du Carrousel RGPD/CNIL en mode clair */
-        .light-mode #slider-container {
-            background-color: #f8fafc !important;
-            border: 2px solid #cbd5e1 !important;
-            border-radius: 1rem;
-            padding: 0.5rem;
+        /* Barre de navigation et Filtres */
+        html.light-mode .nav-blur {
+            background: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(15px) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03) !important;
         }
-
-        /* Textes sombres obligatoires partout */
-        .light-mode p, 
-        .light-mode h1, 
-        .light-mode h2, 
-        .light-mode h3, 
-        .light-mode h4,
-        .light-mode li,
-        .light-mode span:not([class*="bg-blue-500"]) {
-            color: #1f2937 !important;
-        }
-
-        /* Barre de navigation haute */
-        .light-mode .nav-blur {
-            background: rgba(255, 255, 255, 0.95) !important;
-            border-bottom: 1px solid rgba(0,0,0,0.1) !important;
-        }
-        .light-mode .nav-blur a { color: #1f2937 !important; }
+        html.light-mode .nav-blur a { color: #1e293b !important; }
         
-        /* Boutons de filtres */
-        .light-mode .filter-btn, .light-mode .projet-filter-btn {
-            background: rgba(0,0,0,0.05) !important;
-            border-color: rgba(0,0,0,0.12) !important;
+        html.light-mode .filter-btn, html.light-mode .projet-filter-btn {
+            background: rgba(255, 255, 255, 0.8) !important;
+            border-color: #cbd5e1 !important;
             color: #475569 !important;
+            border-radius: 2rem !important;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02) !important;
         }
-        .light-mode .filter-btn:hover, .light-mode .projet-filter-btn:hover,
-        .light-mode .filter-btn.active, .light-mode .projet-filter-btn.active {
+        html.light-mode .filter-btn:hover, html.light-mode .projet-filter-btn:hover,
+        html.light-mode .filter-btn.active, html.light-mode .projet-filter-btn.active {
             background: #3b82f6 !important;
             color: white !important;
+            border-color: #3b82f6 !important;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3) !important;
         }
 
-        /* Badges de compétences */
-        .light-mode .skill-tag {
-            background: rgba(59,130,246,0.1) !important;
-            border-color: rgba(59,130,246,0.3) !important;
+        /* Badges de compétences clairs */
+        html.light-mode .skill-tag {
+            background: rgba(59, 130, 246, 0.1) !important;
+            border-color: rgba(59, 130, 246, 0.3) !important;
             color: #1d4ed8 !important;
+            border-radius: 1rem !important;
         }
 
-        /* Bouton volant en mode clair */
-        .light-mode #theme-toggle {
+        /* Le carrousel en mode clair */
+        html.light-mode #slider-container {
+            background-color: #ffffff !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 1.5rem !important;
+            padding: 0.5rem !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04) !important;
+        }
+
+        /* Style du bouton thème volant en mode clair */
+        html.light-mode #theme-toggle {
             background: #ffffff !important;
-            color: #1f2937 !important;
-            border-color: #cbd5e1 !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+            color: #3b82f6 !important;
+            border-color: #bfdbfe !important;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2) !important;
         }
     </style>
 </head>
