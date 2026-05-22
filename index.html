@@ -101,7 +101,7 @@
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             border-radius: 1.5rem;
-            padding: 2.5rem; /* Conservé précieusement */
+            padding: 2.5rem;
         }
         .glass-card:hover { 
             border-color: #3b82f6;
@@ -110,7 +110,6 @@
 
         .section-dark { background: rgba(0, 0, 0, 0.2); }
         
-        /* TIMELINE MODE SOMBRE */
         .timeline-item {
             border-left: 2px solid rgba(59, 130, 246, 0.3);
             padding-left: 2rem;
@@ -188,20 +187,14 @@
         html.light-mode #theme-toggle .fa-sun { display: none !important; }
         html.light-mode #theme-toggle .fa-moon { display: inline-block !important; }
 
-        /* Ajustement proportionnel du copyright en mode sombre */
-        .copyright, footer p, footer span {
-            font-size: 0.7rem !important;
-            opacity: 0.6;
-        }
-
 
         /* ==================================================================== */
-        /* ========== MODE CLAIR TOUCHE CYBER - SÉCURISÉ & HARMONISÉ ========== */
+        /* ========== MODE CLAIR DESIGN CYBER-TECH (CORRIGÉ & SÉCURISÉ) ======= */
         /* ==================================================================== */
 
-        /* 1. Global & Suppression des effets sombres parasites */
+        /* 1. Fond alterné "Light Tech" */
         html.light-mode body {
-            background-color: #f8fafc !important; /* Arrière-plan légèrement bleuté tech au lieu de blanc brut */
+            background-color: #f8fafc !important; /* Blanc-bleuté industriel */
             color: #0f172a !important;
         }
         html.light-mode .aurora, 
@@ -209,7 +202,7 @@
             display: none !important;
         }
 
-        /* 2. Réactivation et délimitation franche des sections */
+        /* Délimitation franche pour le défilement */
         html.light-mode #accueil { background-color: #f8fafc !important; }
         html.light-mode #apropos { background-color: #f1f5f9 !important; display: block !important; } 
         html.light-mode #competences { background-color: #ffffff !important; }
@@ -219,73 +212,91 @@
         html.light-mode #certifications { background-color: #ffffff !important; }
         html.light-mode #veille { background-color: #f1f5f9 !important; }
         html.light-mode #contact { background-color: #ffffff !important; }
-        html.light-mode footer { background-color: #e2e8f0 !important; }
+        html.light-mode footer { background-color: #cbd5e1 !important; }
 
-        /* 3. Les Cartes : Ajout d'une bordure Cyber Cyan/Bleue dynamique */
-        html.light-mode .project-card, 
-        html.light-mode .cert-card, 
-        html.light-mode .glass-card,
-        html.light-mode div[class*="bg-gray-800"] {
-            background: rgba(255, 255, 255, 0.95) !important;
-            border: 1px solid rgba(59, 130, 246, 0.3) !important; /* Bordure colorée tech */
-            border-top: 3px solid #3b82f6 !important; /* Ligne supérieure cyber active */
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.05) !important;
+        /* 2. BARRE DE NAVIGATION EN GRIS ARDOISE (Contraste premium avec l'accueil) */
+        html.light-mode .nav-blur {
+            background: rgba(30, 41, 59, 0.98) !important; /* Gris foncé Slate pour trancher directement */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(20px) !important;
+        }
+        html.light-mode .nav-blur a {
+            color: #f8fafc !important; /* Liens blancs pour ressortir sur la barre grise */
+            font-weight: 700 !important;
+        }
+        html.light-mode .nav-blur a:hover {
+            color: #3b82f6 !important;
         }
 
-        /* 4. Effet de survol Cyber Lumineux en Mode Clair */
+        /* 3. Protection et Style Cyber des Cartes (Correction du bug de débordement) */
+        html.light-mode .glass-card,
+        html.light-mode .cert-card {
+            background: #ffffff !important;
+            border: 1px solid rgba(59, 130, 246, 0.2) !important;
+            border-top: 4px solid #3b82f6 !important; /* Ligne cyber supérieure */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+        }
+
+        /* Spécifique cartes de projet : forçage de la découpe d'image */
+        html.light-mode .project-card {
+            background: #ffffff !important;
+            border: 1px solid rgba(59, 130, 246, 0.2) !important;
+            border-top: 4px solid #3b82f6 !important;
+            overflow: hidden !important; /* Empêche l'image de dépasser des arrondis */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+        }
+
+        /* Effet de survol Cyber Lumineux */
         html.light-mode .project-card:hover,
         html.light-mode .glass-card:hover,
         html.light-mode .cert-card:hover {
-            border-color: #06b6d4 !important; /* Flash Cyan au survol */
+            border-color: #06b6d4 !important; /* Lueur Cyan au survol */
             box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15) !important;
         }
 
-        /* 5. CORRECTION DU TRAIT DE FORMATION (TIMELINE) */
-        /* Fini la grosse boîte blanche fermée, on remet le même trait épuré qu'en mode sombre */
+        /* 4. Fix de la Timeline (Ligne à gauche préservée comme demandé) */
         html.light-mode .timeline-item {
             background: transparent !important;
             border: none !important;
             box-shadow: none !important;
-            border-left: 2px solid #3b82f6 !important; /* Un vrai trait à gauche, identique au sombre */
+            border-left: 2px solid #3b82f6 !important; /* Trait bleu continu à gauche */
             border-radius: 0 !important;
             padding-left: 2rem !important;
             margin-bottom: 3rem !important;
         }
         html.light-mode .timeline-item::before {
-            background: #06b6d4 !important; /* Puce cyan tech */
+            background: #06b6d4 !important;
             box-shadow: 0 0 8px #06b6d4 !important;
         }
 
-        /* 6. POLICE ET GRAISSE HARMONISÉES (Fini le forçage global qui écrasait tout à 500) */
-        html.light-mode p, html.light-mode li, html.light-mode span:not([class*="bg-blue-500"]) {
-            color: #334155 !important; /* Gris ardoise textuel très lisible */
-        }
+        /* 5. GESTION DES TEXTES & HIÉRARCHIE (Correction de la taille du sous-titre) */
         html.light-mode h1, html.light-mode h2, html.light-mode h3, html.light-mode h4 {
-            color: #0f172a !important; /* Titres bien noirs et percutants */
+            color: #0f172a !important; /* Titres bien noirs */
+        }
+        html.light-mode p, html.light-mode li, html.light-mode span:not([class*="bg-blue-500"]) {
+            color: #334155 !important; /* Textes généraux très lisibles */
         }
 
-        /* 7. PROPORTION IDÉALE DU COPYRIGHT (Le plus petit texte, mais lisible) */
-        html.light-mode footer, 
-        html.light-mode footer p, 
-        html.light-mode footer span, 
-        html.light-mode .copyright, 
-        html.light-mode .copyright * {
-            font-size: 0.7rem !important; /* Redescendu pour être le plus petit élément du site */
-            color: #64748b !important;
-            font-weight: 600 !important;
-            letter-spacing: 0.05em;
+        /* Forçage de sécurité pour que ton texte d'opportunités reste grand et impactant */
+        html.light-mode #accueil p {
+            font-size: 1.15rem !important; 
+            font-weight: 500 !important;
+            color: #475569 !important;
         }
 
-        /* Elements secondaires restés intacts */
+        /* Le Copyright : STRICTEMENT lilliputien mais parfaitement lisible */
+        html.light-mode .copyright,
+        html.light-mode footer p.text-xs {
+            font-size: 0.75rem !important; /* Le plus petit élément du site */
+            color: #475569 !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+        }
+
+        /* Éléments de boutons et badges */
         html.light-mode .project-image { background: #f1f5f9 !important; }
         html.light-mode .project-image img { opacity: 1 !important; filter: none !important; }
 
-        html.light-mode .nav-blur {
-            background: rgba(255, 255, 255, 0.95) !important;
-            border-bottom: 1px solid #e2e8f0 !important;
-        }
-        html.light-mode .nav-blur a { color: #0f172a !important; font-weight: 700 !important; }
-        
         html.light-mode .filter-btn, html.light-mode .projet-filter-btn {
             background: #ffffff !important;
             border-color: #cbd5e1 !important;
@@ -314,7 +325,7 @@
             color: #3b82f6 !important;
             border-color: #cbd5e1 !important;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
-        }  
+        }
     </style>
 </head>
 <body>
