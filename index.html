@@ -550,7 +550,7 @@
                         <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expPrep3">2024 - Présent</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expPrep1">Préparateur de commandes</h3>
-                    <p class="text-blue-800 dark:text-blue-300 text-base font-medium uppercase tracking-wider" data-translate="expPrep2">Auchan Retail - Epagny</p>
+                    <p class="employer-name text-base font-medium uppercase tracking-wider" data-translate="expPrep2">Auchan Retail - Epagny</p>
                     
                     <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Préparation de commandes PGC, Produits Frais, Fruits et Légumes</li>
@@ -568,7 +568,7 @@
                         <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expEntrain3">2025 - Présent</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expEntrain1">Entraîneuse de gardiennes</h3>
-                    <p class="text-blue-800 dark:text-blue-300 text-base font-medium uppercase tracking-wider" data-translate="expEntrain2">FC Epagny-Metz-Tessy</p>
+                    <p class="employer-name text-base font-medium uppercase tracking-wider" data-translate="expEntrain2">FC Epagny-Metz-Tessy</p>
                     
                     <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Encadrement technique et physique</li>
@@ -621,7 +621,7 @@
                         <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expElearning3">Mai - Juin 2023</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expElearning1">Stage - Concepteur eLearning</h3>
-                    <p class="text-blue-800 dark:text-blue-300 text-base font-medium uppercase tracking-wider" data-translate="expElearning2">Creativ Minds - Nyon</p>
+                    <p class="employer-name text-base font-medium uppercase tracking-wider" data-translate="expElearning2">Creativ Minds - Nyon</p>
                     
                     <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Création de modules de formation</li>
@@ -640,7 +640,7 @@
                         <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2018 - 2019</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expObs1">Stage d'Observation</h3>
-                    <p class="text-blue-800 dark:text-blue-300 text-base font-medium uppercase tracking-wider" data-translate="expObs2">École Primaire - Perly</p>
+                    <p class="employer-name text-base font-medium uppercase tracking-wider" data-translate="expObs2">École Primaire - Perly</p>
                     
                     <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Observation des terrains éducatifs</li>
@@ -1785,50 +1785,36 @@
         }); 
         
 
-        // Filtres Formation
-        
+        // ---- FILTRE PROJETS PAR COMPÉTENCE ----
+        document.querySelectorAll('.projet-filter-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                // Activer ce bouton
+                document.querySelectorAll('.projet-filter-btn').forEach(function(b) {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
 
-        // Filtres Projets - event delegation sur le container
-        (function() {
-            const container = document.getElementById('filter-competence');
-            if (!container) return;
-
-            container.addEventListener('click', function(e) {
-                const btn = e.target.closest('.projet-filter-btn');
-                if (!btn) return;
-                e.preventDefault();
-                e.stopPropagation();
-
-                // Mettre à jour l'état actif
-                container.querySelectorAll('.projet-filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filter = btn.getAttribute('data-filter');
-                const cards = document.querySelectorAll('.project-card');
-
-                cards.forEach(card => {
+                var filter = this.getAttribute('data-filter');
+                document.querySelectorAll('.project-card').forEach(function(card) {
                     if (filter === 'all' || card.classList.contains(filter)) {
-                        card.style.cssText = card.style.cssText.replace(/display:[^;]+;?/g, '');
                         card.style.display = 'block';
                     } else {
                         card.style.display = 'none';
                     }
                 });
             });
-        })();
+        });
 
-        // Filtres Formation (identique, event delegation)
-        (function() {
-            const container = document.querySelector('#formation .flex.justify-center');
-            if (!container) return;
-            container.addEventListener('click', function(e) {
-                const btn = e.target.closest('.filter-btn');
-                if (!btn) return;
-                e.preventDefault();
-                container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.getAttribute('data-filter');
-                document.querySelectorAll('#formationContainer .timeline-item').forEach(item => {
+        // ---- FILTRE FORMATION PAR PARCOURS ----
+        document.querySelectorAll('.filter-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(function(b) {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                var filter = this.getAttribute('data-filter');
+                document.querySelectorAll('#formationContainer .timeline-item').forEach(function(item) {
                     if (filter === 'all' || item.classList.contains(filter)) {
                         item.style.display = 'block';
                     } else {
@@ -1836,7 +1822,7 @@
                     }
                 });
             });
-        })();
+        });
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
