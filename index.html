@@ -12,9 +12,9 @@
 
     <style>
 
-      /* ========== STYLE PAR DÉFAUT (MODE SOMBRE - REDIMENSIONNÉ) ========== */
+      /* ========== STYLE DE BASE & MODE SOMBRE (INTACT & ÉQUILIBRÉ) ========== */
         html {
-            font-size: 125% !important; /* Augmentation globale de la base de calcul de taille */
+            font-size: 110% !important; /* Augmentation globale douce (pas excessive) */
         }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
@@ -25,13 +25,13 @@
         }
         .mono { font-family: 'JetBrains Mono', monospace; }
 
+        /* Animation sombre */
         .aurora {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: radial-gradient(circle at 50% -20%, #1e3a8a 0%, transparent 50%),
                         radial-gradient(circle at 0% 100%, #1e1b4b 0%, transparent 50%);
             opacity: 0.5;
         }
-
         body::before {
             content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
@@ -39,146 +39,116 @@
             z-index: 100; background-size: 100% 4px, 3px 100%; pointer-events: none;
         }
 
-        /* Liens de la barre de navigation agrandis */
+        /* ----- NAVIGATION ----- */
         .nav-blur { 
             background: rgba(3, 7, 18, 0.8); 
             backdrop-filter: blur(20px); 
             border-bottom: 1px solid rgba(255,255,255,0.05); 
         }
-        .nav-blur a {
+
+        /* ----- SECTION ACCUEIL (CORRECTIONS CIBLÉES) ----- */
+        /* Sous-titre INFRASTRUCTURE & CYBERSECURITY agrandi proprement */
+        span[data-translate="heroSubtitle"] {
             font-size: 1.1rem !important;
-            font-weight: 600;
+            font-weight: 700;
         }
-        
-        /* Gros Boutons d'action agrandis */
+
+        /* Harmonisation parfaite des DEUX boutons du header (CV et Projets) */
+        #accueil .flex.gap-8 a {
+            padding: 1.2rem 2.5rem !important;
+            font-size: 1rem !important; /* Même taille pour les deux */
+            font-weight: 700 !important;
+        }
         .btn-cyber {
             position: relative; overflow: hidden;
             transition: all 0.4s; border: 1px solid rgba(59, 130, 246, 0.5);
-            padding: 1rem 2.2rem !important;
-            font-size: 1.05rem !important;
         }
-        .btn-cyber:hover {
-            background: #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        .btn-cyber:hover, #accueil .flex.gap-8 a:not(.btn-cyber):hover {
+            background: #3b82f6 !important; 
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
             transform: scale(1.05);
+            border-color: #3b82f6 !important;
         }
 
-        /* Boutons de filtres agrandis */
+        /* Widget IP / Annecy (Ni trop grand, ni trop petit) */
+        #accueil .absolute.left-10.mono {
+            font-size: 0.85rem !important;
+            line-height: 2 !important;
+        }
+
+        /* ----- BOUTONS DE FILTRAGES ----- */
         .filter-btn, .projet-filter-btn {
-            padding: 0.7rem 1.8rem !important;
+            padding: 0.75rem 1.75rem !important;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 2rem;
             color: #9ca3af;
-            font-size: 1.05rem !important;
+            font-size: 1rem !important;
             cursor: pointer;
             transition: all 0.3s ease;
         }
         .filter-btn:hover, .projet-filter-btn:hover,
         .filter-btn.active, .projet-filter-btn.active {
-            background: #3b82f6;
-            border-color: #3b82f6;
-            color: white;
+            background: #3b82f6; border-color: #3b82f6; color: white;
         }
 
-        .lang-btn {
-            padding: 0.6rem 1.2rem !important;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0.5rem;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.05rem !important;
-        }
-
-        /* BALISES / TAGS (Ex: Docker) : Nettement plus grands et espacés */
+        /* ----- BADGES (Docker, etc.) ----- */
         .skill-tag {
-            display: inline-block;
-            padding: 0.4rem 1rem !important;
-            background: rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 1rem;
-            font-size: 1rem !important;
-            font-weight: 600 !important;
-            margin: 0.35rem !important;
+            display: inline-block; padding: 0.35rem 1rem !important;
+            background: rgba(59, 130, 246, 0.2); border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 1rem; font-size: 0.9rem !important; margin: 0.3rem !important;
         }
 
-        /* Boîtes et Cartes élargies */
+        /* ----- CARTES GÉNÉRALES ----- */
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             border-radius: 1.5rem;
-            padding: 3rem 2.5rem !important;
+            padding: 2.5rem;
         }
-        .glass-card:hover { 
-            border-color: #3b82f6;
-            transform: translateY(-5px);
-        }
-
-        /* TEXTES INTERNES DES CASES (Descriptions, listes d'expérience, etc.) */
-        .glass-card p, .glass-card li,
-        .cert-card p, .cert-card li,
-        .project-card p, .project-card li,
-        #experience p, #experience li {
-            font-size: 1.15rem !important;
-            line-height: 1.7 !important;
-        }
-
-        /* TITRES DE SECTIONS ET PHRASES D'ACCOMPAGNEMENT */
-        h2 {
-            font-size: 3.2rem !important; /* Pour les titres comme // Mes Projets */
-            font-weight: 800 !important;
-        }
-        h3 {
-            font-size: 1.75rem !important; /* Titres des cartes internes */
-        }
-        /* Cible les sous-titres comme "Réalisations techniques et études de cas" */
-        section p[class*="text-gray-400"],
-        section .text-center > p,
-        h2 + p {
-            font-size: 1.3rem !important;
-            font-weight: 400 !important;
-        }
-
+        .glass-card:hover { border-color: #3b82f6; transform: translateY(-5px); }
         .section-dark { background: rgba(0, 0, 0, 0.2); }
-        
+
+        /* ----- FORMATION & TIMELINE ----- */
         .timeline-item {
             border-left: 2px solid rgba(59, 130, 246, 0.3);
-            padding-left: 2rem;
-            position: relative;
-            margin-bottom: 3.5rem;
+            padding-left: 2rem; position: relative; margin-bottom: 3rem;
         }
         .timeline-item::before {
             content: ''; position: absolute; left: -5px; top: 0;
-            width: 10px; height: 10px; background: #3b82f6; border-radius: 50%;
+            width: 8px; height: 8px; background: #3b82f6; border-radius: 50%;
+        }
+        /* Agrandissement des textes "Spécialité Littérature...", etc. */
+        .timeline-item ul li {
+            font-size: 1.05rem !important;
+            line-height: 1.6 !important;
+            margin-bottom: 0.3rem;
         }
 
-        /* Cartes projets */
+        /* ----- CARTES PROJETS (Hiérarchie Titre / Description) ----- */
         .project-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 1.5rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            border-radius: 1.5rem; overflow: hidden; transition: all 0.3s ease;
         }
-        .project-card:hover {
-            border-color: #3b82f6;
-            transform: translateY(-10px);
+        .project-card:hover { border-color: #3b82f6; transform: translateY(-10px); }
+        
+        /* Distinction Titre vs Description */
+        .project-card h3 {
+            font-size: 1.5rem !important; /* Titre du projet bien gros (ex: SSH avec Échange de clés) */
+            font-weight: 800 !important;
+            margin-bottom: 0.75rem !important;
         }
-        .project-image {
-            height: 220px; background: #1e293b; overflow: hidden; position: relative;
+        .project-card p {
+            font-size: 1.05rem !important; /* Description plus fine (ex: Configuration de connexions...) */
+            line-height: 1.5 !important;
         }
-        .project-image img {
-            width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: all 0.5s ease;
-        }
-        .project-card:hover .project-image img {
-            opacity: 1; transform: scale(1.1);
-        }
+
+        .project-image { height: 200px; background: #1e293b; overflow: hidden; position: relative; }
+        .project-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: all 0.5s ease; }
+        .project-card:hover .project-image img { opacity: 1; transform: scale(1.1); }
         .project-overlay {
             position: absolute; inset: 0; background: rgba(0, 0, 0, 0.7);
             display: flex; align-items: center; justify-content: center;
@@ -187,23 +157,30 @@
         .project-card:hover .project-overlay { opacity: 1; }
         
         .project-link {
-            color: white; padding: 0.9rem 2rem !important; background: #3b82f6;
-            border-radius: 0.5rem; text-decoration: none; font-size: 1.05rem !important;
+            color: white; padding: 0.75rem 1.5rem; background: #3b82f6;
+            border-radius: 0.5rem; text-decoration: none; font-size: 0.875rem;
             font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em;
         }
 
+        /* ----- CERTIFICATIONS ----- */
         .cert-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 1.5rem; padding: 2.5rem !important; transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.5rem; padding: 2rem; transition: all 0.3s ease;
         }
-        .cert-card:hover {
-            border-color: #3b82f6; transform: translateY(-5px);
-        }
+        .cert-card:hover { border-color: #3b82f6; transform: translateY(-5px); }
 
+        /* Utilitaires */
         .slider-image.hidden { display: none !important; }
         .slider-image:not(.hidden) { display: block !important; }
 
+        /* Copyright unifié (Bien lisible pour les deux modes) */
+        .copyright, footer p, footer p.text-xs {
+            font-size: 0.95rem !important;
+            letter-spacing: 0.05em;
+            font-weight: 600 !important;
+        }
+
+        /* Bouton Thème */
         #theme-toggle {
             position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
             width: 3.5rem; height: 3.5rem; border-radius: 50%;
@@ -211,50 +188,26 @@
             color: #f9fafb; font-size: 1.4rem; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             backdrop-filter: blur(10px); transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
-        #theme-toggle:hover {
-            border-color: #3b82f6; box-shadow: 0 0 16px rgba(59,130,246,0.5);
-            transform: scale(1.1);
-        }
-
-        #theme-toggle i { transition: all 0.3s ease; }
+        #theme-toggle:hover { border-color: #3b82f6; box-shadow: 0 0 16px rgba(59,130,246,0.5); transform: scale(1.1); }
         html:not(.light-mode) #theme-toggle .fa-moon { display: none !important; }
         html:not(.light-mode) #theme-toggle .fa-sun { display: inline-block !important; }
-        
         html.light-mode #theme-toggle .fa-sun { display: none !important; }
         html.light-mode #theme-toggle .fa-moon { display: inline-block !important; }
 
-        /* DOUBLE PAGE COPYRIGHT CONFIGURATION (Nettement plus grand sur les deux modes) */
-        .copyright, 
-        footer p, 
-        footer p.text-xs {
-            font-size: 1.05rem !important; 
-            font-weight: 700 !important;
-            letter-spacing: 0.02em !important;
-        }
-
-        /* TAILLE DE L'ADRESSE IP SIDEBAR : Plus grand mais reste élégant ("Pas trop") */
-        #accueil .absolute.left-10.mono p {
-            font-size: 1.15rem !important;
-            letter-spacing: 0.05em !important;
-        }
-
 
         /* ==================================================================== */
-        /* ========== MODE CLAIR DESIGN CYBER-TECH (AJUSTÉ) =================== */
+        /* ========== MODE CLAIR DESIGN CYBER-TECH (AJUSTÉ & HARMONISÉ) ======= */
         /* ==================================================================== */
 
+        /* 1. Fond général */
         html.light-mode body {
             background-color: #f8fafc !important;
             color: #0f172a !important;
         }
-        html.light-mode .aurora, 
-        html.light-mode body::before {
-            display: none !important;
-        }
+        html.light-mode .aurora, html.light-mode body::before { display: none !important; }
 
-        /* Délimitation des sections */
+        /* 2. Délimitation des sections */
         html.light-mode #accueil { background-color: #f8fafc !important; }
         html.light-mode #apropos { background-color: #f1f5f9 !important; display: block !important; } 
         html.light-mode #competences { background-color: #ffffff !important; }
@@ -266,110 +219,65 @@
         html.light-mode #contact { background-color: #ffffff !important; }
         html.light-mode footer { background-color: #cbd5e1 !important; }
 
-        /* BARRE DE NAVIGATION MODE CLAIR (Gris acier givré haut de gamme) */
+        /* 3. BARRE DE NAVIGATION : Gris acier givré Premium */
         html.light-mode .nav-blur {
-            background: rgba(226, 232, 240, 0.92) !important; 
+            background: rgba(226, 232, 240, 0.95) !important; 
             border-bottom: 1px solid rgba(148, 163, 184, 0.4) !important;
             backdrop-filter: blur(20px) !important;
         }
         html.light-mode .nav-blur a {
             color: #1e293b !important; 
             font-weight: 700 !important;
-            font-size: 1.15rem !important;
         }
-        html.light-mode .nav-blur a:hover {
-            color: #3b82f6 !important;
-        }
+        html.light-mode .nav-blur a:hover { color: #3b82f6 !important; }
 
-        /* Cartes et boîtes sécurisées épaissies */
-        html.light-mode .glass-card,
-        html.light-mode .cert-card {
+        /* 4. Cartes et boîtes sécurisées */
+        html.light-mode .glass-card, html.light-mode .cert-card, html.light-mode .project-card {
             background: #ffffff !important;
             border: 1px solid rgba(59, 130, 246, 0.2) !important;
             border-top: 4px solid #3b82f6 !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
         }
+        html.light-mode .project-card { overflow: hidden !important; } /* Empêche débordement d'image */
 
-        /* Sécurité anti-débordement d'image pour les projets */
-        html.light-mode .project-card {
-            background: #ffffff !important;
-            border: 1px solid rgba(59, 130, 246, 0.2) !important;
-            border-top: 4px solid #3b82f6 !important;
-            overflow: hidden !important; 
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
-        }
-
-        /* Effets de lueur au survol */
-        html.light-mode .project-card:hover,
-        html.light-mode .glass-card:hover,
-        html.light-mode .cert-card:hover {
+        /* Survol des cartes */
+        html.light-mode .project-card:hover, html.light-mode .glass-card:hover, html.light-mode .cert-card:hover {
             border-color: #06b6d4 !important;
-            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.18) !important;
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15) !important;
         }
 
-        /* Ligne de chronologie */
+        /* 5. Timeline (Ligne préservée à gauche) */
         html.light-mode .timeline-item {
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            border-left: 2px solid #3b82f6 !important;
-            border-radius: 0 !important;
-            padding-left: 2rem !important;
-            margin-bottom: 3.5rem !important;
+            background: transparent !important; border: none !important; box-shadow: none !important;
+            border-left: 2px solid #3b82f6 !important; border-radius: 0 !important;
         }
-        html.light-mode .timeline-item::before {
-            background: #06b6d4 !important;
-            box-shadow: 0 0 8px #06b6d4 !important;
-        }
+        html.light-mode .timeline-item::before { background: #06b6d4 !important; box-shadow: 0 0 8px #06b6d4 !important; }
 
-        /* Textes en Mode Clair */
-        html.light-mode h1, html.light-mode h2, html.light-mode h3, html.light-mode h4 {
-            color: #0f172a !important;
-        }
-        html.light-mode p, html.light-mode li, html.light-mode span:not([class*="bg-blue-500"]) {
-            color: #334155 !important;
-        }
+        /* 6. COULEURS DES TEXTES EN MODE CLAIR (Hiérarchie respectée) */
+        html.light-mode h1, html.light-mode h2, html.light-mode h3, html.light-mode h4 { color: #0f172a !important; }
+        html.light-mode p, html.light-mode li, html.light-mode span:not([class*="bg-blue-500"]) { color: #334155 !important; }
 
-        /* Maintien couleur widget IP gauche */
+        /* Maintien widget IP gauche */
+        html.light-mode #accueil .absolute.left-10.mono, 
         html.light-mode #accueil .absolute.left-10.mono p {
-            color: #0f172a !important;
-            opacity: 0.7 !important;
-        }
-        html.light-mode .mono,
-        html.light-mode [class*="mono"] {
-            color: #0f172a !important;
+            color: #0f172a !important; opacity: 0.7 !important;
         }
 
-        /* Boutons de filtres Mode Clair */
+        /* Boutons filtres */
         html.light-mode .filter-btn, html.light-mode .projet-filter-btn {
-            background: #ffffff !important;
-            border-color: #cbd5e1 !important;
-            color: #334155 !important;
+            background: #ffffff !important; border-color: #cbd5e1 !important; color: #334155 !important;
         }
         html.light-mode .filter-btn:hover, html.light-mode .projet-filter-btn:hover,
         html.light-mode .filter-btn.active, html.light-mode .projet-filter-btn.active {
-            background: #3b82f6 !important;
-            color: white !important;
-            border-color: #3b82f6 !important;
+            background: #3b82f6 !important; color: white !important; border-color: #3b82f6 !important;
         }
 
-        /* Badges de compétences (Docker, etc.) Mode Clair */
-        html.light-mode .skill-tag {
-            background: #eff6ff !important;
-            border-color: #bfdbfe !important;
-            color: #1e40af !important;
-        }
-
-        html.light-mode #slider-container {
-            background-color: #ffffff !important;
-            border: 1px solid #cbd5e1 !important;
-        }
+        /* Badges (Docker) */
+        html.light-mode .skill-tag { background: #eff6ff !important; border-color: #bfdbfe !important; color: #1e40af !important; }
 
         html.light-mode #theme-toggle {
-            background: #ffffff !important;
-            color: #3b82f6 !important;
-            border-color: #cbd5e1 !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+            background: #ffffff !important; color: #3b82f6 !important;
+            border-color: #cbd5e1 !important; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
         }
     </style>
 </head>
