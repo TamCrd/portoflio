@@ -201,7 +201,9 @@
     </style>
 </head>
 <body>
-
+    <button id="theme-toggle" class="fixed bottom-5 right-5 z-50 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 mono text-sm">
+        <i class="fas fa-sun mr-2"></i> Mode Clair
+    </button>
     <div class="aurora"></div>
 
     <!-- Navigation -->
@@ -1662,6 +1664,34 @@
                 slideNumberTxt.innerText = currentSlide;
             }
         }
+
+        const toggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('bg-gray-900'); // Si ton fond actuel utilise des classes tailwind dominantes
+            
+            if (body.style.backgroundColor === 'rgb(249, 250, 251)') {
+                // Retour au mode sombre d'origine
+                body.style.backgroundColor = '#030712';
+                body.style.color = '#f9fafb';
+                toggleBtn.innerHTML = '<i class="fas fa-sun mr-2"></i> Mode Clair';
+                // Optionnel : inverser la couleur de tes cartes de projets si nécessaire
+            } else {
+                // Passage au mode clair (Texte sombre, fond blanc/gris très clair)
+                body.style.backgroundColor = '#f9fafb';
+                body.style.color = '#111827';
+                toggleBtn.innerHTML = '<i class="fas fa-moon mr-2"></i> Mode Sombre';
+                
+                // Forcer les textes de description en sombre pour qu'ils soient lisibles
+                document.querySelectorAll('p, h1, h2, h3, span').forEach(el => {
+                    // On cible les éléments pour s'assurer qu'ils passent en bleu foncé / noir
+                    if(!el.classList.contains('text-white')) {
+                        el.style.color = '#1f2937';
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
