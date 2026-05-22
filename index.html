@@ -232,9 +232,10 @@
             color: #0f172a !important;
         }
         body.light-mode .cert-card {
-            background: rgba(255,255,255,0.9) !important;
-            border-color: rgba(0,0,0,0.1) !important;
+            background: rgba(255,255,255,0.95) !important;
+            border-color: rgba(59,130,246,0.2) !important;
             color: #0f172a !important;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
         }
         body.light-mode .section-dark {
             background: rgba(226,232,240,0.5) !important;
@@ -294,7 +295,7 @@
         <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
             <div class="text-2xl font-bold tracking-tighter">PORTFOLIO<span class="text-blue-500">.</span></div>
             
-            <div class="hidden lg:flex gap-6 text-sm font-bold uppercase tracking-[0.15em] text-gray-400">
+            <div class="hidden lg:flex gap-4 text-xs font-bold uppercase tracking-[0.12em] text-gray-400">
                 <a href="#accueil" class="hover:text-white transition" data-translate="navAccueil">Accueil</a>
                 <a href="#apropos" class="hover:text-white transition" data-translate="navApropos">Profil</a>
                 <a href="#competences" class="hover:text-white transition" data-translate="navCompetences">Compétences</a>
@@ -326,12 +327,7 @@
 
     <!-- Hero Section -->
     <section id="accueil" class="relative min-h-screen flex items-center justify-center pt-20">
-        <div class="absolute left-10 top-1/2 -translate-y-1/2 hidden xl:block opacity-20 mono text-[10px] space-y-4">
-            <p>IP_ADDRESS: 192.168.1.1</p>
-            <p>STATUS: SYSTEM_READY</p>
-            <p>LOCATION: ANNECY_FR</p>
-            <div class="h-32 w-[1px] bg-white mx-auto"></div>
-        </div>
+
 
         <div class="text-center z-10 px-6">
             <span class="mono text-blue-400 text-xl md:text-2xl tracking-[0.4em] mb-6 block" data-aos="fade-down" data-translate="heroSubtitle">INFRASTRUCTURE & CYBERSECURITY</span>
@@ -340,8 +336,8 @@
                 Tamara <br class="md:hidden"> Crétard
             </h1>
 
-            <div class="max-w-xl mx-auto px-6 mb-16" data-aos="fade-up" data-aos-delay="200">
-                <p class="text-lg md:text-xl text-gray-400 font-light leading-relaxed" data-translate="heroDescription">
+            <div class="max-w-3xl mx-auto px-6 mb-16" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-xl md:text-2xl text-gray-400 font-light leading-relaxed" data-translate="heroDescription">
                      Future élève-ingénieure en Informatique et Cybersécurité, je me spécialise dans la conception d'infrastructures d’hébergement sécurisées. Passionnée par la résilience système et le durcissement (hardening), j'évolue vers un profil d'experte en sécurisation des environnements critiques et hybrides.
                 </p>
             </div>
@@ -369,7 +365,7 @@
                 Actuellement en transition vers un cycle d'ingénieur en Cybersécurité <!--(INSA / Polytech)-->, je développe une expertise transverse mêlant administration système avancée et gouvernance cyber.
                 Mon parcours atypique, alliant sciences de l'éducation et technologies numériques, est un levier majeur pour la sensibilisation aux risques et la documentation des processus de sécurité. Je maîtrise la mise en œuvre de solutions de haute disponibilité et le déploiement d'architectures réseaux segmentées.
             </p>
-            <p class="text-lg text-gray-400 leading-relaxed" data-translate="aproposTexte2">
+            <p class="text-xl text-gray-400 leading-relaxed" data-translate="aproposTexte2">
                 Mon objectif est de concevoir des infrastructures critiques résilientes, en appliquant des stratégies de durcissement pour garantir la haute disponibilité et l'intégrité des services numériques
             </p>
         </div>
@@ -430,7 +426,7 @@
     <section id="formation" class="section-dark py-32 px-8">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-xl mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="formationTitre">// Formation</h2>
-            <p class="text-center text-gray-400 mb-16" data-translate="formationSousTitre">Mon parcours académique et linguistique</p>
+            <p class="text-center text-gray-400 text-xl mb-16" data-translate="formationSousTitre">Mon parcours académique et linguistique</p>
 
             <!-- Filtres -->
             <div class="flex justify-center gap-4 mb-16 flex-wrap">
@@ -526,7 +522,7 @@
     <section id="experience" class="py-32 px-8">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-xl mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="experienceTitre">// Expérience Professionnelle</h2>
-            <p class="text-center text-gray-400 mb-16" data-translate="experienceSousTitre">Mes emplois, stages et engagements</p>
+            <p class="text-center text-gray-400 text-xl mb-16" data-translate="experienceSousTitre">Mes emplois, stages et engagements</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
@@ -535,12 +531,12 @@
                         <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                             <i class="fa-solid fa-boxes"></i>
                         </div>
-                        <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expPrep3">2024 - Présent</span>
+                        <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expPrep3">2024 - Présent</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expPrep1">Préparateur de commandes</h3>
-                    <p class="text-blue-300/60 text-sm font-medium uppercase tracking-wider" data-translate="expPrep2">Auchan Retail - Epagny</p>
+                    <p class="text-blue-300/60 text-base font-medium uppercase tracking-wider" data-translate="expPrep2">Auchan Retail - Epagny</p>
                     
-                    <ul class="text-gray-400 space-y-3 text-sm mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
+                    <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Préparation de commandes PGC, Produits Frais, Fruits et Légumes</li>
                         <li data-translate="expItem2">Livraison et gestion des stocks</li>
                         <li data-translate="expItem3">Commandes à domicile</li>
@@ -553,12 +549,12 @@
                         <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                             <i class="fa-solid fa-futbol"></i>
                         </div>
-                        <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expEntrain3">2025 - Présent</span>
+                        <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expEntrain3">2025 - Présent</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expEntrain1">Entraîneuse de gardiennes</h3>
-                    <p class="text-blue-300/60 text-sm font-medium uppercase tracking-wider" data-translate="expEntrain2">FC Epagny-Metz-Tessy</p>
+                    <p class="text-blue-300/60 text-base font-medium uppercase tracking-wider" data-translate="expEntrain2">FC Epagny-Metz-Tessy</p>
                     
-                    <ul class="text-gray-400 space-y-3 text-sm mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
+                    <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Encadrement technique et physique</li>
                         <li data-translate="expItem3">Développement des compétences</li>
                         <li data-translate="expItem4">Animation des séances</li>
@@ -570,12 +566,12 @@
                         <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                             <i class="fa-solid fa-network-wired"></i>
                         </div>
-                        <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expStage2">Janvier - Mars 2026</span>
+                        <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expStage2">Janvier - Mars 2026</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expStage1">Stage - Systèmes et Réseaux</h3>
-                    <p class="text-blue-300/60 text-sm font-medium uppercase tracking-wider">Team IT - Carouge</p>
+                    <p class="text-blue-300/60 text-base font-medium uppercase tracking-wider">Team IT - Carouge</p>
                     
-                    <ul class="text-gray-400 space-y-3 text-sm mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
+                    <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Consultations et conseils clients</li>
                         <li data-translate="expItem2">Installation, remplacement, dépannage de matériel (PC, écrans, serveurs...)</li>
                         <li data-translate="expItem3">Gestion à distance</li>
@@ -588,12 +584,12 @@
                         <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                             <i class="fa-solid fa-network-wired"></i>
                         </div>
-                        <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expStage2">Juin 2025</span>
+                        <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expStage2">Juin 2025</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expStage1">Stage - Systèmes et Réseaux</h3>
-                    <p class="text-blue-300/60 text-sm font-medium uppercase tracking-wider">Agentil - Satigny</p>
+                    <p class="text-blue-300/60 text-base font-medium uppercase tracking-wider">Agentil - Satigny</p>
                     
-                    <ul class="text-gray-400 space-y-3 text-sm mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
+                    <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">GPO, Firewall, WSUS et certificats SSL</li>
                         <li data-translate="expItem2">Monitoring Zabbix et installation d'agents</li>
                         <li data-translate="expItem3">Mises à jour OS et troubleshooting</li>
@@ -606,12 +602,12 @@
                         <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                             <i class="fa-solid fa-laptop-code"></i>
                         </div>
-                        <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expElearning3">Mai - Juin 2023</span>
+                        <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20" data-translate="expElearning3">Mai - Juin 2023</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expElearning1">Stage - Concepteur eLearning</h3>
-                    <p class="text-blue-300/60 text-sm font-medium uppercase tracking-wider" data-translate="expElearning2">Creativ Minds - Nyon</p>
+                    <p class="text-blue-300/60 text-base font-medium uppercase tracking-wider" data-translate="expElearning2">Creativ Minds - Nyon</p>
                     
-                    <ul class="text-gray-400 space-y-3 text-sm mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
+                    <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Création de modules de formation</li>
                         <li data-translate="expItem2">Scénarisation pédagogique</li>
                         <li data-translate="expItem3">Recherche et traduction de contenus</li>
@@ -625,12 +621,12 @@
                         <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                             <i class="fa-solid fa-graduation-cap"></i>
                         </div>
-                        <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2018 - 2019</span>
+                        <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2018 - 2019</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2" data-translate="expObs1">Stage d'Observation</h3>
-                    <p class="text-blue-300/60 text-sm font-medium uppercase tracking-wider" data-translate="expObs2">École Primaire - Perly</p>
+                    <p class="text-blue-300/60 text-base font-medium uppercase tracking-wider" data-translate="expObs2">École Primaire - Perly</p>
                     
-                    <ul class="text-gray-400 space-y-3 text-sm mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
+                    <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
                         <li data-translate="expItem1">Observation des terrains éducatifs</li>
                         <li data-translate="expItem2">Analyse des pratiques scolaires</li>
                         <li data-translate="expItem3">Étude des systèmes pédagogiques</li>
@@ -644,7 +640,7 @@
     <section id="projets" class="section-dark py-32 px-8">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-xl mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="projetsTitre">// Mes Projets</h2>
-            <p class="text-center text-gray-400 mb-16" data-translate="projetsSousTitre">Réalisations techniques et études de cas</p>
+            <p class="text-center text-gray-400 text-xl mb-16" data-translate="projetsSousTitre">Réalisations techniques et études de cas</p>
 
             <div class="flex justify-center gap-4 mb-16 flex-wrap">
                 <!-- Filtre par compétence E5 uniquement -->
@@ -671,8 +667,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projNAS">Solutions NAS avec XPenology</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projNASDesc">Installation et configuration de solutions NAS avec XPenology (Nanoboot et Redpill) pour créer un serveur de stockage en réseau avec gestion des volumes RAID, services de sauvegarde et hébergement web.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projNAS">Solutions NAS avec XPenology</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projNASDesc">Installation et configuration de solutions NAS avec XPenology (Nanoboot et Redpill) pour créer un serveur de stockage en réseau avec gestion des volumes RAID, services de sauvegarde et hébergement web.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">NAS</span>
                             <span class="skill-tag">XPenology</span>
@@ -691,8 +687,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projFOG">Déploiement Automatisé FOG</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projFOGDesc">Déploiement automatisé de systèmes et logiciels via un serveur FOG sur un réseau local, avec capture et restauration d'images OS.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projFOG">Déploiement Automatisé FOG</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projFOGDesc">Déploiement automatisé de systèmes et logiciels via un serveur FOG sur un réseau local, avec capture et restauration d'images OS.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">FOG</span>
                             <span class="skill-tag">Déploiement</span>
@@ -710,8 +706,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projCluster">Cluster Haute Disponibilité</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projClusterDesc">Mise en place d'un cluster haute disponibilité avec Corosync/Pacemaker pour assurer la continuité de service d'un serveur web Apache grâce à un système de failover automatique entre deux nœuds.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projCluster">Cluster Haute Disponibilité</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projClusterDesc">Mise en place d'un cluster haute disponibilité avec Corosync/Pacemaker pour assurer la continuité de service d'un serveur web Apache grâce à un système de failover automatique entre deux nœuds.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">HA</span>
                             <span class="skill-tag">Cluster</span>
@@ -731,8 +727,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSSH">SSH avec Échange de Clés</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSSHDesc">Configuration de connexions SSH sécurisées sans mot de passe entre machines Linux et depuis Windows via échange de clés publiques/privées.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSSH">SSH avec Échange de Clés</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSSHDesc">Configuration de connexions SSH sécurisées sans mot de passe entre machines Linux et depuis Windows via échange de clés publiques/privées.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">SSH</span>
                             <span class="skill-tag">Cryptographie</span>
@@ -750,8 +746,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projGLPI">Installation GLPI</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projGLPIDesc">Guide complet d'installation de GLPI (Gestionnaire Libre de Parc Informatique) dans un environnement virtualisé sous Debian avec configuration réseau et base de données.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projGLPI">Installation GLPI</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projGLPIDesc">Guide complet d'installation de GLPI (Gestionnaire Libre de Parc Informatique) dans un environnement virtualisé sous Debian avec configuration réseau et base de données.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">GLPI</span>
                             <span class="skill-tag">Helpdesk</span>
@@ -769,8 +765,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Utilisation Avancée GLPI</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Documentation sur l'utilisation opérationnelle de GLPI avec injection de données, gestion complète du cycle de vie des tickets et exercices pratiques simulant des interventions helpdesk.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Utilisation Avancée GLPI</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Documentation sur l'utilisation opérationnelle de GLPI avec injection de données, gestion complète du cycle de vie des tickets et exercices pratiques simulant des interventions helpdesk.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">GLPI</span>
                             <span class="skill-tag">Data Injection</span>
@@ -790,8 +786,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Sauvegarde Cobian Reflector</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Expérimentation des différents types de sauvegarde (complète, incrémentielle, différentielle) avec Cobian Reflector, incluant sauvegardes locales, distantes via SFTP et cloud.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Sauvegarde Cobian Reflector</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Expérimentation des différents types de sauvegarde (complète, incrémentielle, différentielle) avec Cobian Reflector, incluant sauvegardes locales, distantes via SFTP et cloud.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Sauvegarde</span>
                             <span class="skill-tag">Cloud</span>
@@ -809,8 +805,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Infrastructure de Clonage</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Mise en place d'une infrastructure de clonage utilisant Samba, NFS et SSH avec Clonezilla pour le déploiement et la sauvegarde de systèmes TinyCore Linux sur un réseau privé.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Infrastructure de Clonage</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Mise en place d'une infrastructure de clonage utilisant Samba, NFS et SSH avec Clonezilla pour le déploiement et la sauvegarde de systèmes TinyCore Linux sur un réseau privé.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Sauvegarde</span>
                             <span class="skill-tag">Clonage</span>
@@ -830,8 +826,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Solutions de Connexion à Distance</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Comparaison et mise en œuvre de trois solutions de contrôle à distance (RDP, VNC, clientless) entre machines Linux et Windows.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Solutions de Connexion à Distance</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Comparaison et mise en œuvre de trois solutions de contrôle à distance (RDP, VNC, clientless) entre machines Linux et Windows.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Connexion à distance</span>
                             <span class="skill-tag">RDP</span>
@@ -852,8 +848,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Sécurisation d'un local technique</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Guide complet pour protéger physiquement et numériquement un local technique, incluant serveurs, sauvegardes et plans de continuité.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Sécurisation d'un local technique</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Guide complet pour protéger physiquement et numériquement un local technique, incluant serveurs, sauvegardes et plans de continuité.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Sécurité</span>
                             <span class="skill-tag">Haute Disponibilité</span>
@@ -873,8 +869,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Sensibilisation Périphériques Malveillants</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Atelier de sensibilisation aux attaques par périphériques USB malveillants utilisant un câble O.MG pour démontrer le vol de données et expliquer les mesures de protection.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Sensibilisation Périphériques Malveillants</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Atelier de sensibilisation aux attaques par périphériques USB malveillants utilisant un câble O.MG pour démontrer le vol de données et expliquer les mesures de protection.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Cybersécurité</span>
                             <span class="skill-tag">Sensibilisation</span>
@@ -894,8 +890,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Étude des Processeurs</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Analyse comparative des processeurs pour appareils mobiles, IoT et embarqués, incluant leurs concepteurs, technologies et différences avec les processeurs de PC/serveurs.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Étude des Processeurs</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Analyse comparative des processeurs pour appareils mobiles, IoT et embarqués, incluant leurs concepteurs, technologies et différences avec les processeurs de PC/serveurs.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Processeurs</span>
                             <span class="skill-tag">Architecture ARM</span>
@@ -915,8 +911,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Gestion des Paquets Linux</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Installation et exploration approfondie de paquets Linux sous Debian Buster, incluant la gestion des paquets et l'utilisation avancée des options de commande.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Gestion des Paquets Linux</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Installation et exploration approfondie de paquets Linux sous Debian Buster, incluant la gestion des paquets et l'utilisation avancée des options de commande.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Paquets Linux</span>
                             <span class="skill-tag">cmatrix</span>
@@ -937,8 +933,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Analyse Performances PC</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Étude comparative des performances et de la stabilité d'une configuration PC à l'aide d'outils de diagnostic et de benchmark (CPU-Z, Intel Processor Diagnostic Tool, AIDA64).</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Analyse Performances PC</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Étude comparative des performances et de la stabilité d'une configuration PC à l'aide d'outils de diagnostic et de benchmark (CPU-Z, Intel Processor Diagnostic Tool, AIDA64).</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Benchmark</span>
                             <span class="skill-tag">Diagnostic PC</span>
@@ -958,8 +954,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Sécurisation des Échanges</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Mise en œuvre de méthodes de chiffrement asymétrique, de signature numérique et d'approche hybride PGP pour assurer confidentialité et authentification des échanges.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Sécurisation des Échanges</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Mise en œuvre de méthodes de chiffrement asymétrique, de signature numérique et d'approche hybride PGP pour assurer confidentialité et authentification des échanges.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Chiffrement Asymétrique</span>
                             <span class="skill-tag">Signature Numérique</span>
@@ -980,8 +976,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Montage Réseau Multi-niveaux</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Infrastructure complète avec switch L3, routeur et borne Wi-Fi. Mise en place de routage inter-VLAN, NAT et sécurisation par ACL.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Montage Réseau Multi-niveaux</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Infrastructure complète avec switch L3, routeur et borne Wi-Fi. Mise en place de routage inter-VLAN, NAT et sécurisation par ACL.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">VLAN & Trunking</span>
                             <span class="skill-tag">Routage L3</span>
@@ -1002,8 +998,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Déploiement WordPress & Estatik</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Mise en place d'une solution CMS pour l'agence immobilière IDÉAL. Installation de l'environnement WordPress et configuration du framework Estatik pour la gestion dynamique de catalogue de biens.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Déploiement WordPress & Estatik</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Mise en place d'une solution CMS pour l'agence immobilière IDÉAL. Installation de l'environnement WordPress et configuration du framework Estatik pour la gestion dynamique de catalogue de biens.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">WordPress</span>
                             <span class="skill-tag">Estatik</span>
@@ -1024,8 +1020,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Utilisation de WordPress</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Rédaction d'une documentation fonctionnelle destinée aux agents immobiliers. Ce guide détaille l'administration du catalogue de biens, la gestion des annonces et l'utilisation quotidienne du back-office WordPress/Estatik.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Utilisation de WordPress</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Rédaction d'une documentation fonctionnelle destinée aux agents immobiliers. Ce guide détaille l'administration du catalogue de biens, la gestion des annonces et l'utilisation quotidienne du back-office WordPress/Estatik.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">WordPress</span>
                             <span class="skill-tag">Estatik Agent</span>
@@ -1046,8 +1042,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Solution informatique pour GSB</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Étude comparative et mise en place d'un parc informatique sécurisé. Ce projet inclut le choix du matériel nomade, les préconisations de sécurité et les procédures de remise aux utilisateurs.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Solution informatique pour GSB</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Étude comparative et mise en place d'un parc informatique sécurisé. Ce projet inclut le choix du matériel nomade, les préconisations de sécurité et les procédures de remise aux utilisateurs.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Infrastructure</span>
                             <span class="skill-tag">Sécurité SI</span>
@@ -1066,8 +1062,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Infrastructure Docker</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Mise en œuvre d'une infrastructure conteneurisée. Déploiement de stacks via Docker Compose (Portainer, Nextcloud, Jellyfin) et interconnexion avec un annuaire OpenLDAP pour la gestion centralisée des utilisateurs.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Infrastructure Docker</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Mise en œuvre d'une infrastructure conteneurisée. Déploiement de stacks via Docker Compose (Portainer, Nextcloud, Jellyfin) et interconnexion avec un annuaire OpenLDAP pour la gestion centralisée des utilisateurs.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Docker</span>
                             <span class="skill-tag">Conteneurisation</span>
@@ -1088,8 +1084,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3" data-translate="projSauvegarde">Projet Bristol-Myers Squibb (BMS)</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-translate="projSauvegardeDesc">Déploiement complet d'un parc SI sécurisé: installation de serveurs de domaine et de fichiers, configuration avancée de pfSense (filtrage/DMZ), gestion d'Active Directory (GPO, droits) et supervision avec Nagios.</p>
+                        <h3 class="text-2xl font-bold mb-3" data-translate="projSauvegarde">Projet Bristol-Myers Squibb (BMS)</h3>
+                        <p class="text-gray-400 text-base mb-4" data-translate="projSauvegardeDesc">Déploiement complet d'un parc SI sécurisé: installation de serveurs de domaine et de fichiers, configuration avancée de pfSense (filtrage/DMZ), gestion d'Active Directory (GPO, droits) et supervision avec Nagios.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">pfSense</span>
                             <span class="skill-tag">Active Directory & GPO</span>
@@ -1108,8 +1104,8 @@
     <section id="certifications" class="py-20 bg-gray-900/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <header class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 mono text-blue-400">Certifications</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Mes diplômes et certifications techniques obtenus au cours de mon cursus.</p>
+                <h2 class="text-xl mono text-blue-500 mb-4 tracking-widest uppercase text-center" data-translate="certificationsTitre">// Certifications</h2>
+                <p class="text-gray-400 text-xl max-w-2xl mx-auto">Mes diplômes et certifications techniques obtenus au cours de mon cursus.</p>
             </header>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -1120,7 +1116,7 @@
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                                 <i class="fas fa-user-shield"></i>
                             </div>
-                            <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2024</span>
+                            <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2024</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Atelier RGPD</h3>
                         <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">CNIL (5 Modules)</p>
@@ -1134,10 +1130,10 @@
 
                         <div class="relative w-full h-full flex items-center justify-center">
                             <img id="slider-img-1" src="assets/certifications/rgpd1.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 1">
-                            <img id="slider-img-2" src="assets/certifications/rgpd2.png" class="slider-image hidden max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 2">
-                            <img id="slider-img-3" src="assets/certifications/rgpd3.png" class="slider-image hidden max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 3">
-                            <img id="slider-img-4" src="assets/certifications/rgpd4.png" class="slider-image hidden max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 4">
-                            <img id="slider-img-5" src="assets/certifications/rgpd5.png" class="slider-image hidden max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 5">
+                            <img id="slider-img-2" src="assets/certifications/rgpd2.png" class="slider-image" style="display:none;" max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 2">
+                            <img id="slider-img-3" src="assets/certifications/rgpd3.png" class="slider-image" style="display:none;" max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 3">
+                            <img id="slider-img-4" src="assets/certifications/rgpd4.png" class="slider-image" style="display:none;" max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 4">
+                            <img id="slider-img-5" src="assets/certifications/rgpd5.png" class="slider-image" style="display:none;" max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 5">
                             
                             <div class="absolute inset-0 bg-gray-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                                 <a id="view-large-link" href="assets/certifications/rgpd1.png" target="_blank" class="p-4 bg-blue-600 rounded-full text-white shadow-2xl hover:bg-blue-500 transition-all scale-75 group-hover:scale-100 pointer-events-auto">
@@ -1162,7 +1158,7 @@
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                                 <i class="fas fa-user-secret"></i>
                             </div>
-                            <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2024</span>
+                            <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2024</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">L'Univers de la Cybersécurité</h3>
                         <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">OpenClassrooms</p>
@@ -1182,7 +1178,7 @@
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                                 <i class="fas fa-network-wired"></i>
                             </div>
-                            <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
+                            <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Introduction à la Cybersécurité</h3>
                         <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">Cisco Networking Academy</p>
@@ -1202,7 +1198,7 @@
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                                 <i class="fas fa-shield-alt"></i>
                             </div>
-                            <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
+                            <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Gestion des cybermenaces</h3>
                         <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">Cisco Networking Academy</p>
@@ -1222,7 +1218,7 @@
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                                 <i class="fas fa-leaf"></i>
                             </div>
-                            <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
+                            <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Comptabilité GES</h3>
                         <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">Cisco Networking Academy</p>
@@ -1242,7 +1238,7 @@
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                                 <i class="fas fa-user-shield"></i>
                             </div>
-                            <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
+                            <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">SecNumacadémie</h3>
                         <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">ANSSI</p>
@@ -1262,7 +1258,7 @@
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                                 <i class="fas fa-user-lock"></i>
                             </div>
-                            <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
+                            <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Bases de la Sécurité Numérique</h3>
                         <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">OpenClassrooms</p>
@@ -1282,7 +1278,7 @@
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                                 <i class="fas fa-user-secret"></i>
                             </div>
-                            <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
+                            <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Advent of Cyber 2025</h3>
                         <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">TryHackMe</p>
@@ -1302,7 +1298,7 @@
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                                 <i class="fas fa-user-lock"></i>
                             </div>
-                            <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
+                            <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2025</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Pre Security Learning Path</h3>
                         <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">TryHackMe</p>
@@ -1322,7 +1318,7 @@
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                                 <i class="fas fa-user-lock"></i>
                             </div>
-                            <span class="text-sm text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2026</span>
+                            <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2026</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">Pix</h3>
                         <p class="text-blue-300/60 text-sm mb-4 font-medium uppercase tracking-wider">République Française</p>
@@ -1507,7 +1503,7 @@
     <footer id="contact" class="py-24 px-8">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-xl mono text-blue-500 mb-10 tracking-widest uppercase" data-translate="contactTitre">// Contact</h2>
-            <p class="text-gray-400 mb-12" data-translate="contactSousTitre">Disponible pour des opportunités en administration système, réseaux ou cybersécurité</p>
+            <p class="text-gray-400 text-xl mb-12" data-translate="contactSousTitre">Disponible pour des opportunités en administration système, réseaux ou cybersécurité</p>
             
             <div class="flex justify-center gap-8 mb-12">
                 <a href="mailto:tamara.cretard@gmail.com" class="text-3xl hover:text-blue-500 transition">
@@ -1518,7 +1514,7 @@
                 </a>
             </div>
 
-            <p class="mono text-[10px] text-gray-600 tracking-[0.3em]">© 2026 TAMARA CRÉTARD // SISR PORTFOLIO</p>
+            <p class="mono text-sm text-gray-500 tracking-[0.2em]">© 2026 TAMARA CRÉTARD // SISR PORTFOLIO</p>
         </div>
     </footer>
 
@@ -1846,40 +1842,40 @@
             });
         });
 
-        // --- LOGIQUE CARROUSEL CNIL ---
-        let currentSlide = 1;
-        const totalSlides = 5;
+        // --- LOGIQUE CARROUSEL RGPD ---
+        (function() {
+            let currentSlide = 1;
+            const totalSlides = 5;
 
-        window.changeSlide = function(direction) {
-            // 1. Cacher l'image actuelle
-            const currentImg = document.getElementById(`slider-img-${currentSlide}`);
-            if (currentImg) {
-                currentImg.classList.add('hidden');
-            }
-            
-            // 2. Calculer le nouvel index
-            currentSlide += direction;
-            if (currentSlide > totalSlides) currentSlide = 1;
-            if (currentSlide < 1) currentSlide = totalSlides;
-            
-            // 3. Afficher la nouvelle image
-            const newImg = document.getElementById(`slider-img-${currentSlide}`);
-            if (newImg) {
-                newImg.classList.remove('hidden');
-                
-                // Mettre à jour le lien "Voir en grand"
-                const viewLargeLink = document.getElementById('view-large-link');
-                if (viewLargeLink) {
-                    viewLargeLink.href = newImg.getAttribute('src');
+            window.changeSlide = function(direction) {
+                // Cacher toutes les images
+                for (let i = 1; i <= totalSlides; i++) {
+                    const img = document.getElementById('slider-img-' + i);
+                    if (img) img.style.display = 'none';
                 }
-            }
-            
-            // 4. Mettre à jour le texte du compteur (1/5)
-            const slideNumberTxt = document.getElementById('slide-number');
-            if (slideNumberTxt) {
-                slideNumberTxt.innerText = currentSlide;
-            }
-        }
+                // Calculer nouvel index
+                currentSlide += direction;
+                if (currentSlide > totalSlides) currentSlide = 1;
+                if (currentSlide < 1) currentSlide = totalSlides;
+                // Afficher la bonne image
+                const newImg = document.getElementById('slider-img-' + currentSlide);
+                if (newImg) newImg.style.display = 'block';
+                // Mettre à jour lien
+                const link = document.getElementById('view-large-link');
+                if (link && newImg) link.href = newImg.getAttribute('src');
+                // Mettre à jour compteur
+                const counter = document.getElementById('slide-number');
+                if (counter) counter.innerText = currentSlide;
+            };
+
+            // Init: s'assurer que seule l'image 1 est visible
+            document.addEventListener('DOMContentLoaded', function() {
+                for (let i = 1; i <= totalSlides; i++) {
+                    const img = document.getElementById('slider-img-' + i);
+                    if (img) img.style.display = (i === 1) ? 'block' : 'none';
+                }
+            });
+        })();
 
         // ===== THEME JOUR/NUIT =====
         function toggleTheme() {
