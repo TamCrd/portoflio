@@ -12,47 +12,9 @@
 
     <style>
 
-        /* ========== CORRECTIF MODE CLAIR SUR MESURE ========== */
-        /* Quand .light-mode est actif, on force le fond blanc et le texte sombre partout */
-        .light-mode, 
-        .light-mode body, 
-        .light-mode section, 
-        .light-mode div[class*="bg-gray-"], 
-        .light-mode div[class*="bg-[#030712]"],
-        .light-mode main {
-            background-color: #ffffff !important;
-            background-image: none !important;
-            color: #111827 !important;
-        }
-
-        /* On force les cartes (projets, certifs) à devenir gris clair avec des bordures visibles */
-        .light-mode .project-card, 
-        .light-mode .cert-card, 
-        .light-mode .glass-card, 
-        .light-mode div[class*="bg-gray-800"] {
-            background-color: #f3f4f6 !important;
-            border-color: #d1d5db !important;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
-        }
-
-        /* On force TOUS les textes descriptifs à devenir noirs/bleu foncé pour le rétroprojecteur */
-        .light-mode p, 
-        .light-mode h1, 
-        .light-mode h2, 
-        .light-mode h3, 
-        .light-mode h4,
-        .light-mode span:not([class*="bg-blue-500/5"]) {
-            color: #1f2937 !important;
-        }
-
-        /* On cache l'effet de fond violet/bleu "aurora" qui gâcherait le fond blanc */
-        .light-mode .aurora, .light-mode .scanlines {
-            display: none !important;
-        }
-
+        /* ========== STYLE PAR DÉFAUT (MODE SOMBRE) ========== */
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            font-size: 18px;
             background-color: #030712; 
             color: #f9fafb; 
             overflow-x: hidden; 
@@ -60,108 +22,12 @@
         }
         .mono { font-family: 'JetBrains Mono', monospace; }
         
-         /* ========== BOUTON MODE CLAIR/SOMBRE ========== */
-        #theme-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 9999;
-            width: 3.2rem;
-            height: 3.2rem;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(3, 7, 18, 0.85);
-            color: #f9fafb;
-            font-size: 1.3rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-        }
-        #theme-toggle:hover {
-            border-color: #3b82f6;
-            box-shadow: 0 0 16px rgba(59,130,246,0.5);
-            transform: scale(1.1);
+        /* Grossit proportionnellement toutes les polices pour le rétroprojecteur */
+        html {
+            font-size: 115% !important; 
         }
 
-        /* ========== MODE CLAIR ========== */
-        html.light-mode body {
-            background-color: #f1f5f9;
-            color: #0f172a;
-        }
-        html.light-mode .aurora {
-            background: radial-gradient(circle at 50% -20%, #bfdbfe 0%, transparent 50%),
-                        radial-gradient(circle at 0% 100%, #ddd6fe 0%, transparent 50%);
-            opacity: 0.6;
-        }
-        html.light-mode body::before {
-            display: none;
-        }
-        html.light-mode .nav-blur {
-            background: rgba(241, 245, 249, 0.92);
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-        }
-        html.light-mode .nav-blur .text-2xl { color: #0f172a; }
-        html.light-mode .nav-blur a { color: #475569; }
-        html.light-mode .nav-blur a:hover { color: #0f172a; }
-        html.light-mode .section-dark { background: rgba(0,0,0,0.04); }
-        html.light-mode .glass-card {
-            background: rgba(255,255,255,0.7);
-            border-color: rgba(0,0,0,0.1);
-        }
-        html.light-mode .glass-card:hover { border-color: #3b82f6; }
-        html.light-mode .glass-card h3 { color: #0f172a; }
-        html.light-mode .glass-card ul li { color: #475569; }
-        html.light-mode .text-gray-400 { color: #475569 !important; }
-        html.light-mode .text-gray-300 { color: #334155 !important; }
-        html.light-mode .text-white { color: #0f172a !important; }
-        html.light-mode .timeline-item { border-left-color: rgba(59,130,246,0.4); }
-        html.light-mode .project-card {
-            background: rgba(255,255,255,0.8);
-            border-color: rgba(0,0,0,0.1);
-        }
-        html.light-mode .project-card:hover { border-color: #3b82f6; }
-        html.light-mode .project-card .p-6 h3 { color: #0f172a; }
-        html.light-mode .cert-card {
-            background: rgba(255,255,255,0.75) !important;
-            border-color: rgba(0,0,0,0.1) !important;
-        }
-        html.light-mode .cert-card h3 { color: #0f172a; }
-        html.light-mode .filter-btn, html.light-mode .projet-filter-btn {
-            background: rgba(0,0,0,0.05);
-            border-color: rgba(0,0,0,0.12);
-            color: #475569;
-        }
-        html.light-mode .filter-btn:hover, html.light-mode .projet-filter-btn:hover,
-        html.light-mode .filter-btn.active, html.light-mode .projet-filter-btn.active {
-            background: #3b82f6;
-            border-color: #3b82f6;
-            color: white;
-        }
-        html.light-mode .skill-tag {
-            background: rgba(59,130,246,0.12);
-            border-color: rgba(59,130,246,0.25);
-            color: #1e40af;
-        }
-        html.light-mode #theme-toggle {
-            background: rgba(241,245,249,0.9);
-            color: #0f172a;
-            border-color: rgba(0,0,0,0.15);
-        }
-        html.light-mode section[id="certifications"] { background: rgba(0,0,0,0.03) !important; }
-        html.light-mode .bg-gray-900\/30 { background: rgba(0,0,0,0.04) !important; }
-        html.light-mode .bg-gray-800\/40 { background: rgba(255,255,255,0.75) !important; }
-        html.light-mode .bg-gray-700\/50 { border-color: rgba(0,0,0,0.1) !important; }
-        html.light-mode .text-blue-300\/60 { color: #2563eb !important; opacity: 0.8; }
-        html.light-mode .mono.text-blue-500 { color: #2563eb !important; }
-        html.light-mode .opacity-20 { color: #334155 !important; }
-        html.light-mode .project-image { background: #e2e8f0; }
-        html.light-mode footer, html.light-mode footer * { color: #334155 !important; }
-
-        /* Animation de fond : Aurora */
+        /* ========== ANIMATIONS ET EFFETS DE FOND ========== */
         .aurora {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: radial-gradient(circle at 50% -20%, #1e3a8a 0%, transparent 50%),
@@ -169,7 +35,6 @@
             opacity: 0.5;
         }
 
-        /* Effet de scanline rétro-futuriste */
         body::before {
             content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
@@ -177,6 +42,7 @@
             z-index: 100; background-size: 100% 4px, 3px 100%; pointer-events: none;
         }
 
+        /* ========== NAVIGATION ET BOUTONS ========== */
         .nav-blur { 
             background: rgba(3, 7, 18, 0.8); 
             backdrop-filter: blur(20px); 
@@ -190,103 +56,6 @@
         .btn-cyber:hover {
             background: #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
             transform: scale(1.05);
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            border-radius: 1.5rem;
-            padding: 2.5rem;
-        }
-        .glass-card:hover { 
-            border-color: #3b82f6;
-            transform: translateY(-5px);
-        }
-
-        .section-dark { background: rgba(0, 0, 0, 0.2); }
-        
-        .timeline-item {
-            border-left: 2px solid rgba(59, 130, 246, 0.3);
-            padding-left: 2rem;
-            position: relative;
-            margin-bottom: 3rem;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -5px;
-            top: 0;
-            width: 8px;
-            height: 8px;
-            background: #3b82f6;
-            border-radius: 50%;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 1.5rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .project-card:hover {
-            border-color: #3b82f6;
-            transform: translateY(-10px);
-        }
-        .project-image {
-            height: 200px;
-            background: #1e293b;
-            overflow: hidden;
-            position: relative;
-        }
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-            transition: all 0.5s ease;
-        }
-        .project-card:hover .project-image img {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        .project-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-        .project-link {
-            color: white;
-            padding: 0.75rem 1.5rem;
-            background: #3b82f6;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .cert-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-        .cert-card:hover {
-            border-color: #3b82f6;
-            transform: translateY(-5px);
         }
 
         .filter-btn, .projet-filter-btn {
@@ -318,9 +87,7 @@
             align-items: center;
             gap: 0.5rem;
         }
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
+        .lang-btn:hover { background: rgba(255, 255, 255, 0.1); }
 
         .skill-tag {
             display: inline-block;
@@ -332,26 +99,146 @@
             margin: 0.25rem;
         }
 
-        .slider-image {
-            display: block; /* Par défaut elles occupent l'espace */
+        /* ========== CARTES (PROJETS, FORMATIONS, CERTIFS) ========== */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+        }
+        .glass-card:hover { 
+            border-color: #3b82f6;
+            transform: translateY(-5px);
         }
 
-        .slider-image.hidden {
-            display: none !important; /* Force la disparition quand la classe hidden est là */
+        .section-dark { background: rgba(0, 0, 0, 0.2); }
+        
+        .timeline-item {
+            border-left: 2px solid rgba(59, 130, 246, 0.3);
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -5px; top: 0;
+            width: 8px; height: 8px; background: #3b82f6; border-radius: 50%;
         }
 
-        /* Grossit proportionnellement toutes les polices pour le rétroprojecteur */
-        html {
-            font-size: 115%; /* Augmente la taille de base de 15% */
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-10px);
+        }
+        .project-image {
+            height: 200px; background: #1e293b; overflow: hidden; position: relative;
+        }
+        .project-image img {
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: all 0.5s ease;
+        }
+        .project-card:hover .project-image img {
+            opacity: 1; transform: scale(1.1);
+        }
+        .project-overlay {
+            position: absolute; inset: 0; background: rgba(0, 0, 0, 0.7);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .project-card:hover .project-overlay { opacity: 1; }
+        
+        .project-link {
+            color: white; padding: 0.75rem 1.5rem; background: #3b82f6;
+            border-radius: 0.5rem; text-decoration: none; font-size: 0.875rem;
+            font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em;
         }
 
-        /* ========== CORRECTIF CARROUSEL ========== */
+        .cert-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.5rem; padding: 2rem; transition: all 0.3s ease;
+        }
+        .cert-card:hover {
+            border-color: #3b82f6; transform: translateY(-5px);
+        }
+
+        /* ========== CARROUSEL CNIL (CORRECTIF) ========== */
         .slider-image.hidden {
             display: none !important;
         }
         .slider-image:not(.hidden) {
             display: block !important;
         }
+
+        /* ========== BOUTON THEME VOLANT ========== */
+        #theme-toggle {
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
+            width: 3.2rem; height: 3.2rem; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2); background: rgba(3, 7, 18, 0.85);
+            color: #f9fafb; font-size: 1.3rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(10px); transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        #theme-toggle:hover {
+            border-color: #3b82f6; box-shadow: 0 0 16px rgba(59,130,246,0.5);
+            transform: scale(1.1);
+        }
+
+        /* ========== MODE CLAIR (POUR LE RÉTROPROJECTEUR) ========== */
+        .light-mode, 
+        .light-mode body, 
+        .light-mode section, 
+        .light-mode main,
+        .light-mode div[class*="bg-gray-"], 
+        .light-mode div[class*="bg-[#030712]"] {
+            background-color: #ffffff !important;
+            background-image: none !important;
+            color: #111827 !important;
+        }
+
+        .light-mode .aurora, .light-mode body::before {
+            display: none !important;
+        }
+
+        .light-mode .project-card, 
+        .light-mode .cert-card, 
+        .light-mode .glass-card, 
+        .light-mode .timeline-item,
+        .light-mode div[class*="bg-gray-800"] {
+            background-color: #f3f4f6 !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .light-mode p, 
+        .light-mode h1, 
+        .light-mode h2, 
+        .light-mode h3, 
+        .light-mode h4,
+        .light-mode li,
+        .light-mode span:not([class*="bg-blue-500"]) {
+            color: #1f2937 !important;
+        }
+
+        .light-mode .nav-blur {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-bottom: 1px solid rgba(0,0,0,0.1) !important;
+        }
+        .light-mode .nav-blur a { color: #1f2937 !important; }
+        
+        .light-mode .filter-btn, .light-mode .projet-filter-btn {
+            background: rgba(0,0,0,0.05);
+            border-color: rgba(0,0,0,0.12);
+            color: #475569;
+        }
+        .light-mode .filter-btn:hover, .light-mode .projet-filter-
     </style>
 </head>
 <body>
