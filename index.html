@@ -198,6 +198,15 @@
         .slider-image.hidden {
             display: none !important; /* Force la disparition quand la classe hidden est là */
         }
+
+        /* Remplace l'ancien bloc .slider-image par celui-ci */
+        .slider-image {
+            display: none; /* Cache toutes les images par défaut */
+        }
+
+        .slider-image:not(.hidden) {
+            display: block !important; /* Affiche uniquement celle qui n'a pas la classe hidden */
+        }
     </style>
 </head>
 <body>
@@ -1667,29 +1676,47 @@
 
         const toggleBtn = document.getElementById('theme-toggle');
         const body = document.body;
+        const aurora = document.querySelector('.aurora');
 
         toggleBtn.addEventListener('click', () => {
-            body.classList.toggle('bg-gray-900'); // Si ton fond actuel utilise des classes tailwind dominantes
-            
-            if (body.style.backgroundColor === 'rgb(249, 250, 251)') {
-                // Retour au mode sombre d'origine
+            if (body.classList.contains('light-theme')) {
+                // RETOUR AU MODE SOMBRE
+                body.classList.remove('light-theme');
                 body.style.backgroundColor = '#030712';
                 body.style.color = '#f9fafb';
-                toggleBtn.innerHTML = '<i class="fas fa-sun mr-2"></i> Mode Clair';
-                // Optionnel : inverser la couleur de tes cartes de projets si nécessaire
-            } else {
-                // Passage au mode clair (Texte sombre, fond blanc/gris très clair)
-                body.style.backgroundColor = '#f9fafb';
-                body.style.color = '#111827';
-                toggleBtn.innerHTML = '<i class="fas fa-moon mr-2"></i> Mode Sombre';
+                if(aurora) aurora.style.display = 'block';
                 
-                // Forcer les textes de description en sombre pour qu'ils soient lisibles
-                document.querySelectorAll('p, h1, h2, h3, span').forEach(el => {
-                    // On cible les éléments pour s'assurer qu'ils passent en bleu foncé / noir
-                    if(!el.classList.contains('text-white')) {
-                        el.style.color = '#1f2937';
-                    }
+                // Rétablir la couleur des textes secondaires
+                document.querySelectorAll('p, span:not(.skill-tag), .text-gray-400').forEach(el => {
+                    el.style.color = '';
                 });
+                document.querySelectorAll('.glass-card, .project-card, .cert-card').forEach(card => {
+                    card.style.backgroundColor = '';
+                    card.style.borderColor = '';
+                });
+
+                toggleBtn.innerHTML = '<i class="fas fa-sun mr-2"></i> Mode Clair';
+                toggleBtn.className = "fixed bottom-5 right-5 z-50 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 mono text-sm";
+            } else {
+                // PASSAGE AU MODE CLAIR (FORÇAGE CONTRASTE ÉLEVÉ)
+                body.classList.add('light-theme');
+                body.style.backgroundColor = '#ffffff';
+                body.style.color = '#000000';
+                if(aurora) aurora.style.display = 'none'; // Désactive les dégradés sombres
+                
+                // Forcer tous les textes descriptifs en noir ou bleu très foncé
+                document.querySelectorAll('p, h1, h2, h3, span:not(.skill-tag)').forEach(el => {
+                    el.style.color = '#111827';
+                });
+                
+                // Forcer la visibilité des bordures de cartes sur fond blanc
+                document.querySelectorAll('.glass-card, .project-card, .cert-card').forEach(card => {
+                    card.style.backgroundColor = '#f3f4f6';
+                    card.style.borderColor = '#d1d5db';
+                });
+
+                toggleBtn.innerHTML = '<i class="fas fa-moon mr-2"></i> Mode Sombre';
+                toggleBtn.className = "fixed bottom-5 right-5 z-50 bg-gray-900 text-white p-3 rounded-full shadow-lg hover:bg-gray-800 transition-all duration-300 mono text-sm";
             }
         });
     </script>
