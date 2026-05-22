@@ -13,6 +13,7 @@
     <style>
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
+            font-size: 18px;
             background-color: #030712; 
             color: #f9fafb; 
             overflow-x: hidden; 
@@ -20,6 +21,107 @@
         }
         .mono { font-family: 'JetBrains Mono', monospace; }
         
+         /* ========== BOUTON MODE CLAIR/SOMBRE ========== */
+        #theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+            width: 3.2rem;
+            height: 3.2rem;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(3, 7, 18, 0.85);
+            color: #f9fafb;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        #theme-toggle:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 0 16px rgba(59,130,246,0.5);
+            transform: scale(1.1);
+        }
+
+        /* ========== MODE CLAIR ========== */
+        html.light-mode body {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        html.light-mode .aurora {
+            background: radial-gradient(circle at 50% -20%, #bfdbfe 0%, transparent 50%),
+                        radial-gradient(circle at 0% 100%, #ddd6fe 0%, transparent 50%);
+            opacity: 0.6;
+        }
+        html.light-mode body::before {
+            display: none;
+        }
+        html.light-mode .nav-blur {
+            background: rgba(241, 245, 249, 0.92);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        html.light-mode .nav-blur .text-2xl { color: #0f172a; }
+        html.light-mode .nav-blur a { color: #475569; }
+        html.light-mode .nav-blur a:hover { color: #0f172a; }
+        html.light-mode .section-dark { background: rgba(0,0,0,0.04); }
+        html.light-mode .glass-card {
+            background: rgba(255,255,255,0.7);
+            border-color: rgba(0,0,0,0.1);
+        }
+        html.light-mode .glass-card:hover { border-color: #3b82f6; }
+        html.light-mode .glass-card h3 { color: #0f172a; }
+        html.light-mode .glass-card ul li { color: #475569; }
+        html.light-mode .text-gray-400 { color: #475569 !important; }
+        html.light-mode .text-gray-300 { color: #334155 !important; }
+        html.light-mode .text-white { color: #0f172a !important; }
+        html.light-mode .timeline-item { border-left-color: rgba(59,130,246,0.4); }
+        html.light-mode .project-card {
+            background: rgba(255,255,255,0.8);
+            border-color: rgba(0,0,0,0.1);
+        }
+        html.light-mode .project-card:hover { border-color: #3b82f6; }
+        html.light-mode .project-card .p-6 h3 { color: #0f172a; }
+        html.light-mode .cert-card {
+            background: rgba(255,255,255,0.75) !important;
+            border-color: rgba(0,0,0,0.1) !important;
+        }
+        html.light-mode .cert-card h3 { color: #0f172a; }
+        html.light-mode .filter-btn, html.light-mode .projet-filter-btn {
+            background: rgba(0,0,0,0.05);
+            border-color: rgba(0,0,0,0.12);
+            color: #475569;
+        }
+        html.light-mode .filter-btn:hover, html.light-mode .projet-filter-btn:hover,
+        html.light-mode .filter-btn.active, html.light-mode .projet-filter-btn.active {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            color: white;
+        }
+        html.light-mode .skill-tag {
+            background: rgba(59,130,246,0.12);
+            border-color: rgba(59,130,246,0.25);
+            color: #1e40af;
+        }
+        html.light-mode #theme-toggle {
+            background: rgba(241,245,249,0.9);
+            color: #0f172a;
+            border-color: rgba(0,0,0,0.15);
+        }
+        html.light-mode section[id="certifications"] { background: rgba(0,0,0,0.03) !important; }
+        html.light-mode .bg-gray-900\/30 { background: rgba(0,0,0,0.04) !important; }
+        html.light-mode .bg-gray-800\/40 { background: rgba(255,255,255,0.75) !important; }
+        html.light-mode .bg-gray-700\/50 { border-color: rgba(0,0,0,0.1) !important; }
+        html.light-mode .text-blue-300\/60 { color: #2563eb !important; opacity: 0.8; }
+        html.light-mode .mono.text-blue-500 { color: #2563eb !important; }
+        html.light-mode .opacity-20 { color: #334155 !important; }
+        html.light-mode .project-image { background: #e2e8f0; }
+        html.light-mode footer, html.light-mode footer * { color: #334155 !important; }
+
         /* Animation de fond : Aurora */
         .aurora {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
@@ -201,6 +303,11 @@
     </style>
 </head>
 <body>
+
+    <!-- Bouton mode clair/sombre -->
+    <button id="theme-toggle" title="Basculer mode clair / sombre" aria-label="Basculer le thème">
+        <i class="fa-solid fa-sun" id="theme-icon"></i>
+    </button>
 
     <div class="aurora"></div>
 
@@ -1028,12 +1135,12 @@
                         <p class="text-gray-400 text-base leading-relaxed">Certification complète couvrant les principes de protection des données, les responsabilités et les outils de conformité.</p>
                     </div>
 
-                    <div class="w-full h-80 relative overflow-hidden flex items-center justify-center p-4 bg-black/20">
-                        <button onclick="changeSlide(-1)" class="absolute left-2 z-10 p-2 text-white/50 hover:text-blue-400 transition-colors">
+                    <div class="w-full h-80 relative flex items-center justify-center p-4 bg-black/20">
+                        <button onclick="changeSlide(-1)" class="absolute left-2 z-20 p-3 text-white/70 hover:text-blue-400 transition-colors bg-black/30 rounded-full" style="top:50%;transform:translateY(-50%)">
                             <i class="fas fa-chevron-left fa-lg"></i>
                         </button>
 
-                        <div class="relative w-full h-full flex items-center justify-center">
+                        <div class="relative w-full h-full overflow-hidden flex items-center justify-center">
                             <img id="slider-img-1" src="assets/certifications/rgpd1.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 1">
                             <img id="slider-img-2" src="assets/certifications/rgpd2.png" class="slider-image hidden max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 2">
                             <img id="slider-img-3" src="assets/certifications/rgpd3.png" class="slider-image hidden max-w-full max-h-full object-contain transform transition-all duration-500" alt="Module 3">
@@ -1047,11 +1154,11 @@
                             </div>
                         </div>
 
-                        <button onclick="changeSlide(1)" class="absolute right-2 z-10 p-2 text-white/50 hover:text-blue-400 transition-colors">
+                        <button onclick="changeSlide(1)" class="absolute right-2 z-20 p-3 text-white/70 hover:text-blue-400 transition-colors bg-black/30 rounded-full" style="top:50%;transform:translateY(-50%)">
                             <i class="fas fa-chevron-right fa-lg"></i>
                         </button>
                         
-                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 px-3 py-1 rounded-full text-[10px] mono text-blue-400">
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 px-3 py-1 rounded-full text-[10px] mono text-blue-400" style="z-index:10">
                             <span id="slide-number">1</span>/5
                         </div>
                     </div>
@@ -1626,6 +1733,31 @@
                     });
                 }
             });
+        });
+
+        // --- TOGGLE THÈME CLAIR / SOMBRE ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        function applyTheme(isLight) {
+            if (isLight) {
+                document.documentElement.classList.add('light-mode');
+                themeIcon.className = 'fa-solid fa-moon';
+                themeToggle.title = 'Passer en mode sombre';
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.remove('light-mode');
+                themeIcon.className = 'fa-solid fa-sun';
+                themeToggle.title = 'Passer en mode clair';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Charger la préférence sauvegardée
+        applyTheme(localStorage.getItem('theme') === 'light');
+        
+        themeToggle.addEventListener('click', () => {
+            applyTheme(!document.documentElement.classList.contains('light-mode'));
         });
 
         // --- LOGIQUE CARROUSEL CNIL ---
