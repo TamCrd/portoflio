@@ -325,6 +325,29 @@
             grid-template-rows: 1fr auto;
             flex-direction: unset !important;
         }
+        /* Cartes expérience : rangées fixes pour aligner titre, employeur et trait */
+        .exp-card {
+            display: grid;
+            grid-template-rows: auto auto auto 1fr;
+            /* rangée 1: date+icône | rangée 2: titre (hauteur fixe) | rangée 3: employeur | rangée 4: liste */
+        }
+        .exp-card > div:first-child {
+            /* date+icône: hauteur automatique */
+        }
+        .exp-card > h3 {
+            /* titre: min-height pour aligner même si 1 seule ligne vs 2 lignes */
+            min-height: 3.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        .exp-card > p.employer-name {
+            /* employeur: hauteur fixe */
+            min-height: 2rem;
+        }
+        .exp-card > ul {
+            /* liste: pousse vers le bas grâce à 1fr sur la rangée */
+            align-self: end;
+        }
 </style>
 </head>
 <body>
@@ -567,7 +590,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <div class="glass-card flex flex-col" data-aos="fade-up">
+                <div class="glass-card exp-card" data-aos="fade-up">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                             <i class="fa-solid fa-boxes"></i>
@@ -585,7 +608,7 @@
                     </ul>
                 </div>
 
-                <div class="glass-card flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                <div class="glass-card exp-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                             <i class="fa-solid fa-futbol"></i>
@@ -602,7 +625,7 @@
                     </ul>
                 </div>
 
-                <div class="glass-card flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                <div class="glass-card exp-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                             <i class="fa-solid fa-network-wired"></i>
@@ -620,7 +643,7 @@
                     </ul>
                 </div>
 
-                <div class="glass-card flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                <div class="glass-card exp-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                             <i class="fa-solid fa-network-wired"></i>
@@ -638,7 +661,7 @@
                     </ul>
                 </div>
 
-                <div class="glass-card flex flex-col" data-aos="fade-up">
+                <div class="glass-card exp-card" data-aos="fade-up">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                             <i class="fa-solid fa-laptop-code"></i>
@@ -657,7 +680,7 @@
                     </ul>
                 </div>
 
-                <div class="glass-card flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                <div class="glass-card exp-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                             <i class="fa-solid fa-graduation-cap"></i>
@@ -687,12 +710,12 @@
                 <!-- Filtre par compétence E5 uniquement -->
                 <div class="flex flex-wrap gap-3 justify-center" id="filter-competence">
                 <button class="projet-filter-btn comp-btn active" data-filter="all" data-filterset="competence">Tous</button>
-                <button class="projet-filter-btn comp-btn" data-filter="patrimoine" data-filterset="competence">Gérer le patrimoine</button>
-                <button class="projet-filter-btn comp-btn" data-filter="incidents" data-filterset="competence">Répondre aux incidents</button>
-                <button class="projet-filter-btn comp-btn" data-filter="presenceweb" data-filterset="competence">Présence en ligne</button>
-                <button class="projet-filter-btn comp-btn" data-filter="projet" data-filterset="competence">Mode projet</button>
-                <button class="projet-filter-btn comp-btn" data-filter="services" data-filterset="competence">Mettre à disposition</button>
-                <button class="projet-filter-btn comp-btn" data-filter="devpro" data-filterset="competence">Développement professionnel</button>
+                <button class="projet-filter-btn comp-btn" data-filter="patrimoine" data-filterset="competence">Gérer le patrimoine informatique</button>
+                <button class="projet-filter-btn comp-btn" data-filter="incidents" data-filterset="competence">Répondre aux incidents et aux demandes d'assistance</button>
+                <button class="projet-filter-btn comp-btn" data-filter="presenceweb" data-filterset="competence">Développer la présence en ligne</button>
+                <button class="projet-filter-btn comp-btn" data-filter="projet" data-filterset="competence">Travailler en mode projet</button>
+                <button class="projet-filter-btn comp-btn" data-filter="services" data-filterset="competence">Mettre à disposition un service informatique</button>
+                <button class="projet-filter-btn comp-btn" data-filter="devpro" data-filterset="competence">Organiser son développement professionnel</button>
                 </div>
             </div>
 
