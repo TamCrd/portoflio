@@ -325,28 +325,50 @@
             grid-template-rows: 1fr auto;
             flex-direction: unset !important;
         }
-        /* Cartes expérience : rangées fixes pour aligner titre, employeur et trait */
+        /* === ALIGNEMENT CARTES EXPÉRIENCE === */
+        /* Le conteneur passe en subgrid sur les lignes */
+        .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+            align-items: start;
+        }
+        @media (min-width: 768px) {
+            .exp-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .exp-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        /* Chaque carte expérience = grid interne à 4 rangées fixes */
         .exp-card {
             display: grid;
-            grid-template-rows: auto auto auto 1fr;
-            /* rangée 1: date+icône | rangée 2: titre (hauteur fixe) | rangée 3: employeur | rangée 4: liste */
+            grid-template-rows: 
+                auto          /* rangée 1: date + icône */
+                2.8rem        /* rangée 2: titre — fixe 2 lignes */
+                1.6rem        /* rangée 3: nom employeur */
+                auto;         /* rangée 4: liste */
+            gap: 0;
         }
-        .exp-card > div:first-child {
-            /* date+icône: hauteur automatique */
-        }
+        .exp-card > div:first-child { margin-bottom: 1.5rem; }
         .exp-card > h3 {
-            /* titre: min-height pour aligner même si 1 seule ligne vs 2 lignes */
-            min-height: 3.5rem;
-            display: flex;
-            align-items: flex-start;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0;
+            line-height: 1.4;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
         .exp-card > p.employer-name {
-            /* employeur: hauteur fixe */
-            min-height: 2rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+            align-self: center;
         }
         .exp-card > ul {
-            /* liste: pousse vers le bas grâce à 1fr sur la rangée */
-            align-self: end;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(31, 41, 55, 1);
         }
 </style>
 </head>
@@ -588,7 +610,7 @@
             <h2 class="text-xl mono text-blue-500 mb-10 tracking-widest uppercase text-center" data-translate="experienceTitre">// Expérience Professionnelle</h2>
             <p class="text-center text-gray-400 text-xl mb-16" data-translate="experienceSousTitre">Mes emplois, stages et engagements</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="exp-grid">
                 
                 <div class="glass-card exp-card" data-aos="fade-up">
                     <div class="flex items-center gap-3 mb-6">
@@ -600,7 +622,7 @@
                     <h3 class="text-xl font-bold mb-2" data-translate="expPrep1">Préparateur de commandes</h3>
                     <p class="employer-name text-base font-medium uppercase tracking-wider" data-translate="expPrep2">Auchan Retail - Epagny</p>
                     
-                    <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
+                    <ul class="text-gray-400 space-y-3 text-base list-disc list-inside">
                         <li data-translate="expItem1">Préparation de commandes PGC, Produits Frais, Fruits et Légumes</li>
                         <li data-translate="expItem2">Livraison et gestion des stocks</li>
                         <li data-translate="expItem3">Commandes à domicile</li>
@@ -618,7 +640,7 @@
                     <h3 class="text-xl font-bold mb-2" data-translate="expEntrain1">Entraîneuse de gardiennes</h3>
                     <p class="employer-name text-base font-medium uppercase tracking-wider" data-translate="expEntrain2">FC Epagny-Metz-Tessy</p>
                     
-                    <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
+                    <ul class="text-gray-400 space-y-3 text-base list-disc list-inside">
                         <li data-translate="expItem1">Encadrement technique et physique</li>
                         <li data-translate="expItem3">Développement des compétences</li>
                         <li data-translate="expItem4">Animation des séances</li>
@@ -635,7 +657,7 @@
                     <h3 class="text-xl font-bold mb-2" data-translate="expStage1">Stage - Systèmes et Réseaux</h3>
                     <p class="employer-name text-base font-medium uppercase tracking-wider">Team IT - Carouge</p>
                     
-                    <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
+                    <ul class="text-gray-400 space-y-3 text-base list-disc list-inside">
                         <li data-translate="expItem1">Consultations et conseils clients</li>
                         <li data-translate="expItem2">Installation, remplacement, dépannage de matériel (PC, écrans, serveurs...)</li>
                         <li data-translate="expItem3">Gestion à distance</li>
@@ -653,7 +675,7 @@
                     <h3 class="text-xl font-bold mb-2" data-translate="expStage1">Stage - Systèmes et Réseaux</h3>
                     <p class="employer-name text-base font-medium uppercase tracking-wider">Agentil - Satigny</p>
                     
-                    <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
+                    <ul class="text-gray-400 space-y-3 text-base list-disc list-inside">
                         <li data-translate="expItem1">GPO, Firewall, WSUS et certificats SSL</li>
                         <li data-translate="expItem2">Monitoring Zabbix et installation d'agents</li>
                         <li data-translate="expItem3">Mises à jour OS et troubleshooting</li>
@@ -671,7 +693,7 @@
                     <h3 class="text-xl font-bold mb-2" data-translate="expElearning1">Stage - Concepteur eLearning</h3>
                     <p class="employer-name text-base font-medium uppercase tracking-wider" data-translate="expElearning2">Creativ Minds - Nyon</p>
                     
-                    <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
+                    <ul class="text-gray-400 space-y-3 text-base list-disc list-inside">
                         <li data-translate="expItem1">Création de modules de formation</li>
                         <li data-translate="expItem2">Scénarisation pédagogique</li>
                         <li data-translate="expItem3">Recherche et traduction de contenus</li>
@@ -690,7 +712,7 @@
                     <h3 class="text-xl font-bold mb-2" data-translate="expObs1">Stage d'Observation</h3>
                     <p class="employer-name text-base font-medium uppercase tracking-wider" data-translate="expObs2">École Primaire - Perly</p>
                     
-                    <ul class="text-gray-400 space-y-3 text-base mt-6 border-t border-gray-800 pt-6 list-disc list-inside">
+                    <ul class="text-gray-400 space-y-3 text-base list-disc list-inside">
                         <li data-translate="expItem1">Observation des terrains éducatifs</li>
                         <li data-translate="expItem2">Analyse des pratiques scolaires</li>
                         <li data-translate="expItem3">Étude des systèmes pédagogiques</li>
@@ -1156,6 +1178,31 @@
                             <span class="skill-tag">Nagios</span>
                             <span class="skill-tag">DMZ & Filtrage</span>
                             <span class="skill-tag">Windows Server</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card infrastructure gestion incidents services projet devpro" data-competence="patrimoine incidents services projet devpro" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="images/projets/mdl.jpg" alt="Maison des Ligues">
+                        <div class="project-overlay">
+                            <a href="assets/docs/Projet-MDL-Cretard-Tamara (1).pdf" class="project-link" download>
+                                <i class="fa-solid fa-download"></i> <span data-translate="projVoir">Voir</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Projet Maison des Ligues</h3>
+                        <p class="text-gray-400 text-base mb-4">Déploiement complet d'une infrastructure SI multi-services : routeur-pare-feu PfSense avec VLAN et DMZ, serveur de domaine Active Directory, inventaire GLPI/FusionInventory, VPN OpenVPN avec authentification LDAP, RDS avec RemoteApp, cloud privé Nextcloud et serveur SFTP sécurisé en DMZ.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">PfSense</span>
+                            <span class="skill-tag">Active Directory</span>
+                            <span class="skill-tag">GLPI</span>
+                            <span class="skill-tag">OpenVPN</span>
+                            <span class="skill-tag">RDS & RemoteApp</span>
+                            <span class="skill-tag">Nextcloud</span>
+                            <span class="skill-tag">SFTP & DMZ</span>
+                            <span class="skill-tag">Proxmox</span>
                         </div>
                     </div>
                 </div>
