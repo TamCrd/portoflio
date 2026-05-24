@@ -1443,42 +1443,35 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                
-                <div class="cert-card bg-gray-800/40 border border-gray-700/50 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 group flex flex-col" data-aos="fade-up">
-                    <div class="p-8 w-full text-left">
+                <div class="cert-card glass-card group" data-aos="fade-up">
+                    <div class="p-6 flex flex-col h-full">
                         <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
-                                <i class="fas fa-user-shield"></i>
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                                <i class="fas fa-search text-blue-400"></i>
                             </div>
-                            <span class="text-base text-blue-400 font-bold mono bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/20">2026</span>
+                            <span class="mono text-base text-blue-400">2026</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-2">OSINT</h3>
                         <p class="cert-org text-sm mb-4 font-medium uppercase tracking-wider">OSINT-FR</p>
                         <p class="text-gray-400 text-lg leading-relaxed">Initiation aux techniques OSINT: recherche en sources ouvertes, collecte et analyse d'informations publiques à des fins d'investigation numérique.</p>
                     </div>
-
+                    <!-- Carrousel OSINT (2 slides) -->
                     <div class="w-full h-80 relative flex items-center justify-center p-4 bg-black/20">
-                        <button onclick="changeSlide(-1)" class="absolute left-2 z-20 p-3 text-white/70 hover:text-blue-400 transition-colors bg-black/30 rounded-full" style="top:50%;transform:translateY(-50%)">
+                        <button onclick="changeSlideOsint(-1)" class="absolute left-2 z-20 p-3 text-white/70 hover:text-blue-400 transition-colors bg-black/30 rounded-full" style="top:50%;transform:translateY(-50%)">
                             <i class="fas fa-chevron-left fa-lg"></i>
                         </button>
 
                         <div class="relative w-full h-full overflow-hidden flex items-center justify-center">
-                            <img id="slider-img-1" src="assets/certifications/osint1.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" alt="OSINT1">
-                            <img id="slider-img-2" src="assets/certifications/osint2.png" class="slider-image hidden max-w-full max-h-full object-contain transform transition-all duration-500" alt="OSINT2">
-                            <div class="absolute inset-0 bg-gray-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                                <a id="view-large-link" href="assets/certifications/osint1.png" target="_blank" class="p-4 bg-blue-600 rounded-full text-white shadow-2xl hover:bg-blue-500 transition-all scale-75 group-hover:scale-100 pointer-events-auto">
-                                    <i class="fas fa-eye fa-lg"></i>
-                                </a>
-                            </div>
+                            <img id="osint-img-1" src="assets/certifications/osint1.png" class="slider-image max-w-full max-h-full object-contain transform transition-all duration-500" alt="OSINT 1">
+                            <img id="osint-img-2" src="assets/certifications/osint2.png" class="slider-image hidden max-w-full max-h-full object-contain transform transition-all duration-500" alt="OSINT 2">
                         </div>
 
-                        <button onclick="changeSlide(1)" class="absolute right-2 z-20 p-3 text-white/70 hover:text-blue-400 transition-colors bg-black/30 rounded-full" style="top:50%;transform:translateY(-50%)">
+                        <button onclick="changeSlideOsint(1)" class="absolute right-2 z-20 p-3 text-white/70 hover:text-blue-400 transition-colors bg-black/30 rounded-full" style="top:50%;transform:translateY(-50%)">
                             <i class="fas fa-chevron-right fa-lg"></i>
                         </button>
-                        
+
                         <div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 px-3 py-1 rounded-full text-[10px] mono text-blue-400" style="z-index:10">
-                            <span id="slide-number">1</span>/2
+                            <span id="osint-slide-number">1</span>/2
                         </div>
                     </div>
                 </div>
@@ -2028,6 +2021,23 @@
                 moon.style.display = '';
             }
         }
+
+        // --- CARROUSEL OSINT (2 slides) ---
+        (function() {
+            let currentOsint = 1;
+            const totalOsint = 2;
+            window.changeSlideOsint = function(direction) {
+                const cur = document.getElementById('osint-img-' + currentOsint);
+                if (cur) cur.classList.add('hidden');
+                currentOsint += direction;
+                if (currentOsint > totalOsint) currentOsint = 1;
+                if (currentOsint < 1) currentOsint = totalOsint;
+                const next = document.getElementById('osint-img-' + currentOsint);
+                if (next) next.classList.remove('hidden');
+                const counter = document.getElementById('osint-slide-number');
+                if (counter) counter.innerText = currentOsint;
+            };
+        })();
     </script>
 </body>
 </html>
